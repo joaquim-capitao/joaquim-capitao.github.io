@@ -1,10 +1,10 @@
 # Autobiografia
 
-Eu nasci num calhau. Um calhau muito grande e quase esférico.
-
-![](https://i.ibb.co/SwNjX92D/ced72e2e-1810-481f-8a37-510be033c772.jpg)
+Eu nasci num calhau... Um calhau muito grande e quase esférico.
 
 É verdade que é um calhau enorme, mas não deixa de ser uma pedra que anda à volta de uma grande lâmpada chamada Sol, no meio do nada, sem pedir licença a ninguém.
+
+![](https://i.ibb.co/zW6zq24h/Gemini-Generated-Image-vktn14vktn14vktn.jpg)
 
 Assim que cheguei, disseram-me: *"Olha, parabéns, calhou-te a fatia a que chamamos Portugal"*,  como se o mundo fosse uma pizza gigante e a mim tivesse calhado a côdea.
 
