@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Joaquim Capitão — Mapa Pessoal</title>
+  <title>Joaquim Capitão — Site Pessoal</title>
   
   <!-- Biblioteca de Arrastar/Zoom (Panzoom) -->
   <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
@@ -14,7 +14,6 @@
       --card-bg: #ffffff;
       --text: #2c2c2c;
       --accent: #8b4513;
-      --line: #d3cbd8;
       --border: #e0dad0;
     }
 
@@ -28,20 +27,20 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Georgia, serif;
       background-color: var(--bg);
       color: var(--text);
-      overflow: hidden; /* Oculta as barras de scroll tradicionais */
+      overflow: hidden;
       width: 100vw;
       height: 100vh;
       user-select: none;
     }
 
-    /* Instrução Fixa na Tela */
+    /* Instrução Fixa no Topo */
     .instructions {
       position: fixed;
       top: 20px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(255, 255, 255, 0.9);
-      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 8px 18px;
       border-radius: 20px;
       font-size: 0.85rem;
       border: 1px solid var(--border);
@@ -50,7 +49,7 @@
       pointer-events: none;
     }
 
-    /* O Contentor do Mapa (A Tela Gigante) */
+    /* Contentor Principal */
     #viewport {
       width: 100%;
       height: 100%;
@@ -66,10 +65,10 @@
       height: 2000px;
       position: relative;
       background-image: radial-gradient(#d5cfc4 1px, transparent 1px);
-      background-size: 30px 30px; /* Padrão de pontos subtil */
+      background-size: 30px 30px;
     }
 
-    /* Linhas de Conexão SVG no Fundo */
+    /* Linhas de Conexão no Fundo */
     .connections {
       position: absolute;
       top: 0;
@@ -83,30 +82,41 @@
       stroke: var(--accent);
       stroke-width: 2;
       stroke-dasharray: 6;
-      opacity: 0.4;
+      opacity: 0.35;
     }
 
-    /* As "Ilhas" de Conteúdo */
+    /* Links que envolvem os cartões */
+    .island-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    /* Estilo das "Ilhas" */
     .island {
       position: absolute;
       background: var(--card-bg);
       border: 1px solid var(--border);
       padding: 24px;
       border-radius: 12px;
-      width: 300px;
+      width: 320px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.06);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .island-link .island {
       cursor: pointer;
     }
 
-    .island:hover {
+    .island-link:hover .island {
       transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      border-color: var(--accent);
     }
 
     .island h2 {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
+      font-size: 1.15rem;
+      margin-bottom: 10px;
       color: var(--accent);
       display: flex;
       align-items: center;
@@ -114,28 +124,25 @@
     }
 
     .island p {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       line-height: 1.5;
-      color: #555;
+      color: #444;
     }
 
-    .island .tag {
+    .island .action-hint {
       display: inline-block;
-      margin-top: 12px;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      margin-top: 14px;
+      font-size: 0.8rem;
       font-weight: bold;
-      color: #888;
+      color: var(--accent);
     }
 
-    /* Posições Específicas no Mapa (2000x2000px) */
-    #island-center { top: 850px; left: 850px; width: 300px; border: 2px solid var(--accent); }
-    #island-cronica { top: 850px; left: 1300px; }
-    #island-cinema  { top: 850px; left: 400px; }
-    #island-viagens { top: 400px; left: 850px; }
-    #island-lab     { top: 1300px; left: 850px; }
-    #island-local   { top: 1300px; left: 1300px; }
+    /* Posições no Mapa (Ajustadas para 2000x2000px) */
+    #island-center { top: 850px; left: 840px; width: 340px; border: 2px solid var(--accent); }
+    #island-queime  { top: 850px; left: 1320px; }
+    #island-bio     { top: 850px; left: 360px; }
+    #island-cinema  { top: 380px; left: 840px; }
+    #island-viagens { top: 1320px; left: 840px; }
 
     /* Botão de Recentrar */
     .recenter-btn {
@@ -147,11 +154,16 @@
       padding: 10px 16px;
       border-radius: 8px;
       font-weight: bold;
+      color: var(--text);
       cursor: pointer;
       box-shadow: 0 2px 10px rgba(0,0,0,0.08);
       z-index: 100;
     }
-    .recenter-btn:hover { background: #fafafa; }
+
+    .recenter-btn:hover { 
+      background: #fafafa; 
+      border-color: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -162,46 +174,59 @@
   <div id="viewport">
     <div id="map-scene">
       
-      <!-- Linhas SVG a Ligar as Ilhas -->
+      <!-- Linhas de Conexão -->
       <svg class="connections">
-        <!-- Centro para a Crónica -->
-        <line x1="1000" y1="950" x2="1300" y2="950" />
-        <!-- Centro para o Biografia -->
-        <line x1="1000" y1="950" x2="700" y2="950" />
-        <!-- Centro para as Viagens -->
-        <line x1="1000" y1="950" x2="1000" y2="550" />
-        <!-- Centro para o Laboratório -->
-        <line x1="1000" y1="950" x2="1000" y2="1300" />
-        <!-- Laboratório para Notas Locais -->
-        <line x1="1150" y1="1380" x2="1300" y2="1380" />
+        <!-- Centro para Queime Depois de Ler -->
+        <line x1="1010" y1="950" x2="1320" y2="950" />
+        <!-- Centro para Biografia -->
+        <line x1="1010" y1="950" x2="680" y2="950" />
+        <!-- Centro para Cinema -->
+        <line x1="1010" y1="950" x2="1010" y2="520" />
+        <!-- Centro para Viagens -->
+        <line x1="1010" y1="950" x2="1010" y2="1320" />
       </svg>
 
-      <!-- Ilha Central: Centro -->
+      <!-- Ilha Central: Ponto de Partida -->
       <div class="island" id="island-center">
-        <h2>👋 Ponto de Partida</h2>
-        <p><strong>Se vieste até aqui é porque tens muito tempo livre e uma boa dose de curiosidade. Não tenhas vergonha! Assume-te como bisbilhoteiro(a) e explora este meu site pessoal.</p>
+        <h2>🧭 Ponto de Partida</h2>
+        <p>Se vieste até aqui, tens muito tempo livre e uma boa dose de curiosidade. Não tenhas vergonha! Assume-te como bisbilhoteiro e explora este meu site pessoal.</p>
+      </div>
+
+      <!-- Ilha: Queime Depois de Ler -->
+      <a href="https://joaquim-capitao.github.io/queime-depois-de-ler/" class="island-link">
+        <div class="island" id="island-queime">
+          <h2>🔥 Queime Depois de Ler</h2>
+          <p>De vez em quando, escrevo uma breve reflexão. Conforme a direção do vento, posso ser mais lamechas ou mais mordaz. Lê por tua conta e risco...</p>
+          <span class="action-hint">Explorar reflexões →</span>
         </div>
+      </a>
 
-      <!-- Ilha 1: Crónicas semanais -->
-      <div class="island" id="island-cronica">
-        <h2>📰 Queime Depois de Ler</h2>
-        <p><strong>De vez em quando, escrevo uma breve reflexão. Conforme a direção do vento, posso escrever algo mais lamechas, ou então mais irónico e mordaz.</p>
-        <span class="tag">Lê por tua conta e risco</span>
-      </div>
+      <!-- Ilha: Biografia -->
+      <a href="https://joaquim-capitao.github.io/autobiografia.html" class="island-link">
+        <div class="island" id="island-bio">
+          <h2>👤 Biografia</h2>
+          <p>A história da minha vida dava um filme (daqueles muito chatos).</p>
+          <span class="action-hint">Saber mais →</span>
+        </div>
+      </a>
 
-      <!-- Ilha 2: Biografia-->
-      <div class="island" id="island-bio">
-        <h2>Biografia</h2>
-        <p>Clica para conheceres a história da minha vida</p>
-        <span class="tag">Biografia</span>
-      </div>
+      <!-- Ilha: Críticas de Cinema -->
+      <a href="https://joaquim-capitao.github.io/cinema.html" class="island-link">
+        <div class="island" id="island-cinema">
+          <h2>🍿 Críticas de Cinema</h2>
+          <p>Conheça algumas das pérolas da indústria cinematográfica.</p>
+          <span class="action-hint">Ver filmes →</span>
+        </div>
+      </a>
 
-      <!-- Ilha 4: O Laboratório (Projetos) -->
-      <div class="island" id="island-lab">
-        <h2>💡 O Laboratório</h2>
-        <p>Projetos pessoais em curso, pequenos jogos, e outras coisas sem interesse nenhum.</p>
-        <span class="tag">Em Desenvolvimento</span>
-      </div>
+      <!-- Ilha: Viagens -->
+      <a href="https://joaquim-capitao.github.io/lugares.html" class="island-link">
+        <div class="island" id="island-viagens">
+          <h2>🧭 Viagens</h2>
+          <p>Lugares que vale a pena visitar.</p>
+          <span class="action-hint">Ver destinos →</span>
+        </div>
+      </a>
 
     </div>
   </div>
@@ -210,7 +235,7 @@
     const scene = document.getElementById('map-scene');
     const viewport = document.getElementById('viewport');
 
-    // Inicializar a biblioteca Panzoom
+    // Inicializar o Panzoom
     const panzoom = Panzoom(scene, {
       maxScale: 2,
       minScale: 0.4,
@@ -218,23 +243,38 @@
       startScale: 0.85
     });
 
-    // Ativar Zoom com a Roda do Rato
+    // Zoom com a roda do rato
     viewport.addEventListener('wheel', panzoom.zoomWithWheel);
 
-    // Função para Centrar a Vista no Início e no Botão
+    // Evitar que o movimento de arrastar (pan) abra o link acidentalmente
+    let isDragging = false;
+
+    scene.addEventListener('panzoompan', () => {
+      isDragging = true;
+    });
+
+    document.querySelectorAll('.island-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (isDragging) {
+          e.preventDefault();
+          isDragging = false;
+        }
+      });
+    });
+
+    // Função para recentrar a vista na ilha Ponto de Partida
     function resetMap() {
-      // Centra aproximadamente o ponto (1000, 1000) na janela do utilizador
       const windowWidth = window.innerWidth;
       const windowHeight = window.innerHeight;
       
-      const x = (windowWidth / 2) - 1000;
+      const x = (windowWidth / 2) - 1010;
       const y = (windowHeight / 2) - 950;
 
       panzoom.pan(x, y, { animate: true });
       panzoom.zoom(0.85, { animate: true });
     }
 
-    // Centrar assim que a página carrega
+    // Centrar ao carregar a página
     window.addEventListener('load', () => {
       resetMap();
     });
