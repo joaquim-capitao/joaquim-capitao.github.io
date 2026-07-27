@@ -1,1 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joaquim Capitão — Mapa Pessoal</title>
+  
+  <!-- Biblioteca de Arrastar/Zoom (Panzoom) -->
+  <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
 
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --card-bg: #ffffff;
+      --text: #2c2c2c;
+      --accent: #8b4513;
+      --line: #d3cbd8;
+      --border: #e0dad0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Georgia, serif;
+      background-color: var(--bg);
+      color: var(--text);
+      overflow: hidden; /* Oculta as barras de scroll tradicionais */
+      width: 100vw;
+      height: 100vh;
+      user-select: none;
+    }
+
+    /* Instrução Fixa na Tela */
+    .instructions {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    /* O Contentor do Mapa (A Tela Gigante) */
+    #viewport {
+      width: 100%;
+      height: 100%;
+      cursor: grab;
+    }
+
+    #viewport:active {
+      cursor: grabbing;
+    }
+
+    #map-scene {
+      width: 2000px;
+      height: 2000px;
+      position: relative;
+      background-image: radial-gradient(#d5cfc4 1px, transparent 1px);
+      background-size: 30px 30px; /* Padrão de pontos subtil */
+    }
+
+    /* Linhas de Conexão SVG no Fundo */
+    .connections {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .connections line {
+      stroke: var(--accent);
+      stroke-width: 2;
+      stroke-dasharray: 6;
+      opacity: 0.4;
+    }
+
+    /* As "Ilhas" de Conteúdo */
+    .island {
+      position: absolute;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 24px;
+      border-radius: 12px;
+      width: 300px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+
+    .island:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+
+    .island h2 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .island p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #555;
+    }
+
+    .island .tag {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: bold;
+      color: #888;
+    }
+
+    /* Posições Específicas no Mapa (2000x2000px) */
+    #island-center { top: 850px; left: 850px; width: 300px; border: 2px solid var(--accent); }
+    #island-cronica { top: 850px; left: 1300px; }
+    #island-cinema  { top: 850px; left: 400px; }
+    #island-viagens { top: 400px; left: 850px; }
+    #island-lab     { top: 1300px; left: 850px; }
+    #island-local   { top: 1300px; left: 1300px; }
+
+    /* Botão de Recentrar */
+    .recenter-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      z-index: 100;
+    }
+    .recenter-btn:hover { background: #fafafa; }
+  </style>
+</head>
+<body>
+
+  <div class="instructions">🖐️ Arrasta para explorar • Roda do rato para zoom</div>
+  <button class="recenter-btn" onclick="resetMap()">🎯 Voltar ao Centro</button>
+
+  <div id="viewport">
+    <div id="map-scene">
+      
+      <!-- Linhas SVG a Ligar as Ilhas -->
+      <svg class="connections">
+        <!-- Centro para a Crónica -->
+        <line x1="1000" y1="950" x2="1300" y2="950" />
+        <!-- Centro para o Cinema -->
+        <line x1="1000" y1="950" x2="700" y2="950" />
+        <!-- Centro para as Viagens -->
+        <line x1="1000" y1="950" x2="1000" y2="550" />
+        <!-- Centro para o Laboratório -->
+        <line x1="1000" y1="950" x2="1000" y2="1300" />
+        <!-- Laboratório para Notas Locais -->
+        <line x1="1150" y1="1380" x2="1300" y2="1380" />
+      </svg>
+
+      <!-- Ilha Central: Biografia -->
+      <div class="island" id="island-center">
+        <h2>👋 Joaquim Capitão</h2>
+        <p>Escrevo crónicas às semanas, exploro cinema e crio experiências digitais a partir de Ponta Delgada.</p>
+        <span class="tag">Ponto de Partida</span>
+      </div>
+
+      <!-- Ilha 1: Crónica Semanal -->
+      <div class="island" id="island-cronica">
+        <h2>📰 A Crónica</h2>
+        <p><strong>"O Som do Tempo"</strong><br>Uma reflexão rápida sobre o ritmo dos dias e as pequenas rotinas que mantêm a casa de pé.</p>
+        <span class="tag">Edição desta semana</span>
+      </div>
+
+      <!-- Ilha 2: Cinema e Vídeo -->
+      <div class="island" id="island-cinema">
+        <h2>🍿 Cinema & Vídeos</h2>
+        <p>Críticas curtas dos últimos filmes vistos e os vídeos mais interessantes descobertos esta semana.</p>
+        <span class="tag">Recomendações</span>
+      </div>
+
+      <!-- Ilha 3: Viagens -->
+      <div class="island" id="island-viagens">
+        <h2>🧭 Caderno de Viagens</h2>
+        <p>Notas de bordo, rotas, fotografias e impressões de lugares visitados.</p>
+        <span class="tag">Registos & Fotos</span>
+      </div>
+
+      <!-- Ilha 4: O Laboratório (Projetos) -->
+      <div class="island" id="island-lab">
+        <h2>💡 O Laboratório</h2>
+        <p>Projetos pessoais em curso, pequenos jogos offline, scripts em HTML/JS e experiências de escrita.</p>
+        <span class="tag">Em Desenvolvimento</span>
+      </div>
+
+      <!-- Ilha 5: Notas Locais -->
+      <div class="island" id="island-local">
+        <h2>📍 Notas do Lugar</h2>
+        <p>Acontecimentos, observações e pequenas histórias sobre a vida local na ilha.</p>
+        <span class="tag">Diário Territorial</span>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const scene = document.getElementById('map-scene');
+    const viewport = document.getElementById('viewport');
+
+    // Inicializar a biblioteca Panzoom
+    const panzoom = Panzoom(scene, {
+      maxScale: 2,
+      minScale: 0.4,
+      contain: 'outside',
+      startScale: 0.85
+    });
+
+    // Ativar Zoom com a Roda do Rato
+    viewport.addEventListener('wheel', panzoom.zoomWithWheel);
+
+    // Função para Centrar a Vista no Início e no Botão
+    function resetMap() {
+      // Centra aproximadamente o ponto (1000, 1000) na janela do utilizador
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+      
+      const x = (windowWidth / 2) - 1000;
+      const y = (windowHeight / 2) - 950;
+
+      panzoom.pan(x, y, { animate: true });
+      panzoom.zoom(0.85, { animate: true });
+    }
+
+    // Centrar assim que a página carrega
+    window.addEventListener('load', () => {
+      resetMap();
+    });
+  </script>
+</body>
+</html>
