@@ -5,16 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joaquim Capitão — Site Pessoal</title>
   
+  <!-- Fonte Ubuntu via Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+
   <!-- Biblioteca de Arrastar/Zoom (Panzoom) -->
   <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
 
   <style>
     :root {
-      --bg: #f4f1ea;
-      --card-bg: #ffffff;
-      --text: #2c2c2c;
-      --accent: #8b4513;
-      --border: #e0dad0;
+      --bg: #0b132b;           /* Azul Escuro Profundo */
+      --card-bg: #1c2541;      /* Azul Noturno para os cartões */
+      --text: #ffffff;         /* Texto Principal Branco */
+      --text-muted: #d0d7de;   /* Texto Secundário Suave */
+      --orange: #ff6b35;       /* Laranja Vibrante */
+      --orange-hover: #ff8552; /* Laranja de Destaque no Hover */
+      --border: #3a506b;       /* Borda em Azul Médio */
     }
 
     * {
@@ -24,7 +31,7 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Georgia, serif;
+      font-family: 'Ubuntu', sans-serif;
       background-color: var(--bg);
       color: var(--text);
       overflow: hidden;
@@ -39,12 +46,14 @@
       top: 20px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(255, 255, 255, 0.95);
-      padding: 8px 18px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      border: 1px solid var(--border);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      background: rgba(28, 37, 65, 0.9);
+      color: var(--text);
+      padding: 10px 22px;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      border: 1px solid var(--orange);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       z-index: 100;
       pointer-events: none;
     }
@@ -64,8 +73,8 @@
       width: 2000px;
       height: 2000px;
       position: relative;
-      background-image: radial-gradient(#d5cfc4 1px, transparent 1px);
-      background-size: 30px 30px;
+      background-image: radial-gradient(rgba(255, 107, 53, 0.2) 1.5px, transparent 1.5px);
+      background-size: 35px 35px;
     }
 
     /* Linhas de Conexão no Fundo */
@@ -79,10 +88,10 @@
     }
 
     .connections line {
-      stroke: var(--accent);
-      stroke-width: 2;
+      stroke: var(--orange);
+      stroke-width: 2.5;
       stroke-dasharray: 6;
-      opacity: 0.35;
+      opacity: 0.5;
     }
 
     /* Links que envolvem os cartões */
@@ -92,16 +101,16 @@
       display: block;
     }
 
-    /* Estilo das "Ilhas" */
+    /* Estilo das "Ilhas" com Fontes Maiores */
     .island {
       position: absolute;
       background: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 24px;
-      border-radius: 12px;
-      width: 320px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 2px solid var(--border);
+      padding: 28px;
+      border-radius: 14px;
+      width: 360px;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+      transition: transform 0.25 ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
 
     .island-link .island {
@@ -109,60 +118,75 @@
     }
 
     .island-link:hover .island {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
-      border-color: var(--accent);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 35px rgba(255, 107, 53, 0.25);
+      border-color: var(--orange);
     }
 
     .island h2 {
-      font-size: 1.15rem;
-      margin-bottom: 10px;
-      color: var(--accent);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--orange);
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .island p {
-      font-size: 0.92rem;
-      line-height: 1.5;
-      color: #444;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text-muted);
     }
 
     .island .action-hint {
       display: inline-block;
-      margin-top: 14px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      color: var(--accent);
+      margin-top: 16px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--orange);
+      transition: color 0.2s ease;
+    }
+
+    .island-link:hover .action-hint {
+      color: var(--orange-hover);
     }
 
     /* Posições no Mapa (Ajustadas para 2000x2000px) */
-    #island-center { top: 850px; left: 840px; width: 340px; border: 2px solid var(--accent); }
-    #island-queime  { top: 850px; left: 1320px; }
-    #island-bio     { top: 850px; left: 360px; }
-    #island-cinema  { top: 380px; left: 840px; }
-    #island-viagens { top: 1320px; left: 840px; }
+    #island-center { 
+      top: 850px; 
+      left: 820px; 
+      width: 380px; 
+      border: 2px solid var(--orange); 
+      background: #141c36;
+    }
+    #island-queime  { top: 850px; left: 1340px; }
+    #island-bio     { top: 850px; left: 320px; }
+    #island-cinema  { top: 350px; left: 830px; }
+    #island-viagens { top: 1350px; left: 830px; }
 
     /* Botão de Recentrar */
     .recenter-btn {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      padding: 10px 16px;
-      border-radius: 8px;
-      font-weight: bold;
-      color: var(--text);
+      bottom: 25px;
+      right: 25px;
+      background: var(--orange);
+      border: none;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffffff;
       cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       z-index: 100;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
     .recenter-btn:hover { 
-      background: #fafafa; 
-      border-color: var(--accent);
+      background: var(--orange-hover);
+      transform: scale(1.03);
     }
   </style>
 </head>
@@ -177,13 +201,13 @@
       <!-- Linhas de Conexão -->
       <svg class="connections">
         <!-- Centro para Queime Depois de Ler -->
-        <line x1="1010" y1="950" x2="1320" y2="950" />
+        <line x1="1010" y1="950" x2="1340" y2="950" />
         <!-- Centro para Biografia -->
         <line x1="1010" y1="950" x2="680" y2="950" />
         <!-- Centro para Cinema -->
-        <line x1="1010" y1="950" x2="1010" y2="520" />
+        <line x1="1010" y1="950" x2="1010" y2="510" />
         <!-- Centro para Viagens -->
-        <line x1="1010" y1="950" x2="1010" y2="1320" />
+        <line x1="1010" y1="950" x2="1010" y2="1350" />
       </svg>
 
       <!-- Ilha Central: Ponto de Partida -->
