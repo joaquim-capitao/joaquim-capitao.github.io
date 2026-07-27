@@ -2,11 +2,13 @@
 
 Eu nasci num calhau. Um calhau muito grande e quase esférico.
 
-É verdade que é um calhau enorme, mas não deixa de ser uma pedra a andar à roda de uma lâmpada chamada Sol, no meio do nada, sem pedir licença a ninguém.
+![](https://i.ibb.co/SwNjX92D/ced72e2e-1810-481f-8a37-510be033c772.jpg)
+
+É verdade que é um calhau enorme, mas não deixa de ser uma pedra que anda à volta de uma grande lâmpada chamada Sol, no meio do nada, sem pedir licença a ninguém.
 
 Assim que cheguei, disseram-me: *"Olha, parabéns, calhou-te a fatia a que chamamos Portugal"*,  como se o mundo fosse uma pizza gigante e a mim tivesse calhado a côdea.
 
-Nunca percebi bem esta mania de desenhar linhas na terra e dizer "daqui para ali é meu, daqui para acolá já precisas de um carimbo". Mas enfim. Eu não dividi nada. Quando eu cá cheguei, o caos já estava instalado. Por isso, a mim não me venham pedir satisfações, pois sou um mero espectador.
+Nunca percebi bem esta mania de desenhar linhas na terra e dizer *"daqui para ali é meu, daqui para acolá já precisas de um carimbo"*. Mas enfim. Eu não dividi nada. Quando eu cá cheguei, o caos já estava instalado. Por isso, a mim não me venham pedir satisfações, pois sou um mero espectador.
 
 O calhau em si é bonito, atenção. Tem mar, tem árvores, tem rios, tem cascatas... tem coisas muito bem pensadas. O problema são os habitantes. É uma gente muito estranha. São capazes de construir engenhos inacreditáveis para ir até à Lua, mas ficam genuinamente perturbados se um gato preto cruza a estrada. 
 
