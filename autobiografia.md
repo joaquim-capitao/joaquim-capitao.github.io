@@ -8,7 +8,7 @@ Eu nasci num calhau...
 
 Assim que cheguei, disseram-me: *"Olha, parabéns, calhou-te a fatia a que chamamos Portugal"*, como se o planeta fosse uma *pizza* gigante e a mim tivesse calhado a côdea.
 
-Nunca percebi bem esta mania de desenhar linhas no chão e dizer *"daqui para ali é meu, daqui para acolá já precisas de um carimbo"*. Mas enfim. Eu não dividi nada. Quando eu cá cheguei, o caos já estava instalado. Por isso, não me venham pedir satisfações, pois sou um mero espectador.
+Nunca percebi bem esta mania de desenhar linhas no chão e dizer *"daqui para ali é meu, daqui para acolá já precisas de um carimbo"*. Mas enfim. Eu não dividi nada. Quando cá cheguei, o caos já estava instalado. Por isso, não me venham pedir satisfações.
 
 O calhau em si é bonito, atenção. Tem mar, árvores, rios, cascatas... e outras coisas muito bem pensadas, como o açúcar e o cacau. O problema são os habitantes. 
 
