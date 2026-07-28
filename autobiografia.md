@@ -8,11 +8,11 @@ Eu nasci num calhau...
 
 Assim que cheguei, disseram-me: *"Olha, parabéns, calhou-te a fatia a que chamamos Portugal"*, como se o planeta fosse uma *pizza* gigante e a mim tivesse calhado a côdea.
 
-Nunca percebi bem esta mania de desenhar linhas no chão e dizer *"daqui para ali é meu, daqui para acolá já precisas de um carimbo"*. Mas enfim. Eu não dividi nada. Quando cá cheguei, o caos já estava instalado. Por isso, não me venham pedir satisfações.
+Nunca percebi bem esta mania de desenhar linhas no chão e dizer *"daqui para ali é meu"*. Mas enfim. Eu não dividi nada. Quando cá cheguei, o caos já estava instalado. Por isso, não me venham pedir satisfações.
 
-O calhau em si é bonito, atenção. Tem mar, árvores, rios, cascatas... e outras coisas muito bem pensadas, como o açúcar e o cacau. O problema são os habitantes. 
+O calhau em si é bonito. Tem mar, árvores, rios, cascatas... e outras coisas muito bem pensadas, como o açúcar e o cacau. O problema são alguns habitantes, especificamente umas criaturas bípedes muito estranhas.
 
-Descobri que isto está densamente povoado por umas criaturas bípedes muito estranhas. São capazes de construir engenhos inacreditáveis para ir até à Lua, mas depois ficam genuinamente perturbados se um gato preto lhes cruza o caminho.
+Descobri que este calhau está densamente povoado por essas criaturas bizarras, capazes de construir engenhos inacreditáveis para ir até à Lua, mas que ficam genuinamente perturbados se um gato preto lhes cruzar o caminho.
 
 E pronto. Desde 1978, ando a tentar perceber o que se passa aqui. Mas, até agora, a única conclusão a que cheguei é que o melhor é não fazer perguntas muito difíceis.
 
