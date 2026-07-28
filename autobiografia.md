@@ -10,7 +10,7 @@ Assim que cheguei, disseram-me: *"Olha, parabéns, calhou-te a fatia a que chama
 
 Nunca percebi bem esta mania de desenhar linhas no chão e dizer *"daqui para ali é meu"*. Mas enfim. Eu não dividi nada. Quando cá cheguei, o caos já estava instalado. Por isso, não me venham pedir satisfações.
 
-O calhau em si é bonito. Tem mar, árvores, rios, cascatas... e outras coisas muito bem pensadas, como o açúcar e o cacau. O problema são alguns habitantes, especificamente umas criaturas bípedes muito estranhas.
+O calhau em si é bonito. Tem mar, árvores, rios, cascatas... e outras coisas muito bem pensadas, como o açúcar e o cacau. O problema são umas criaturas bípedes que se acham muito espertas.
 
 Descobri que este calhau está densamente povoado por essas criaturas bizarras, capazes de construir engenhos inacreditáveis para ir até à Lua, mas que ficam genuinamente perturbados se um gato preto lhes cruzar o caminho.
 
