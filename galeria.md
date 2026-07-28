@@ -4,4 +4,4 @@ Em breve, talvez dentro dos próximos 10 anos, irei colocar aqui algumas fotos t
 
 [Joaquim Capitão Photography](https://www.jcapitaophotos.eu/)
 
-Não conheço o fotógrafo, mas tem um nome bonito e, certamente, uma boa máquina fotográfica.
+Não conheço o fotógrafo, mas tem um nome muito bonito. Além disso, viaja mais do que eu e possui uma máquina fotográfica muito melhor do que a minha.
