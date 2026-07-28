@@ -4,4 +4,4 @@ Em breve, talvez dentro dos próximos 30 anos, irei publicar aqui algumas fotogr
 
 [Joaquim Capitão Photography](https://www.jcapitaophotos.eu/)
 
-Não o conheço, mas reparei que tem um nome bonito. Além disso, viaja mais do que eu e possui uma máquina fotográfica muito melhor do que a minha.
+Não o conheço, mas reparei que tem um nome lindíssimo. Além disso, viaja mais do que eu e possui uma máquina fotográfica muito melhor do que a minha.
