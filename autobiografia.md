@@ -1,6 +1,6 @@
 # Autobiografia
 
-Eu nasci num calhau que, apesar de ser grande e recondo, não deixa de ser uma pedra que gira à volta de uma lâmpada chamada Sol, no meio do nada, sem pedir licença a ninguém.
+Eu nasci num calhau que, apesar de ser grande e redondo, não deixa de ser uma pedra que gira à volta de uma lâmpada chamada Sol, no meio do nada, sem pedir licença a ninguém.
 
 ![](https://i.ibb.co/zTkP8KDC/1000129135.png)
 
