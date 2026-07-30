@@ -1,8 +1,8 @@
 # Autobiografia
 
-Eu nasci num calhau que, apesar de ser grande e redondo, não deixa de ser uma pedra que gira à volta de uma lâmpada chamada Sol, no meio do nada.
+Eu nasci num calhau que, apesar de ser grande e redondo, não deixa de ser uma pedra que gira à volta do Sol.
 
-![](https://i.ibb.co/zTkP8KDC/1000129135.png)
+![](https://i.ibb.co/yr4m8kJ/1000129135.jpg)
 
 Assim que cheguei, disseram-me: *"Olha, parabéns, calhou-te a fatia a que chamamos Portugal"*, como se o planeta fosse uma *pizza* gigante e a mim tivesse calhado a côdea.
 
@@ -10,7 +10,7 @@ Nunca percebi bem esta mania de desenhar linhas no chão e dizer *"daqui para al
 
 O calhau em si é bonito. Tem mar, árvores, rios, cascatas... e outras coisas muito bem pensadas, como o açúcar e o cacau. O problema é que está densamente povoado por umas criaturas bípedes que se acham muito espertas.
 
-Esses seres bizarros são capazes de construir engenhos inacreditáveis para ir até à Lua, mas depois ficam genuinamente perturbados se um gato preto lhes cruzar o caminho. São seres teimosos e temperamentais com os quais não é fácil conviver.
+Esses seres bizarros são capazes de construir engenhos inacreditáveis para ir até à Lua, mas depois ficam genuinamente perturbados se um gato preto lhes cruzar o caminho.
 
 E pronto. Desde 1978, ando a tentar perceber o que se passa aqui. Mas, até agora, a única conclusão a que cheguei é que o melhor é não fazer perguntas muito difíceis.
 
