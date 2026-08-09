@@ -2,9 +2,9 @@
 
 Eu nasci num calhau que, apesar de ser grande e redondo, não deixa de ser uma pedra que gira à volta do Sol.
 
-![](https://i.ibb.co/yr4m8kJ/1000129135.jpg)
-
 Assim que cheguei, disseram-me: *"Olha, parabéns, calhou-te a fatia a que chamamos Portugal"*, como se o planeta fosse uma *pizza* gigante e a mim tivesse calhado a côdea.
+
+![](https://i.ibb.co/yr4m8kJ/1000129135.jpg)
 
 Nunca percebi bem esta mania de desenhar linhas no chão e dizer *"daqui para ali é meu"*. Mas enfim. Eu não dividi nada. Quando cá cheguei, o caos já estava instalado. Por isso, não me venham pedir satisfações.
 
