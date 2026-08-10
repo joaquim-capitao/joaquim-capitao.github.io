@@ -1,6 +1,6 @@
 # Autobiografia
 
-Eu nasci num calhau que, apesar de ser grande e redondo, não deixa de ser uma pedra que gira à volta do Sol.
+Eu nasci num calhau que, apesar de ser grande e redondo, não deixa de ser uma pedra que gira à volta de uma estrela.
 
 Assim que cheguei, disseram-me: *"Olha, parabéns, calhou-te a fatia a que chamamos Portugal"*, como se o planeta fosse uma *pizza* gigante e a mim tivesse calhado a côdea.
 
