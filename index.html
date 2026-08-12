@@ -1,146 +1,285 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joaquim Capitão</title>
-    <!-- Google Fonts: Ubuntu -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg-color: #0b132b;        /* Azul escuro */
-            --accent-color: #ff7b00;    /* Laranja */
-            --text-color: #f5f5dc;      /* Bege */
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --border-color: rgba(245, 245, 220, 0.1);
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joaquim Capitão — Site pessoal</title>
+  <meta name="description" content="Site pessoal de Joaquim Capitão: biografia, textos, galeria de fotos, apps e jogos.">
+  <meta name="author" content="Joaquim Capitão">
+  <meta property="og:title" content="Joaquim Capitão — Site pessoal">
+  <meta property="og:description" content="Biografia, reflexões, galeria de fotos, apps e jogos de Joaquim Capitão.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <style>
+    :root {
+      --background: #0b132b;
+      --foreground: #f5f5dc;
+      --primary: #ff7b00;
+      --card: #111a33;
+      --muted-foreground: #cfcfb8;
+      --border: rgba(245, 245, 220, 0.12);
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        body {
-            font-family: 'Ubuntu', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            padding: 2rem 1.5rem;
-            max-width: 680px;
-            margin: 0 auto;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+    body {
+      font-family: "Ubuntu", ui-sans-serif, system-ui, sans-serif;
+      background-color: var(--background);
+      color: var(--foreground);
+      min-height: 100vh;
+      background-image:
+        radial-gradient(60rem 40rem at 15% -10%, rgba(255, 123, 0, 0.14), transparent 70%),
+        radial-gradient(50rem 35rem at 100% 110%, rgba(255, 123, 0, 0.09), transparent 70%);
+      background-attachment: fixed;
+    }
 
-        header {
-            margin-bottom: 2.5rem;
-        }
+    .container {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 3.5rem 1.25rem;
+    }
 
-        header h1 {
-            color: var(--accent-color);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
+    header {
+      margin-bottom: 2.5rem;
+    }
 
-        header p {
-            font-size: 1.05rem;
-            opacity: 0.95;
-        }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid rgba(255, 123, 0, 0.4);
+      background-color: rgba(255, 123, 0, 0.1);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--primary);
+    }
 
-        nav {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
+    h1 {
+      margin-top: 1.25rem;
+      font-size: 1.875rem;
+      line-height: 1.25;
+      font-weight: 700;
+      color: var(--primary);
+    }
 
-        .nav-item {
-            display: block;
-            text-decoration: none;
-            color: var(--text-color);
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 1.2rem;
-            border-radius: 8px;
-            transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
-        }
+    @media (min-width: 640px) {
+      h1 {
+        font-size: 2.25rem;
+      }
+      .container {
+        padding: 5rem 1.25rem;
+      }
+    }
 
-        .nav-item:hover, .nav-item:focus {
-            border-color: var(--accent-color);
-            background-color: rgba(255, 123, 0, 0.05);
-            transform: translateY(-2px);
-        }
+    p.lead {
+      margin-top: 1rem;
+      font-size: 1rem;
+      line-height: 1.625;
+      color: rgba(245, 245, 220, 0.85);
+    }
 
-        .nav-title {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 0.3rem;
-            display: block;
-        }
+    @media (min-width: 640px) {
+      p.lead {
+        font-size: 1.125rem;
+      }
+    }
 
-        .nav-desc {
-            font-size: 0.95rem;
-            opacity: 0.85;
-            display: block;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
 
-        /* Ajustes específicos para telemóvel */
-        @media (max-width: 480px) {
-            body {
-                padding: 1.5rem 1rem;
-            }
+    .card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      overflow: hidden;
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      background-color: rgba(17, 26, 51, 0.6);
+      padding: 1.25rem;
+      box-shadow: 0 1px 0 0 rgba(245, 245, 220, 0.06);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+    }
 
-            header h1 {
-                font-size: 1.5rem;
-            }
+    .card:hover,
+    .card:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(255, 123, 0, 0.6);
+      background-color: rgba(255, 123, 0, 0.05);
+      box-shadow: 0 18px 40px -22px rgba(255, 123, 0, 0.7);
+      outline: none;
+    }
 
-            .nav-item {
-                padding: 1rem;
-            }
-        }
-    </style>
+    .card:focus-visible {
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+
+    .icon-box {
+      margin-top: 0.125rem;
+      display: flex;
+      width: 2.5rem;
+      height: 2.5rem;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(255, 123, 0, 0.25);
+      background-color: rgba(255, 123, 0, 0.1);
+      color: var(--primary);
+      transition: background-color 0.2s ease;
+    }
+
+    .card:hover .icon-box {
+      background-color: rgba(255, 123, 0, 0.2);
+    }
+
+    .icon-box svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    .card-content {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .card-title {
+      display: block;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .card-desc {
+      display: block;
+      margin-top: 0.25rem;
+      font-size: 0.875rem;
+      line-height: 1.625;
+      color: var(--muted-foreground);
+    }
+
+    .arrow {
+      width: 1.25rem;
+      height: 1.25rem;
+      flex-shrink: 0;
+      color: var(--muted-foreground);
+      opacity: 0;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover .arrow,
+    .card:focus-visible .arrow {
+      transform: translate(2px, -2px);
+      color: var(--primary);
+      opacity: 1;
+    }
+
+    footer {
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+  </style>
 </head>
 <body>
-
+  <div class="container">
     <header>
-        <h1>Não devias estar a trabalhar?</h1>
-        <p>Se vieste até aqui é porque tens muito tempo livre e uma boa dose de curiosidade. Não tenhas vergonha! Assume-te logo como bisbilhoteiro e explora o meu site pessoal:</p>
+      <span class="badge">Site pessoal</span>
+      <h1>Joaquim Capitão</h1>
+      <p class="lead">
+        Não devias estar a trabalhar? Se vieste até aqui é porque tens muito tempo livre e uma boa dose de
+        curiosidade. Não tenhas vergonha! Assume-te logo como bisbilhoteiro e
+        explora o meu site pessoal:
+      </p>
     </header>
 
-    <main>
-        <nav>
-            <a href="https://joaquim-capitao.github.io/autobiografia" class="nav-item">
-                <span class="nav-title">Biografia</span>
-                <span class="nav-desc">A minha vida dava um filme indiano, com direito a dancinhas e tudo. Lê a triste história da minha vida.</span>
-            </a>
+    <nav aria-label="Secções do site">
+      <ul>
+        <li>
+          <a class="card" href="https://joaquim-capitao.github.io/autobiografia">
+            <span class="icon-box" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M4 21v-7a2 2 0 0 1 2-2h12"/><path d="M9 7h2"/><path d="M9 11h2"/></svg>
+            </span>
+            <span class="card-content">
+              <span class="card-title">Biografia</span>
+              <span class="card-desc">A minha vida dava um filme indiano, com direito a dancinhas e tudo. Lê a triste história da minha vida.</span>
+            </span>
+            <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="card" href="https://joaquim-capitao.github.io/queime-depois-de-ler">
+            <span class="icon-box" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1 3 2.5 3.5 3.5 4.5 1.5 1.5 2 4 1 6.5-1 2.5-3 3.5-5 4.5"/><path d="M12 2c-1 3-2.5 3.5-3.5 4.5-1.5 1.5-2 4-1 6.5 1 2.5 3 3.5 5 4.5"/><path d="M12 2c-1 3-2.5 3.5-3.5 4.5-1.5 1.5-2 4-1 6.5 1 2.5 3 3.5 5 4.5"/><path d="M12 2v17"/></svg>
+            </span>
+            <span class="card-content">
+              <span class="card-title">Queime Depois de Ler</span>
+              <span class="card-desc">Reflexões, memórias, histórias e opiniões.</span>
+            </span>
+            <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="card" href="https://joaquim-capitao.github.io/galeria">
+            <span class="icon-box" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+            </span>
+            <span class="card-content">
+              <span class="card-title">Galeria de fotos</span>
+              <span class="card-desc">Veja fotos dos 4 cantos do mundo, como se o mundo tivesse cantos.</span>
+            </span>
+            <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="card" href="https://joaquim-capitao.github.io/app">
+            <span class="icon-box" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.456 2.014L2.23 8.5a1.93 1.93 0 0 0 0 1.998l1.001 1.752A4 4 0 0 0 6.679 14.5h10.642a4 4 0 0 0 3.448-2.25l1.001-1.752a1.93 1.93 0 0 0 0-1.998L20.777 7.01A4 4 0 0 0 17.32 5z"/><path d="M17.32 5H6.68a4 4 0 0 0-3.456 2.014L2.23 8.5a1.93 1.93 0 0 0 0 1.998l1.001 1.752A4 4 0 0 0 6.679 14.5h10.642a4 4 0 0 0 3.448-2.25l1.001-1.752a1.93 1.93 0 0 0 0-1.998L20.777 7.01A4 4 0 0 0 17.32 5z"/><path d="M17.32 5H6.68a4 4 0 0 0-3.456 2.014L2.23 8.5a1.93 1.93 0 0 0 0 1.998l1.001 1.752A4 4 0 0 0 6.679 14.5h10.642a4 4 0 0 0 3.448-2.25l1.001-1.752a1.93 1.93 0 0 0 0-1.998L20.777 7.01A4 4 0 0 0 17.32 5z"/></svg>
+            </span>
+            <span class="card-content">
+              <span class="card-title">Apps e Jogos</span>
+              <span class="card-desc">Coisas que construí para entreter (sobretudo a mim próprio).</span>
+            </span>
+            <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="card" href="https://joaquim-capitao.github.io/termos">
+            <span class="icon-box" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12h-5"/><path d="M15 8h-5"/><path d="M15 16h-5"/><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v3"/><path d="M2 15h5"/><path d="M2 11h5"/><path d="M2 7h5"/><path d="M2 19h5"/></svg>
+            </span>
+            <span class="card-content">
+              <span class="card-title">Termos de Utilização</span>
+              <span class="card-desc">A letra pequenina, em tamanho legível.</span>
+            </span>
+            <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
 
-            <a href="https://joaquim-capitao.github.io/queime-depois-de-ler" class="nav-item">
-                <span class="nav-title">Queime Depois de Ler</span>
-                <span class="nav-desc">Reflexões, memórias, histórias e opiniões.</span>
-            </a>
-
-            <a href="https://joaquim-capitao.github.io/galeria" class="nav-item">
-                <span class="nav-title">Galeria de fotos</span>
-                <span class="nav-desc">Veja fotos dos 4 cantos do mundo, como se o mundo tivesse cantos.</span>
-
-            </a>
-
-            <a href="https://joaquim-capitao.github.io/app" class="nav-item">
-                <span class="nav-title">Apps e Jogos</span>
-            </a>
-
-            <a href="https://joaquim-capitao.github.io/termos" class="nav-item">
-                <span class="nav-title">Termos de Utilização</span>
-            </a>
-        </nav>
-    </main>
-
+    <footer>
+      Joaquim Capitão · obrigado pela bisbilhotice.
+    </footer>
+  </div>
 </body>
 </html>
