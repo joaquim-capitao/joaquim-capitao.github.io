@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="h-full dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rotinas Diárias P1 - P4</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            touch-action: pan-y;
+        }
+        .touch-card {
+            transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.15s ease, border-color 0.15s ease;
+        }
+        .touch-card:active {
+            transform: scale(0.985);
+        }
+        .fade-enter {
+            animation: fadeIn 0.25s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-full flex flex-col items-center pb-24 antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Top Sticky Bar -->
+    <header class="w-full max-w-lg bg-slate-900/90 backdrop-blur-xl sticky top-0 z-30 border-b border-slate-800/80 px-4 pt-3.5 pb-3">
+        <!-- Date Selector & Day Tester row -->
+        <div class="flex items-center justify-between gap-2 pb-2.5 border-b border-slate-800/60 text-xs">
+            <div class="flex items-center gap-1.5 text-slate-400">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span id="current-calendar-date" class="font-medium text-slate-300">Hoje</span>
+            </div>
+            
+            <div class="flex items-center gap-1.5">
+                <label for="weekday-selector" class="text-slate-400 text-[11px]">Dia:</label>
+                <select id="weekday-selector" class="bg-slate-800 text-slate-200 text-xs font-semibold rounded-lg px-2.5 py-1 border border-slate-700 outline-none focus:ring-2 focus:ring-indigo-500">
+                    <option value="1">Segunda-feira</option>
+                    <option value="2">Terça-feira</option>
+                    <option value="3">Quarta-feira</option>
+                    <option value="4">Quinta-feira</option>
+                    <option value="5">Sexta-feira</option>
+                    <option value="6">Sábado</option>
+                    <option value="0">Domingo</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Period Carousel Navigator -->
+        <div class="flex items-center justify-between pt-3">
+            <button id="btn-prev-tab" aria-label="Período anterior" class="touch-card w-9 h-9 flex items-center justify-center rounded-xl bg-slate-800/90 hover:bg-slate-700 active:bg-slate-600 text-slate-200 border border-slate-700/60 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+
+            <div class="text-center flex-1 px-2 cursor-pointer" id="period-info">
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide" id="period-tag">
+                    P1
+                </div>
+                <h1 id="period-title" class="text-lg font-black text-white tracking-tight mt-0.5">
+                    P1-08h00-09h30
+                </h1>
+            </div>
+
+            <button id="btn-next-tab" aria-label="Próximo período" class="touch-card w-9 h-9 flex items-center justify-center rounded-xl bg-slate-800/90 hover:bg-slate-700 active:bg-slate-600 text-slate-200 border border-slate-700/60 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Dots indicators for 4 periods -->
+        <div class="flex items-center justify-center gap-2 mt-2" id="tabs-dots">
+            <button data-period="p1" class="dot-btn h-1.5 rounded-full transition-all duration-300 w-6 bg-indigo-500"></button>
+            <button data-period="p2" class="dot-btn h-1.5 rounded-full transition-all duration-300 w-2 bg-slate-700"></button>
+            <button data-period="p3" class="dot-btn h-1.5 rounded-full transition-all duration-300 w-2 bg-slate-700"></button>
+            <button data-period="p4" class="dot-btn h-1.5 rounded-full transition-all duration-300 w-2 bg-slate-700"></button>
+        </div>
+
+        <!-- Progress Overview -->
+        <div class="mt-3 space-y-1.5">
+            <div class="flex justify-between items-center text-xs font-semibold text-slate-400">
+                <span id="period-status-label">Progresso do Período</span>
+                <span id="progress-text" class="text-slate-200 font-bold">0 / 0 Concluídas (0%)</span>
+            </div>
+            <div class="w-full h-2 bg-slate-800/90 rounded-full overflow-hidden p-0.5 border border-slate-700/60">
+                <div id="progress-bar" class="h-full bg-gradient-to-r from-indigo-500 via-sky-400 to-emerald-400 rounded-full transition-all duration-300 ease-out" style="width: 0%"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Content Section -->
+    <main id="swipe-area" class="w-full max-w-lg px-4 mt-3.5 flex-1 select-none">
+        <!-- Action bar inside tab -->
+        <div class="flex items-center justify-between mb-3 px-1">
+            <span id="day-badge" class="text-xs font-medium text-slate-400 bg-slate-900 border border-slate-800 px-2.5 py-1 rounded-lg">
+                Hoje: <strong class="text-slate-200" id="current-day-name">Segunda-feira</strong>
+            </span>
+            <div class="flex items-center gap-2">
+                <button id="btn-shuffle" title="Sortear novamente opções aleatórias deste período" class="touch-card inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 bg-amber-950/40 hover:bg-amber-900/50 border border-amber-800/60 px-2.5 py-1.5 rounded-xl transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                    Sortear
+                </button>
+                <button id="btn-reset" title="Limpar tarefas deste período" class="touch-card inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 bg-slate-800/90 hover:bg-slate-700 active:bg-slate-600 border border-slate-700/70 px-2.5 py-1.5 rounded-xl transition">
+                    Limpar
+                </button>
+            </div>
+        </div>
+
+        <div id="tasks-container" class="space-y-2.5 fade-enter">
+            <!-- Dynamic task items injected via JavaScript -->
+        </div>
+
+        <!-- Completion banner -->
+        <div id="completion-card" class="mt-5 p-4 rounded-2xl bg-gradient-to-r from-emerald-900/60 via-teal-900/60 to-emerald-800/60 border border-emerald-500/40 text-emerald-100 shadow-lg hidden">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-xl shrink-0">
+                    ✨
+                </div>
+                <div>
+                    <h3 class="font-bold text-sm text-white">Período Concluído!</h3>
+                    <p class="text-xs text-emerald-200/90">Todas as tarefas deste bloco foram finalizadas.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fixed bottom-3 inset-x-4 max-w-lg mx-auto z-20">
+        <div class="bg-slate-900/95 backdrop-blur-xl rounded-2xl p-2 px-3.5 shadow-2xl border border-slate-800 flex items-center justify-between text-white text-xs">
+            <div class="flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-indigo-500"></span>
+                <span id="dock-counter" class="font-semibold text-slate-300">0 de 0 concluídas</span>
+            </div>
+            <div class="flex items-center gap-1">
+                <button data-period="p1" class="period-quick-btn px-2.5 py-1.5 rounded-lg font-bold text-xs bg-slate-800 hover:bg-slate-700 transition">P1</button>
+                <button data-period="p2" class="period-quick-btn px-2.5 py-1.5 rounded-lg font-bold text-xs bg-slate-800 hover:bg-slate-700 transition">P2</button>
+                <button data-period="p3" class="period-quick-btn px-2.5 py-1.5 rounded-lg font-bold text-xs bg-slate-800 hover:bg-slate-700 transition">P3</button>
+                <button data-period="p4" class="period-quick-btn px-2.5 py-1.5 rounded-lg font-bold text-xs bg-slate-800 hover:bg-slate-700 transition">P4</button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Routine Period Keys
+        const PERIOD_KEYS = ['p1', 'p2', 'p3', 'p4'];
+
+        const PERIOD_META = {
+            p1: { name: 'P1-08h00-09h30', short: 'P1', tagColor: 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' },
+            p2: { name: 'P2-12h30-14h00', short: 'P2', tagColor: 'bg-sky-500/10 text-sky-400 border border-sky-500/30' },
+            p3: { name: 'P3-18h00-19h30', short: 'P3', tagColor: 'bg-indigo-500/10 text-indigo-400 border border-indigo-500/30' },
+            p4: { name: 'P4-22h30-23h30', short: 'P4', tagColor: 'bg-purple-500/10 text-purple-400 border border-purple-500/30' }
+        };
+
+        const WEEKDAYS_PT = [
+            'Domingo',
+            'Segunda-feira',
+            'Terça-feira',
+            'Quarta-feira',
+            'Quinta-feira',
+            'Sexta-feira',
+            'Sábado'
+        ];
+
+        // Random pools
+        const POOLS = {
+            p1_music: ['Funk', 'Boom bap', 'Phonk', 'Electro Swing'],
+            p1_workout: ['Abdominais', 'Halteres', 'Saltar à corda', 'Tae Bo'],
+            p1_shower: ['Banho quente', 'Banho frio', 'Banho misto'],
+            p1_chores: ['Arrumar Quarto', 'Lavar loiça'],
+
+            p2_hobby: ['Guitarra (15 min.)', 'Leitura (15 min.)', 'Desenho (15 min.)', 'Escrita (15 min.)', 'Silêncio (15 min.)'],
+            p2_monday_tasks: [
+                'Confirmar DP',
+                'Trello',
+                'Verificar petições pendentes',
+                'Registo semanal de tensão',
+                'Telefonar a idoso do grupo',
+                'Escolher alguém para escrever'
+            ],
+
+            p3_workout: ['Caminhada', 'Bicicleta', 'Pilates']
+        };
+
+        function getRandomItem(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        function shuffleArray(array) {
+            const arr = [...array];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        // Global State
+        let currentPeriodIndex = 0;
+        let selectedDayOfWeek = (new Date()).getDay(); // 0 = Domingo, 1 = Segunda, ...
+
+        const STORAGE_KEY = 'daily_routines_hub_data_v2';
+
+        let appData = {
+            randomChoices: {
+                p1_music: getRandomItem(POOLS.p1_music),
+                p1_workout: getRandomItem(POOLS.p1_workout),
+                p1_shower: getRandomItem(POOLS.p1_shower),
+                p1_chores: shuffleArray(POOLS.p1_chores),
+                p2_hobby: getRandomItem(POOLS.p2_hobby),
+                p2_monday_tasks: shuffleArray(POOLS.p2_monday_tasks),
+                p3_workout: getRandomItem(POOLS.p3_workout)
+            },
+            completedMap: {} // key: `${period}_${task_id}`
+        };
+
+        function loadStorage() {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    if (parsed.randomChoices) {
+                        appData.randomChoices = { ...appData.randomChoices, ...parsed.randomChoices };
+                    }
+                    if (parsed.completedMap) {
+                        appData.completedMap = parsed.completedMap;
+                    }
+                }
+            } catch (err) {
+                console.error("Erro ao carregar dados salvos:", err);
+            }
+        }
+
+        function saveStorage() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+            } catch (err) {
+                console.error("Erro ao gravar dados:", err);
+            }
+        }
+
+        function generateTasksForP1() {
+            const r = appData.randomChoices;
+            return [
+                { id: 'p1_1', title: 'Pantoprazol + B12', icon: '💊', desc: 'Medicação em jejum' },
+                { id: 'p1_2', title: 'Oração', icon: '🙏', desc: 'Momento espiritual de início do dia' },
+                { id: 'p1_3', title: 'Texto diário', icon: '📖', desc: 'Leitura e meditação diária' },
+                { id: 'p1_4', title: `Música: ${r.p1_music}`, icon: '🎧', desc: 'Vibe para energizar', badge: 'Sorteado' },
+                { id: 'p1_5', title: 'Barba', icon: '🪒', desc: 'Higiene e cuidado pessoal' },
+                { id: 'p1_6', title: `Exercício: ${r.p1_workout}`, icon: '⚡', desc: 'Ativação física', badge: 'Sorteado' },
+                { id: 'p1_7', title: r.p1_shower, icon: '🚿', desc: 'Banho matinal', badge: 'Sorteado' },
+                { id: 'p1_8', title: 'Vestir', icon: '👕', desc: 'Roupa para o dia' },
+                { id: 'p1_9', title: 'Retirar o telemóvel do modo avião', icon: '✈️', desc: 'Comunicações ativas' },
+                { id: 'p1_10', title: 'Pequeno almoço', icon: '☕', desc: 'Alimentação e energia' },
+                { id: 'p1_11', title: 'Desvenlafaxina + Coversyl + Omega3 + Vit.D + Inderal', icon: '💊', desc: 'Medicação após o pequeno almoço' },
+                { id: 'p1_12_a', title: r.p1_chores[0], icon: r.p1_chores[0] === 'Arrumar Quarto' ? '🛏️' : '🍽️', desc: 'Tarefa doméstica 1/2', badge: 'Aleatório' },
+                { id: 'p1_12_b', title: r.p1_chores[1], icon: r.p1_chores[1] === 'Arrumar Quarto' ? '🛏️' : '🍽️', desc: 'Tarefa doméstica 2/2', badge: 'Aleatório' }
+            ];
+        }
+
+        function generateTasksForP2(dayOfWeek) {
+            const r = appData.randomChoices;
+            const tasks = [
+                { id: 'p2_1', title: 'Respiração (5 min)', icon: '🧘', desc: 'Pausa de foco e oxigenação' },
+                { id: 'p2_2', title: r.p2_hobby, icon: '🎨', desc: 'Momento criativo ou pausa', badge: 'Sorteado' },
+                { id: 'p2_3', title: 'Almoço', icon: '🍲', desc: 'Refeição do meio-dia' },
+                { id: 'p2_4', title: 'Lavar loiça', icon: '🧼', desc: 'Cozinha organizada' }
+            ];
+
+            // Regra 5 conforme dia da semana
+            // 0=Dom, 1=Seg, 2=Ter, 3=Qua, 4=Qui, 5=Sex, 6=Sab
+            if (dayOfWeek >= 1 && dayOfWeek <= 5) {
+                tasks.push({
+                    id: 'p2_5_workday',
+                    title: 'Adoração (Filia)',
+                    icon: '📖',
+                    desc: 'Segunda a Sexta-feira',
+                    badge: 'Seg-Sex'
+                });
+            } else if (dayOfWeek === 0) {
+                // Domingo
+                tasks.push({
+                    id: 'p2_5_sunday',
+                    title: 'Comentário TD',
+                    icon: '📝',
+                    desc: 'Regra de Domingo',
+                    badge: 'Domingo'
+                });
+            } else if (dayOfWeek === 6) {
+                // Sábado
+                tasks.push({
+                    id: 'p2_5_saturday',
+                    title: 'Ouvir comentário (Marisa)',
+                    icon: '🎧',
+                    desc: 'Regra de Sábado',
+                    badge: 'Sábado'
+                });
+            }
+
+            // À segunda-feira: Apresentar as 6 opções por ordem aleatória
+            if (dayOfWeek === 1) {
+                const mondayChores = r.p2_monday_tasks || POOLS.p2_monday_tasks;
+                mondayChores.forEach((taskName, idx) => {
+                    tasks.push({
+                        id: `p2_monday_${idx}_${taskName.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}`,
+                        title: taskName,
+                        icon: '📋',
+                        desc: 'Planeamento / Ação de Segunda',
+                        badge: `Segunda #${idx + 1}`
+                    });
+                });
+            }
+
+            // Ao domingo: Apresentar sempre "Telefonar a alguém de família"
+            if (dayOfWeek === 0) {
+                tasks.push({
+                    id: 'p2_sunday_family_call',
+                    title: 'Telefonar a alguém de família',
+                    icon: '📞',
+                    desc: 'Contacto familiar de Domingo',
+                    badge: 'Domingo'
+                });
+            }
+
+            return tasks;
+        }
+
+        function generateTasksForP3(dayOfWeek) {
+            const r = appData.randomChoices;
+            const tasks = [
+                { id: 'p3_1', title: 'Lanche', icon: '🍎', desc: 'Pausa da tarde' },
+                { id: 'p3_2', title: 'Loiça', icon: '🧼', desc: 'Manutenção da cozinha' }
+            ];
+
+            // Opção 3: existe todos os dias, MENOS ao sábado (6)
+            if (dayOfWeek !== 6) {
+                tasks.push({
+                    id: 'p3_3',
+                    title: `Exercício: ${r.p3_workout}`,
+                    icon: '🏃',
+                    desc: 'Exceto ao Sábado',
+                    badge: 'Sorteado'
+                });
+            }
+
+            // 4. Banho (sempre presente)
+            tasks.push({ id: 'p3_4', title: 'Banho', icon: '🚿', desc: 'Higiene e relaxamento' });
+
+            // Opção 5: Conforme o dia da semana
+            // Segunda-feira (1): RVMC
+            // Terça-feira (2): NAF
+            // Quinta-feira (4): Sentinela
+            // Sexta-feira (5): RVMC + Comentário TD
+            // Outros dias (3=Quarta, 6=Sábado, 0=Domingo): Não apresentar
+            if (dayOfWeek === 1) {
+                tasks.push({ id: 'p3_5_study_seg', title: 'RVMC', icon: '📚', desc: 'Estudo semanal', badge: 'Segunda-feira' });
+            } else if (dayOfWeek === 2) {
+                tasks.push({ id: 'p3_5_study_ter', title: 'NAF', icon: '📚', desc: 'Estudo semanal', badge: 'Terça-feira' });
+            } else if (dayOfWeek === 4) {
+                tasks.push({ id: 'p3_5_study_qui', title: 'Sentinela', icon: '📚', desc: 'Estudo semanal', badge: 'Quinta-feira' });
+            } else if (dayOfWeek === 5) {
+                tasks.push({ id: 'p3_5_study_sex', title: 'RVMC + Comentário TD', icon: '📚', desc: 'Estudo e preparação', badge: 'Sexta-feira' });
+            }
+
+            return tasks;
+        }
+
+        function generateTasksForP4() {
+            return [
+                { id: 'p4_1', title: 'Programar dia', icon: '📅', desc: 'Preparar a agenda seguinte' },
+                { id: 'p4_2', title: 'Leitura com a Marisa', icon: '📖', desc: 'Momento de leitura a dois' },
+                { id: 'p4_3', title: 'Oração final', icon: '🙏', desc: 'Agradecimento e recolhimento' },
+                { id: 'p4_4', title: 'Magnésio + Melatonina', icon: '💊', desc: 'Suplementos para repouso' },
+                { id: 'p4_5', title: 'Desligar computador', icon: '💻', desc: 'Desconexão digital noturna' },
+                { id: 'p4_6', title: 'Telemóvel em modo de voo', icon: '✈️', desc: 'Sem distrações durante a noite' },
+                { id: 'p4_7', title: 'Deitar', icon: '🛌', desc: 'Descanso e sono restaurador' }
+            ];
+        }
+
+        function getTasksForPeriod(periodKey, dayOfWeek) {
+            switch (periodKey) {
+                case 'p1': return generateTasksForP1();
+                case 'p2': return generateTasksForP2(dayOfWeek);
+                case 'p3': return generateTasksForP3(dayOfWeek);
+                case 'p4': return generateTasksForP4();
+                default: return [];
+            }
+        }
+
+        const tasksContainer = document.getElementById('tasks-container');
+        const periodTitleEl = document.getElementById('period-title');
+        const periodTagEl = document.getElementById('period-tag');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const dockCounter = document.getElementById('dock-counter');
+        const completionCard = document.getElementById('completion-card');
+        const currentDayNameEl = document.getElementById('current-day-name');
+        const weekdaySelector = document.getElementById('weekday-selector');
+        const currentCalendarDateEl = document.getElementById('current-calendar-date');
+
+        function render() {
+            const currentKey = PERIOD_KEYS[currentPeriodIndex];
+            const meta = PERIOD_META[currentKey];
+            const tasks = getTasksForPeriod(currentKey, selectedDayOfWeek);
+
+            // Update Header Meta
+            periodTitleEl.innerText = meta.name;
+            periodTagEl.innerText = meta.short;
+            periodTagEl.className = `inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide ${meta.tagColor}`;
+
+            currentDayNameEl.innerText = WEEKDAYS_PT[selectedDayOfWeek];
+            weekdaySelector.value = selectedDayOfWeek;
+
+            // Update dots
+            document.querySelectorAll('.dot-btn').forEach((dot, idx) => {
+                if (idx === currentPeriodIndex) {
+                    dot.className = "dot-btn h-1.5 rounded-full transition-all duration-300 w-7 bg-indigo-500";
+                } else {
+                    dot.className = "dot-btn h-1.5 rounded-full transition-all duration-300 w-2 bg-slate-700 hover:bg-slate-600";
+                }
+            });
+
+            // Update bottom quick buttons highlight
+            document.querySelectorAll('.period-quick-btn').forEach(btn => {
+                const p = btn.getAttribute('data-period');
+                if (p === currentKey) {
+                    btn.className = "period-quick-btn px-3 py-1 rounded-lg font-bold text-xs bg-indigo-600 text-white shadow-md shadow-indigo-600/30";
+                } else {
+                    btn.className = "period-quick-btn px-2.5 py-1 rounded-lg font-medium text-xs bg-slate-800/90 text-slate-300 hover:bg-slate-700 transition";
+                }
+            });
+
+            // Build Tasks HTML
+            tasksContainer.innerHTML = '';
+            let completedCount = 0;
+
+            tasks.forEach((task, index) => {
+                const storageKey = `${task.id}`;
+                const isChecked = !!appData.completedMap[storageKey];
+                if (isChecked) completedCount++;
+
+                const card = document.createElement('label');
+                card.className = `touch-card flex items-center p-3 rounded-2xl border transition-all cursor-pointer ${
+                    isChecked 
+                        ? 'bg-emerald-950/20 border-emerald-800/40 opacity-80' 
+                        : 'bg-slate-900/90 border-slate-800/90 hover:border-slate-700 shadow-sm'
+                }`;
+
+                card.innerHTML = `
+                    <input type="checkbox" data-key="${storageKey}" class="sr-only" ${isChecked ? 'checked' : ''}>
+                    
+                    <!-- Checkbox Box -->
+                    <div class="w-6 h-6 rounded-xl border-2 flex items-center justify-center mr-3 shrink-0 transition-colors duration-200 ${
+                        isChecked 
+                            ? 'bg-emerald-500 border-emerald-500' 
+                            : 'border-slate-600 bg-slate-800/60'
+                    }">
+                        <svg class="w-3.5 h-3.5 text-white ${isChecked ? 'block' : 'hidden'}" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+
+                    <!-- Task Icon -->
+                    <div class="w-9 h-9 rounded-xl bg-slate-800/90 border border-slate-700/60 flex items-center justify-center text-lg mr-3 shrink-0 shadow-inner">
+                        ${task.icon}
+                    </div>
+
+                    <!-- Texts -->
+                    <div class="flex-1 min-w-0 pr-1">
+                        <div class="flex items-center gap-1.5 flex-wrap">
+                            <span class="text-[11px] font-bold text-slate-500">#${index + 1}</span>
+                            <span class="font-semibold text-sm leading-snug break-words ${isChecked ? 'line-through text-slate-400' : 'text-slate-100'}">
+                                ${task.title}
+                            </span>
+                            ${task.badge ? `
+                                <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-950 text-indigo-300 border border-indigo-800/50 ml-auto shrink-0">
+                                    ${task.badge}
+                                </span>
+                            ` : ''}
+                        </div>
+                        <p class="text-[11px] text-slate-400 mt-0.5 truncate">${task.desc}</p>
+                    </div>
+                `;
+
+                // Event listener on checkbox
+                const input = card.querySelector('input');
+                input.addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        appData.completedMap[storageKey] = true;
+                    } else {
+                        delete appData.completedMap[storageKey];
+                    }
+                    saveStorage();
+                    render();
+                });
+
+                tasksContainer.appendChild(card);
+            });
+
+            // Update Progress bar & labels
+            const total = tasks.length;
+            const percentage = total > 0 ? Math.round((completedCount / total) * 100) : 0;
+            progressBar.style.width = `${percentage}%`;
+            progressText.innerText = `${completedCount} / ${total} Concluídas (${percentage}%)`;
+            dockCounter.innerText = `${completedCount} de ${total} concluídas no ${meta.short}`;
+
+            // Show or hide completion congratulation
+            if (completedCount === total && total > 0) {
+                completionCard.classList.remove('hidden');
+            } else {
+                completionCard.classList.add('hidden');
+            }
+        }
+
+        function shuffleCurrentPeriod() {
+            const currentKey = PERIOD_KEYS[currentPeriodIndex];
+            if (currentKey === 'p1') {
+                appData.randomChoices.p1_music = getRandomItem(POOLS.p1_music);
+                appData.randomChoices.p1_workout = getRandomItem(POOLS.p1_workout);
+                appData.randomChoices.p1_shower = getRandomItem(POOLS.p1_shower);
+                appData.randomChoices.p1_chores = shuffleArray(POOLS.p1_chores);
+            } else if (currentKey === 'p2') {
+                appData.randomChoices.p2_hobby = getRandomItem(POOLS.p2_hobby);
+                appData.randomChoices.p2_monday_tasks = shuffleArray(POOLS.p2_monday_tasks);
+            } else if (currentKey === 'p3') {
+                appData.randomChoices.p3_workout = getRandomItem(POOLS.p3_workout);
+            }
+            saveStorage();
+            render();
+        }
+
+        function resetCurrentPeriod() {
+            const currentKey = PERIOD_KEYS[currentPeriodIndex];
+            const tasks = getTasksForPeriod(currentKey, selectedDayOfWeek);
+            tasks.forEach(t => {
+                delete appData.completedMap[t.id];
+            });
+            saveStorage();
+            render();
+        }
+
+        function goToPeriod(index) {
+            currentPeriodIndex = (index + PERIOD_KEYS.length) % PERIOD_KEYS.length;
+            // Add subtle enter transition
+            tasksContainer.classList.remove('fade-enter');
+            void tasksContainer.offsetWidth; // force reflow
+            tasksContainer.classList.add('fade-enter');
+            render();
+        }
+
+        // Navigation button listeners
+        document.getElementById('btn-prev-tab').addEventListener('click', () => goToPeriod(currentPeriodIndex - 1));
+        document.getElementById('btn-next-tab').addEventListener('click', () => goToPeriod(currentPeriodIndex + 1));
+        document.getElementById('btn-shuffle').addEventListener('click', shuffleCurrentPeriod);
+        document.getElementById('btn-reset').addEventListener('click', resetCurrentPeriod);
+
+        // Day tester dropdown
+        weekdaySelector.addEventListener('change', (e) => {
+            selectedDayOfWeek = parseInt(e.target.value, 10);
+            render();
+        });
+
+        // Quick bottom period selectors & dots
+        document.querySelectorAll('.period-quick-btn, .dot-btn').forEach(elem => {
+            elem.addEventListener('click', () => {
+                const targetP = elem.getAttribute('data-period');
+                const idx = PERIOD_KEYS.indexOf(targetP);
+                if (idx !== -1) {
+                    goToPeriod(idx);
+                }
+            });
+        });
+
+        // Touch swipe support on main content
+        const swipeArea = document.getElementById('swipe-area');
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchEndX = 0;
+        let touchEndY = 0;
+
+        swipeArea.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        swipeArea.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleGesture();
+        }, { passive: true });
+
+        function handleGesture() {
+            const diffX = touchEndX - touchStartX;
+            const diffY = touchEndY - touchStartY;
+            // Swipe horizontal detection (ignore vertical scrolls)
+            if (Math.abs(diffX) > 60 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
+                if (diffX < 0) {
+                    // Swipe Left -> next
+                    goToPeriod(currentPeriodIndex + 1);
+                } else {
+                    // Swipe Right -> prev
+                    goToPeriod(currentPeriodIndex - 1);
+                }
+            }
+        }
+
+        // Format and show current formatted date
+        function initDateDisplay() {
+            const now = new Date();
+            const options = { day: 'numeric', month: 'short' };
+            currentCalendarDateEl.innerText = now.toLocaleDateString('pt-PT', options);
+        }
+
+        // Keyboard arrows support
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') goToPeriod(currentPeriodIndex - 1);
+            if (e.key === 'ArrowRight') goToPeriod(currentPeriodIndex + 1);
+        });
+
+        // Initial setup
+        initDateDisplay();
+        loadStorage();
+        render();
+    </script>
+</body>
+</html>
