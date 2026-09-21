@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rotinas Diárias P1 - P4</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,13 +43,12 @@
             transform: scale(0.985);
         }
         .fade-enter {
-            animation: fadeIn 0.25s ease-out forwards;
+            animation: fadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(6px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 4px;
         }
@@ -62,7 +62,7 @@
 
     <!-- Top Sticky Bar -->
     <header class="w-full max-w-lg bg-slate-900/90 backdrop-blur-xl sticky top-0 z-30 border-b border-slate-800/80 px-4 pt-3.5 pb-3">
-        <!-- Date Selector & Day Tester row -->
+        <!-- Date Selector & Real-day row -->
         <div class="flex items-center justify-between gap-2 pb-2.5 border-b border-slate-800/60 text-xs">
             <div class="flex items-center gap-1.5 text-slate-400">
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -70,7 +70,7 @@
             </div>
             
             <div class="flex items-center gap-1.5">
-                <label for="weekday-selector" class="text-slate-400 text-[11px]">Dia:</label>
+                <label for="weekday-selector" class="text-slate-400 text-[11px] font-medium">Dia ativo:</label>
                 <select id="weekday-selector" class="bg-slate-800 text-slate-200 text-xs font-semibold rounded-lg px-2.5 py-1 border border-slate-700 outline-none focus:ring-2 focus:ring-indigo-500">
                     <option value="1">Segunda-feira</option>
                     <option value="2">Terça-feira</option>
@@ -83,7 +83,7 @@
             </div>
         </div>
 
-        <!-- Period Carousel Navigator -->
+        <!-- Period Carousel Navigation Header -->
         <div class="flex items-center justify-between pt-3">
             <button id="btn-prev-tab" aria-label="Período anterior" class="touch-card w-9 h-9 flex items-center justify-center rounded-xl bg-slate-800/90 hover:bg-slate-700 active:bg-slate-600 text-slate-200 border border-slate-700/60 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -118,7 +118,7 @@
         <!-- Progress Overview -->
         <div class="mt-3 space-y-1.5">
             <div class="flex justify-between items-center text-xs font-semibold text-slate-400">
-                <span id="period-status-label">Progresso do Período</span>
+                <span id="period-status-label">Progresso do Bloco</span>
                 <span id="progress-text" class="text-slate-200 font-bold">0 / 0 Concluídas (0%)</span>
             </div>
             <div class="w-full h-2 bg-slate-800/90 rounded-full overflow-hidden p-0.5 border border-slate-700/60">
@@ -141,7 +141,7 @@
                     </svg>
                     Sortear
                 </button>
-                <button id="btn-reset" title="Limpar tarefas deste período" class="touch-card inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 bg-slate-800/90 hover:bg-slate-700 active:bg-slate-600 border border-slate-700/70 px-2.5 py-1.5 rounded-xl transition">
+                <button id="btn-reset" title="Limpar marcações deste período" class="touch-card inline-flex items-center gap-1.5 text-xs font-semibold text-slate-300 bg-slate-800/90 hover:bg-slate-700 active:bg-slate-600 border border-slate-700/70 px-2.5 py-1.5 rounded-xl transition">
                     Limpar
                 </button>
             </div>
@@ -159,12 +159,13 @@
                 </div>
                 <div>
                     <h3 class="font-bold text-sm text-white">Período Concluído!</h3>
-                    <p class="text-xs text-emerald-200/90">Todas as tarefas deste bloco foram finalizadas.</p>
+                    <p class="text-xs text-emerald-200/90">Todas as tarefas deste bloco foram finalizadas com sucesso.</p>
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- Bottom Navigation Dock -->
     <footer class="fixed bottom-3 inset-x-4 max-w-lg mx-auto z-20">
         <div class="bg-slate-900/95 backdrop-blur-xl rounded-2xl p-2 px-3.5 shadow-2xl border border-slate-800 flex items-center justify-between text-white text-xs">
             <div class="flex items-center gap-1.5">
@@ -215,7 +216,10 @@
                 'Verificar petições pendentes',
                 'Registo semanal de tensão',
                 'Telefonar a idoso do grupo',
-                'Escolher alguém para escrever'
+                'Escolher alguém para escrever',
+                'Programar semana',
+                'Colocar sacos no carro',
+                'Verificar Óleo e Água'
             ],
 
             p3_workout: ['Caminhada', 'Bicicleta', 'Pilates']
@@ -238,7 +242,7 @@
         let currentPeriodIndex = 0;
         let selectedDayOfWeek = (new Date()).getDay(); // 0 = Domingo, 1 = Segunda, ...
 
-        const STORAGE_KEY = 'daily_routines_hub_data_v2';
+        const STORAGE_KEY = 'daily_routines_hub_data_v3';
 
         let appData = {
             randomChoices: {
@@ -261,12 +265,22 @@
                     if (parsed.randomChoices) {
                         appData.randomChoices = { ...appData.randomChoices, ...parsed.randomChoices };
                     }
+                    // Ensure Monday tasks array contains any newly added tasks
+                    if (appData.randomChoices.p2_monday_tasks) {
+                        const existingList = appData.randomChoices.p2_monday_tasks;
+                        const missingTasks = POOLS.p2_monday_tasks.filter(t => !existingList.includes(t));
+                        if (missingTasks.length > 0) {
+                            appData.randomChoices.p2_monday_tasks = shuffleArray([...existingList, ...missingTasks]);
+                        }
+                    } else {
+                        appData.randomChoices.p2_monday_tasks = shuffleArray(POOLS.p2_monday_tasks);
+                    }
                     if (parsed.completedMap) {
                         appData.completedMap = parsed.completedMap;
                     }
                 }
             } catch (err) {
-                console.error("Erro ao carregar dados salvos:", err);
+                console.error("Erro ao carregar dados gravados:", err);
             }
         }
 
@@ -278,35 +292,79 @@
             }
         }
 
-        function generateTasksForP1() {
+        function generateTasksForP1(dayOfWeek) {
             const r = appData.randomChoices;
-            return [
+            // Regra da Tarefa 5: Segundas (1), Quartas (3) e Sextas (5) -> "Barba e cabelo". Restantes -> "Barba"
+            const isHairDay = dayOfWeek === 1 || dayOfWeek === 3 || dayOfWeek === 5;
+            const groomingTask = isHairDay ? 'Barba e cabelo' : 'Barba';
+            const groomingDesc = isHairDay ? 'Cuidado facial e capilar (Seg/Qua/Sex)' : 'Higiene e cuidado pessoal';
+
+            const tasks = [];
+
+            // Regra de Terça-feira (2): Primeira tarefa é sempre "Glicemia"
+            if (dayOfWeek === 2) {
+                tasks.push({
+                    id: 'p1_0_glicemia',
+                    title: 'Glicemia',
+                    icon: '🩸',
+                    desc: 'Medição de glicose em jejum',
+                    badge: 'Terça-feira'
+                });
+            }
+
+            // Regra de Quarta-feira (3): Primeira tarefa é sempre "Balança"
+            if (dayOfWeek === 3) {
+                tasks.push({
+                    id: 'p1_0_balanca',
+                    title: 'Balança',
+                    icon: '⚖️',
+                    desc: 'Pesagem matinal em jejum',
+                    badge: 'Quarta-feira'
+                });
+            }
+
+            tasks.push(
                 { id: 'p1_1', title: 'Pantoprazol + B12', icon: '💊', desc: 'Medicação em jejum' },
                 { id: 'p1_2', title: 'Oração', icon: '🙏', desc: 'Momento espiritual de início do dia' },
-                { id: 'p1_3', title: 'Texto diário', icon: '📖', desc: 'Leitura e meditação diária' },
-                { id: 'p1_4', title: `Música: ${r.p1_music}`, icon: '🎧', desc: 'Vibe para energizar', badge: 'Sorteado' },
-                { id: 'p1_5', title: 'Barba', icon: '🪒', desc: 'Higiene e cuidado pessoal' },
-                { id: 'p1_6', title: `Exercício: ${r.p1_workout}`, icon: '⚡', desc: 'Ativação física', badge: 'Sorteado' },
-                { id: 'p1_7', title: r.p1_shower, icon: '🚿', desc: 'Banho matinal', badge: 'Sorteado' },
+                { id: 'p1_3', title: 'Texto diário', icon: '📖', desc: 'Leitura e reflexão bíblica' },
+                { id: 'p1_4', title: `Música: ${r.p1_music}`, icon: '🎧', desc: 'Vibe para despertar', badge: 'Sorteado' },
+                { id: 'p1_5', title: groomingTask, icon: '🪒', desc: groomingDesc, badge: isHairDay ? 'Seg / Qua / Sex' : undefined },
+                { id: 'p1_6', title: `Exercício: ${r.p1_workout}`, icon: '⚡', desc: 'Ativação física matinal', badge: 'Sorteado' },
+                { id: 'p1_7', title: r.p1_shower, icon: '🚿', desc: 'Banho matinal revigorante', badge: 'Sorteado' },
                 { id: 'p1_8', title: 'Vestir', icon: '👕', desc: 'Roupa para o dia' },
                 { id: 'p1_9', title: 'Retirar o telemóvel do modo avião', icon: '✈️', desc: 'Comunicações ativas' },
-                { id: 'p1_10', title: 'Pequeno almoço', icon: '☕', desc: 'Alimentação e energia' },
+                { id: 'p1_10', title: 'Pequeno almoço', icon: '☕', desc: 'Alimentação e café' },
                 { id: 'p1_11', title: 'Desvenlafaxina + Coversyl + Omega3 + Vit.D + Inderal', icon: '💊', desc: 'Medicação após o pequeno almoço' },
                 { id: 'p1_12_a', title: r.p1_chores[0], icon: r.p1_chores[0] === 'Arrumar Quarto' ? '🛏️' : '🍽️', desc: 'Tarefa doméstica 1/2', badge: 'Aleatório' },
                 { id: 'p1_12_b', title: r.p1_chores[1], icon: r.p1_chores[1] === 'Arrumar Quarto' ? '🛏️' : '🍽️', desc: 'Tarefa doméstica 2/2', badge: 'Aleatório' }
-            ];
+            );
+
+            return tasks;
         }
 
         function generateTasksForP2(dayOfWeek) {
             const r = appData.randomChoices;
-            const tasks = [
-                { id: 'p2_1', title: 'Respiração (5 min)', icon: '🧘', desc: 'Pausa de foco e oxigenação' },
+            const tasks = [];
+
+            // Regra de Segunda-feira (1): Primeira tarefa é sempre "Tensão Arterial"
+            if (dayOfWeek === 1) {
+                tasks.push({
+                    id: 'p2_0_tensao_arterial',
+                    title: 'Tensão Arterial',
+                    icon: '🩺',
+                    desc: 'Medição inicial de pressão arterial',
+                    badge: 'Segunda-feira'
+                });
+            }
+
+            tasks.push(
+                { id: 'p2_1', title: 'Respiração (5 min)', icon: '🧘', desc: 'Pausa de oxigenação e foco' },
                 { id: 'p2_2', title: r.p2_hobby, icon: '🎨', desc: 'Momento criativo ou pausa', badge: 'Sorteado' },
                 { id: 'p2_3', title: 'Almoço', icon: '🍲', desc: 'Refeição do meio-dia' },
-                { id: 'p2_4', title: 'Lavar loiça', icon: '🧼', desc: 'Cozinha organizada' }
-            ];
+                { id: 'p2_4', title: 'Lavar loiça', icon: '🧼', desc: 'Cozinha limpa e organizada' }
+            );
 
-            // Regra 5 conforme dia da semana
+            // Regra 5 conforme o dia da semana
             // 0=Dom, 1=Seg, 2=Ter, 3=Qua, 4=Qui, 5=Sex, 6=Sab
             if (dayOfWeek >= 1 && dayOfWeek <= 5) {
                 tasks.push({
@@ -317,7 +375,6 @@
                     badge: 'Seg-Sex'
                 });
             } else if (dayOfWeek === 0) {
-                // Domingo
                 tasks.push({
                     id: 'p2_5_sunday',
                     title: 'Comentário TD',
@@ -326,7 +383,6 @@
                     badge: 'Domingo'
                 });
             } else if (dayOfWeek === 6) {
-                // Sábado
                 tasks.push({
                     id: 'p2_5_saturday',
                     title: 'Ouvir comentário (Marisa)',
@@ -336,15 +392,30 @@
                 });
             }
 
-            // À segunda-feira: Apresentar as 6 opções por ordem aleatória
+            // À segunda-feira: Apresentar a lista completa de opções por ordem aleatória
             if (dayOfWeek === 1) {
                 const mondayChores = r.p2_monday_tasks || POOLS.p2_monday_tasks;
+                
+                // Mapeamento visual de ícones para tarefas específicas
+                const iconMap = {
+                    'Programar semana': '🗓️',
+                    'Confirmar DP': '📊',
+                    'Trello': '📌',
+                    'Verificar petições pendentes': '📑',
+                    'Registo semanal de tensão': '❤️',
+                    'Telefonar a idoso do grupo': '👴',
+                    'Escolher alguém para escrever': '✍️',
+                    'Colocar sacos no carro': '🚗',
+                    'Verificar Óleo e Água': '🔧'
+                };
+
                 mondayChores.forEach((taskName, idx) => {
+                    const icon = iconMap[taskName] || '📋';
                     tasks.push({
-                        id: `p2_monday_${idx}_${taskName.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}`,
+                        id: `p2_monday_${taskName.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase()}`,
                         title: taskName,
-                        icon: '📋',
-                        desc: 'Planeamento / Ação de Segunda',
+                        icon: icon,
+                        desc: 'Ação / Planeamento de Segunda-feira',
                         badge: `Segunda #${idx + 1}`
                     });
                 });
@@ -390,7 +461,7 @@
             // Terça-feira (2): NAF
             // Quinta-feira (4): Sentinela
             // Sexta-feira (5): RVMC + Comentário TD
-            // Outros dias (3=Quarta, 6=Sábado, 0=Domingo): Não apresentar
+            // Restantes dias: Não apresentar
             if (dayOfWeek === 1) {
                 tasks.push({ id: 'p3_5_study_seg', title: 'RVMC', icon: '📚', desc: 'Estudo semanal', badge: 'Segunda-feira' });
             } else if (dayOfWeek === 2) {
@@ -418,7 +489,7 @@
 
         function getTasksForPeriod(periodKey, dayOfWeek) {
             switch (periodKey) {
-                case 'p1': return generateTasksForP1();
+                case 'p1': return generateTasksForP1(dayOfWeek);
                 case 'p2': return generateTasksForP2(dayOfWeek);
                 case 'p3': return generateTasksForP3(dayOfWeek);
                 case 'p4': return generateTasksForP4();
@@ -481,7 +552,7 @@
                 const card = document.createElement('label');
                 card.className = `touch-card flex items-center p-3 rounded-2xl border transition-all cursor-pointer ${
                     isChecked 
-                        ? 'bg-emerald-950/20 border-emerald-800/40 opacity-80' 
+                        ? 'bg-emerald-950/20 border-emerald-800/40 opacity-85' 
                         : 'bg-slate-900/90 border-slate-800/90 hover:border-slate-700 shadow-sm'
                 }`;
 
@@ -580,9 +651,8 @@
 
         function goToPeriod(index) {
             currentPeriodIndex = (index + PERIOD_KEYS.length) % PERIOD_KEYS.length;
-            // Add subtle enter transition
             tasksContainer.classList.remove('fade-enter');
-            void tasksContainer.offsetWidth; // force reflow
+            void tasksContainer.offsetWidth; // force reflow for smooth animation
             tasksContainer.classList.add('fade-enter');
             render();
         }
@@ -631,13 +701,11 @@
         function handleGesture() {
             const diffX = touchEndX - touchStartX;
             const diffY = touchEndY - touchStartY;
-            // Swipe horizontal detection (ignore vertical scrolls)
+            // Horizontal swipe detection (ignoring vertical scrolls)
             if (Math.abs(diffX) > 60 && Math.abs(diffX) > Math.abs(diffY) * 1.5) {
                 if (diffX < 0) {
-                    // Swipe Left -> next
                     goToPeriod(currentPeriodIndex + 1);
                 } else {
-                    // Swipe Right -> prev
                     goToPeriod(currentPeriodIndex - 1);
                 }
             }
@@ -650,13 +718,13 @@
             currentCalendarDateEl.innerText = now.toLocaleDateString('pt-PT', options);
         }
 
-        // Keyboard arrows support
+        // Keyboard navigation (arrows)
         window.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') goToPeriod(currentPeriodIndex - 1);
             if (e.key === 'ArrowRight') goToPeriod(currentPeriodIndex + 1);
         });
 
-        // Initial setup
+        // Initialize Application
         initDateDisplay();
         loadStorage();
         render();
