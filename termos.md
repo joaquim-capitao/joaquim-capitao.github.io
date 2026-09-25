@@ -1,6 +1,6 @@
 # Termos de Utilização
 
-Última atualização: [Data, ex.: Setembro de 2026]
+Última atualização: 25 de Setembro de 2026
 
 O acesso e a utilização deste sítio web regem-se pelos seguintes termos e condições. Ao navegar neste espaço, o utilizador concorda com as disposições aqui apresentadas.
 
@@ -31,4 +31,4 @@ O autor não se responsabiliza por eventuais falhas temporárias de acesso ao s�
 ### 4. Contacto
 Para pedidos de autorização de reprodução, esclarecimento de dúvidas ou outras questões relacionadas com os direitos dos conteúdos, por favor utilize o seguinte endereço de correio eletrónico:
 
-**[O seu e-mail de contacto aqui]**
+**joaquimcapitao@gmail.com**
