@@ -38,7 +38,7 @@ body {
   background-color: var(--bg-main);
   color: var(--text-main);
   font-family: var(--font-ubuntu);
-  font-weight: 400;
+  font-weight: 200;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 1.5rem 1.2rem;    /* Margem confortável para respiração do layout */
@@ -66,7 +66,7 @@ header {
 h1, h2, h3, h4 {
   color: #97c0d1;            /* Branco puro para dar pop nos títulos */
   font-family: var(--font-ubuntu);
-  font-weight: 700;
+  font-weight: 300;
   line-height: 1.25;
   margin-bottom: 1.25rem;
   margin-top: 1.5rem;
