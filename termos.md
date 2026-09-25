@@ -1,3 +1,7 @@
+---
+layout: style-termos
+---
+
 # Termos de Utilização
 
 Última atualização: 25 de Setembro de 2026
