@@ -8,9 +8,15 @@ Assim que cheguei, disseram-me: *"Olha, parabéns, calhou-te a fatia a que chama
 
 Nunca percebi bem esta mania de desenhar linhas no chão e dizer *"daqui para ali é meu"*. Mas enfim. Eu não dividi nada. Quando cá cheguei, o caos já estava instalado. Por isso, não me venham pedir satisfações.
 
-O calhau em si é bonito. Tem mar, árvores, rios, cascatas... e outras coisas muito bem pensadas, como o açúcar e o cacau. O problema é que está densamente povoado por umas criaturas bípedes que se acham muito espertas.
+O calhau em si é bonito. Tem mar, árvores, rios, cascatas… e outras coisas muito bem pensadas, como o açúcar e o cacau. O problema é que está densamente povoado por umas criaturas bípedes que se acham muito espertas.
 
 Esses seres bizarros são capazes de construir engenhos inacreditáveis para ir até à Lua, mas depois ficam genuinamente perturbados se um gato preto lhes cruzar o caminho.
+
+Abatem árvores centenárias em perfeito equilíbrio com o ecossistema para semear tapetes de relva. Depois, ao fim de semana, ligam um motor ensurdecedor para podar a folhas que passaram a semana inteira a regar.
+
+Pegam no carro para fazer 500 metros até à pastelaria, disputam o lugar de estacionamento mais colado à porta, sobem de escada rolante… e à noite pagam a mensalidade do ginásio só para poder correr sem sair do mesmo sítio.
+
+Criaram redes que transmitem informação a qualquer canto da Terra em milissegundos, para depois poderem sentar-se à mesa em família a olhar para um ecrã, ignorando solenemente a pessoa que respira a meio metro dali.
 
 E pronto. Desde 1978, ando a tentar perceber o que se passa aqui. Mas, até agora, a única conclusão a que cheguei é que o melhor é não fazer perguntas muito difíceis.
 
