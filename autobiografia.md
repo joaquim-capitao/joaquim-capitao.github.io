@@ -14,9 +14,9 @@ Esses seres bizarros são capazes de construir engenhos inacreditáveis para ir 
 
 Abatem árvores centenárias em perfeito equilíbrio com o ecossistema para semear tapetes de relva. Depois, ao fim de semana, ligam um motor ensurdecedor para podar a folhas que passaram a semana inteira a regar.
 
-Pegam no carro para fazer 500 metros até à pastelaria, disputam o lugar de estacionamento mais colado à porta, sobem de escada rolante… e à noite pagam a mensalidade do ginásio só para poder correr sem sair do mesmo sítio.
+Pegam no carro para fazer 500 metros até à pastelaria, disputam o lugar de estacionamento mais colado à porta, sobem de escada rolante… e à noite pagam a mensalidade do ginásio para poder correr sem sair do mesmo sítio.
 
-Criaram redes que transmitem informação a qualquer canto da Terra em milissegundos, para depois poderem sentar-se à mesa em família a olhar para um ecrã, ignorando solenemente a pessoa que respira a meio metro dali.
+Criam redes que transmitem informação a qualquer canto da Terra em milissegundos, mas depois sentam-se à mesa em família, cada um a olhar para um ecrã, ignorando quem está a meio metro de distância.
 
 E pronto. Desde 1978, ando a tentar perceber o que se passa aqui. Mas, até agora, a única conclusão a que cheguei é que o melhor é não fazer perguntas muito difíceis.
 
