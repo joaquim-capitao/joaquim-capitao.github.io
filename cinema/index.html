@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vídeo</title>
+  <title>Vídeos</title>
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -17,10 +17,8 @@
       color: #f8fafc;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      padding: 1rem;
+      padding: 1.5rem 1rem;
     }
 
     .container {
@@ -28,7 +26,7 @@
       max-width: 680px;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.75rem;
     }
 
     /* Contentor responsivo para manter a proporção 16:9 */
@@ -56,10 +54,23 @@
 <body>
 
   <main class="container">
+    <!-- Primeiro Vídeo -->
     <div class="video-wrapper">
       <iframe 
         src="https://www.youtube-nocookie.com/embed/vR_L-yH_3jY" 
-        title="Reprodutor de vídeo YouTube" 
+        title="Reprodutor de vídeo YouTube 1" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin" 
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- Segundo Vídeo -->
+    <div class="video-wrapper">
+      <iframe 
+        src="https://www.youtube-nocookie.com/embed/YT7OjVP1Y1A" 
+        title="Reprodutor de vídeo YouTube 2" 
         frameborder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
         referrerpolicy="strict-origin-when-cross-origin" 
