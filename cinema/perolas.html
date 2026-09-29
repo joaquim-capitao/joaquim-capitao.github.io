@@ -26,7 +26,13 @@
       max-width: 680px;
       display: flex;
       flex-direction: column;
-      gap: 1.75rem;
+      gap: 2rem;
+    }
+
+    .video-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
     }
 
     /* Contentor responsivo para manter a proporção 16:9 */
@@ -49,51 +55,74 @@
       height: 100%;
       border: 0;
     }
+
+    .video-description {
+      font-size: 1rem;
+      color: #cbd5e1;
+      padding: 0 0.25rem;
+    }
+
+    hr.divider {
+      border: 0;
+      height: 1px;
+      background: #334155;
+      margin-top: 1rem;
+    }
   </style>
 </head>
 <body>
 
   <main class="container">
     <!-- Primeiro Vídeo -->
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube-nocookie.com/embed/vR_L-yH_3jY" 
-        title="Reprodutor de vídeo YouTube 1" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        referrerpolicy="strict-origin-when-cross-origin" 
-        allowfullscreen>
-      </iframe>
+    <div class="video-item">
+      <div class="video-wrapper">
+        <iframe 
+          src="https://www.youtube-nocookie.com/embed/Z6oeAdemFZw" 
+          title="Reprodutor de vídeo YouTube 1" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="video-description">O inspetor francês Clouseau contrata uma professora para aprender a pronunciar palavras em inglês. - The Pink Panther (2006)</p>
+      <hr class="divider">
     </div>
 
     <!-- Segundo Vídeo -->
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube-nocookie.com/embed/YT7OjVP1Y1A" 
-        title="Reprodutor de vídeo YouTube 2" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        referrerpolicy="strict-origin-when-cross-origin" 
-        allowfullscreen>
-      </iframe>
+    <div class="video-item">
+      <div class="video-wrapper">
+        <iframe 
+          src="https://www.youtube-nocookie.com/embed/SXP3etiFgjY" 
+          title="Reprodutor de vídeo YouTube 2" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="video-description">A dança - Get Smart (2008)</p>
+      <hr class="divider">
     </div>
 
-   <!-- Terceiro Vídeo -->
-    <div class="video-wrapper">
-      <iframe 
-
-src="https://www.youtube-nocookie.com/embed/fJ9rUzIMcZQ"
-        title="Reprodutor de vídeo YouTube 2" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        referrerpolicy="strict-origin-when-cross-origin" 
-        allowfullscreen>
-      </iframe>
+    <!-- Terceiro Vídeo -->
+    <div class="video-item">
+      <div class="video-wrapper">
+        <iframe 
+          src="https://www.youtube-nocookie.com/embed/TkdbqK4iUsU"
+          title="Reprodutor de vídeo YouTube 3" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="video-description">A cena do avião. Hot Shots! (1991)  (</p>
     </div>
 
+    
   </main>
 
 </body>
 </html>
-
 
