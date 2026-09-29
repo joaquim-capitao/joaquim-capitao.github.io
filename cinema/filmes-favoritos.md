@@ -63,4 +63,4 @@
 | **Man on the Moon** | O Homem na Lua | 1999 | Miloš Forman |
 | **The Truman Show** | The Truman Show - A Vida em Directo | 1998 | Peter Weir |
 | **Léon** (*Léon: The Professional*) | Lèon, o Profissional | 1994 | Luc Besson |
-| **O Pai Tirano** | O Pai Tirano | 1941 *(remake: 2022)* | António Lopes Ribeiro *(remake: João Gomes)* |
+| **O Pai Tirano** | O Pai Tirano | 1941 | António Lopes Ribeiro |
