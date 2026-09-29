@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Filmes</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0b1329;
+      color: #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      padding: 2.5rem 1rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #f8fafc;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+
+    .table-wrapper {
+      background-color: #111e3f;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    thead {
+      background-color: #172852;
+      border-bottom: 2px solid #2d3e69;
+    }
+
+    th {
+      padding: 1rem 1.25rem;
+      font-weight: 600;
+      color: #60a5fa;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+    }
+
+    th.center, td.center {
+      text-align: center;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #1a2a52;
+      transition: background-color 0.15s ease-in-out;
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background-color: #1e356d;
+    }
+
+    td {
+      padding: 0.9rem 1.25rem;
+      color: #cbd5e1;
+    }
+
+    td.title-col {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .year-badge {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      background-color: #1e293b;
+      color: #93c5fd;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid #334155;
+    }
+
+    .note {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Catálogo de Filmes</h1>
+      <p class="subtitle">Ordenado dos mais recentes para os mais clássicos</p>
+    </header>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Título Original</th>
+            <th>Título em Português (Europeu)</th>
+            <th class="center">Ano</th>
+            <th>Realizador(es)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="title-col">The Woman King</td>
+            <td>A Mulher Rei</td>
+            <td class="center"><span class="year-badge">2022</span></td>
+            <td>Gina Prince-Bythewood</td>
+          </tr>
+          <tr>
+            <td class="title-col">Don't Look Up</td>
+            <td>Não Olhem para Cima</td>
+            <td class="center"><span class="year-badge">2021</span></td>
+            <td>Adam McKay</td>
+          </tr>
+          <tr>
+            <td class="title-col">Jojo Rabbit</td>
+            <td>Jojo Rabbit</td>
+            <td class="center"><span class="year-badge">2019</span></td>
+            <td>Taika Waititi</td>
+          </tr>
+          <tr>
+            <td class="title-col">A Star Is Born</td>
+            <td>Assim Nasce Uma Estrela</td>
+            <td class="center"><span class="year-badge">2018</span></td>
+            <td>Bradley Cooper</td>
+          </tr>
+          <tr>
+            <td class="title-col">The Ballad of Buster Scruggs</td>
+            <td>A Balada de Buster Scruggs</td>
+            <td class="center"><span class="year-badge">2018</span></td>
+            <td>Joel Coen, Ethan Coen</td>
+          </tr>
+          <tr>
+            <td class="title-col">Bohemian Rhapsody</td>
+            <td>Bohemian Rhapsody</td>
+            <td class="center"><span class="year-badge">2018</span></td>
+            <td>Bryan Singer</td>
+          </tr>
+          <tr>
+            <td class="title-col">I, Tonya</td>
+            <td>Eu, Tonya</td>
+            <td class="center"><span class="year-badge">2017</span></td>
+            <td>Craig Gillespie</td>
+          </tr>
+          <tr>
+            <td class="title-col">Lion</td>
+            <td>Lion - A Longa Estrada para Casa</td>
+            <td class="center"><span class="year-badge">2016</span></td>
+            <td>Garth Davis</td>
+          </tr>
+          <tr>
+            <td class="title-col">Lucy</td>
+            <td>Lucy</td>
+            <td class="center"><span class="year-badge">2014</span></td>
+            <td>Luc Besson</td>
+          </tr>
+          <tr>
+            <td class="title-col">Before I Go to Sleep</td>
+            <td>Antes de Adormecer</td>
+            <td class="center"><span class="year-badge">2014</span></td>
+            <td>Rowan Joffé</td>
+          </tr>
+          <tr>
+            <td class="title-col">Big Eyes</td>
+            <td>Grandes Olhos</td>
+            <td class="center"><span class="year-badge">2014</span></td>
+            <td>Tim Burton</td>
+          </tr>
+          <tr>
+            <td class="title-col">Edge of Tomorrow</td>
+            <td>No Limite do Amanhã</td>
+            <td class="center"><span class="year-badge">2014</span></td>
+            <td>Doug Liman</td>
+          </tr>
+          <tr>
+            <td class="title-col">Her</td>
+            <td>Uma História de Amor</td>
+            <td class="center"><span class="year-badge">2013</span></td>
+            <td>Spike Jonze</td>
+          </tr>
+          <tr>
+            <td class="title-col">About Time</td>
+            <td>Questão de Tempo</td>
+            <td class="center"><span class="year-badge">2013</span></td>
+            <td>Richard Curtis</td>
+          </tr>
+          <tr>
+            <td class="title-col">12 Years a Slave</td>
+            <td>12 Anos Escravo</td>
+            <td class="center"><span class="year-badge">2013</span></td>
+            <td>Steve McQueen</td>
+          </tr>
+          <tr>
+            <td class="title-col">Argo</td>
+            <td>Argo</td>
+            <td class="center"><span class="year-badge">2012</span></td>
+            <td>Ben Affleck</td>
+          </tr>
+          <tr>
+            <td class="title-col">Django Unchained</td>
+            <td>Django Libertado</td>
+            <td class="center"><span class="year-badge">2012</span></td>
+            <td>Quentin Tarantino</td>
+          </tr>
+          <tr>
+            <td class="title-col">Shutter Island</td>
+            <td>Shutter Island</td>
+            <td class="center"><span class="year-badge">2010</span></td>
+            <td>Martin Scorsese</td>
+          </tr>
+          <tr>
+            <td class="title-col">Inglourious Basterds</td>
+            <td>Sacanas Sem Lei</td>
+            <td class="center"><span class="year-badge">2009</span></td>
+            <td>Quentin Tarantino</td>
+          </tr>
+          <tr>
+            <td class="title-col">Sherlock Holmes</td>
+            <td>Sherlock Holmes</td>
+            <td class="center"><span class="year-badge">2009</span></td>
+            <td>Guy Ritchie</td>
+          </tr>
+          <tr>
+            <td class="title-col">Avatar</td>
+            <td>Avatar</td>
+            <td class="center"><span class="year-badge">2009</span></td>
+            <td>James Cameron</td>
+          </tr>
+          <tr>
+            <td class="title-col">The Proposal</td>
+            <td>A Proposta</td>
+            <td class="center"><span class="year-badge">2009</span></td>
+            <td>Anne Fletcher</td>
+          </tr>
+          <tr>
+            <td class="title-col">The Boy in the Striped Pyjamas</td>
+            <td>O Rapaz do Pijama às Riscas</td>
+            <td class="center"><span class="year-badge">2008</span></td>
+            <td>Mark Herman</td>
+          </tr>
+          <tr>
+            <td class="title-col">Seven Pounds</td>
+            <td>Sete Vidas</td>
+            <td class="center"><span class="year-badge">2008</span></td>
+            <td>Gabriele Muccino</td>
+          </tr>
+          <tr>
+            <td class="title-col">Slumdog Millionaire</td>
+            <td>Quem Quer Ser Bilionário?</td>
+            <td class="center"><span class="year-badge">2008</span></td>
+            <td>Danny Boyle</td>
+          </tr>
+          <tr>
+            <td class="title-col">Kung Fu Panda</td>
+            <td>O Panda do Kung Fu</td>
+            <td class="center"><span class="year-badge">2008</span></td>
+            <td>John Stevenson, Mark Osborne</td>
+          </tr>
+          <tr>
+            <td class="title-col">Valkyrie</td>
+            <td>Operação Valquíria</td>
+            <td class="center"><span class="year-badge">2008</span></td>
+            <td>Bryan Singer</td>
+          </tr>
+          <tr>
+            <td class="title-col">Yes Man</td>
+            <td>Diz Sim!</td>
+            <td class="center"><span class="year-badge">2008</span></td>
+            <td>Peyton Reed</td>
+          </tr>
+          <tr>
+            <td class="title-col">Bolt</td>
+            <td>Bolt</td>
+            <td class="center"><span class="year-badge">2008</span></td>
+            <td>Chris Williams, Byron Howard</td>
+          </tr>
+          <tr>
+            <td class="title-col">Get Smart</td>
+            <td>Olho Vivo</td>
+            <td class="center"><span class="year-badge">2008</span></td>
+            <td>Peter Segal</td>
+          </tr>
+          <tr>
+            <td class="title-col">No Country for Old Men</td>
+            <td>Este País Não É para Velhos</td>
+            <td class="center"><span class="year-badge">2007</span></td>
+            <td>Joel Coen, Ethan Coen</td>
+          </tr>
+          <tr>
+            <td class="title-col">Music and Lyrics</td>
+            <td>Letra e Música</td>
+            <td class="center"><span class="year-badge">2007</span></td>
+            <td>Marc Lawrence</td>
+          </tr>
+          <tr>
+            <td class="title-col">Apocalypto</td>
+            <td>Apocalypto</td>
+            <td class="center"><span class="year-badge">2006</span></td>
+            <td>Mel Gibson</td>
+          </tr>
+          <tr>
+            <td class="title-col">The Pink Panther</td>
+            <td>A Pantera Cor-de-Rosa</td>
+            <td class="center"><span class="year-badge">2006</span></td>
+            <td>Shawn Levy</td>
+          </tr>
+          <tr>
+            <td class="title-col">Madagascar</td>
+            <td>Madagáscar</td>
+            <td class="center"><span class="year-badge">2005</span></td>
+            <td>Eric Darnell, Tom McGrath</td>
+          </tr>
+          <tr>
+            <td class="title-col">Mr. &amp; Mrs. Smith</td>
+            <td>Sr. e Sra. Smith</td>
+            <td class="center"><span class="year-badge">2005</span></td>
+            <td>Doug Liman</td>
+          </tr>
+          <tr>
+            <td class="title-col">Match Point</td>
+            <td>Match Point</td>
+            <td class="center"><span class="year-badge">2005</span></td>
+            <td>Woody Allen</td>
+          </tr>
+          <tr>
+            <td class="title-col">The Island</td>
+            <td>A Ilha</td>
+            <td class="center"><span class="year-badge">2005</span></td>
+            <td>Michael Bay</td>
+          </tr>
+          <tr>
+            <td class="title-col">Flightplan</td>
+            <td>Flightplan - Pânico a Bordo</td>
+            <td class="center"><span class="year-badge">2005</span></td>
+            <td>Robert Schwentke</td>
+          </tr>
+          <tr>
+            <td class="title-col">Shrek 2</td>
+            <td>Shrek 2</td>
+            <td class="center"><span class="year-badge">2004</span></td>
+            <td>Andrew Adamson, Kelly Asbury, Conrad Vernon</td>
+          </tr>
+          <tr>
+            <td class="title-col">Hotel Rwanda</td>
+            <td>Hotel Ruanda</td>
+            <td class="center"><span class="year-badge">2004</span></td>
+            <td>Terry George</td>
+          </tr>
+          <tr>
+            <td class="title-col">50 First Dates</td>
+            <td>A Minha Namorada Tem Amnésia</td>
+            <td class="center"><span class="year-badge">2004</span></td>
+            <td>Peter Segal</td>
+          </tr>
+          <tr>
+            <td class="title-col">The Terminal</td>
+            <td>O Terminal</td>
+            <td class="center"><span class="year-badge">2004</span></td>
+            <td>Steven Spielberg</td>
+          </tr>
+          <tr>
+            <td class="title-col">The Aviator</td>
+            <td>O Aviador</td>
+            <td class="center"><span class="year-badge">2004</span></td>
+            <td>Martin Scorsese</td>
+          </tr>
+          <tr>
+            <td class="title-col">The Matrix Reloaded</td>
+            <td>Matrix Recarregado</td>
+            <td class="center"><span class="year-badge">2003</span></td>
+            <td>Lana Wachowski, Lilly Wachowski</td>
+          </tr>
+          <tr>
+            <td class="title-col">The Matrix Revolutions</td>
+            <td>Matrix Revoluções</td>
+            <td class="center"><span class="year-badge">2003</span></td>
+            <td>Lana Wachowski, Lilly Wachowski</td>
+          </tr>
+          <tr>
+            <td class="title-col">Bruce Almighty</td>
+            <td>Bruce - O Todo-Poderoso</td>
+            <td class="center"><span class="year-badge">2003</span></td>
+            <td>Tom Shadyac</td>
+          </tr>
+          <tr>
+            <td class="title-col">How to Lose a Guy in 10 Days</td>
+            <td>Como Perder um Homem em 10 Dias</td>
+            <td class="center"><span class="year-badge">2003</span></td>
+            <td>Donald Petrie</td>
+          </tr>
+          <tr>
+            <td class="title-col">Catch Me If You Can</td>
+            <td>Apanha-me Se Puderes</td>
+            <td class="center"><span class="year-badge">2002</span></td>
+            <td>Steven Spielberg</td>
+          </tr>
+          <tr>
+            <td class="title-col">Lilo &amp; Stitch</td>
+            <td>Lilo &amp; Stitch</td>
+            <td class="center"><span class="year-badge">2002</span></td>
+            <td>Chris Sanders, Dean DeBlois</td>
+          </tr>
+          <tr>
+            <td class="title-col">Red Dragon</td>
+            <td>Dragão Vermelho</td>
+            <td class="center"><span class="year-badge">2002</span></td>
+            <td>Brett Ratner</td>
+          </tr>
+          <tr>
+            <td class="title-col">Mr. Deeds</td>
+            <td>Mr. Deeds</td>
+            <td class="center"><span class="year-badge">2002</span></td>
+            <td>Steven Brill</td>
+          </tr>
+          <tr>
+            <td class="title-col">Pearl Harbor</td>
+            <td>Pearl Harbor</td>
+            <td class="center"><span class="year-badge">2001</span></td>
+            <td>Michael Bay</td>
+          </tr>
+          <tr>
+            <td class="title-col">Hannibal</td>
+            <td>Hannibal</td>
+            <td class="center"><span class="year-badge">2001</span></td>
+            <td>Ridley Scott</td>
+          </tr>
+          <tr>
+            <td class="title-col">Shrek</td>
+            <td>Shrek</td>
+            <td class="center"><span class="year-badge">2001</span></td>
+            <td>Andrew Adamson, Vicky Jenson</td>
+          </tr>
+          <tr>
+            <td class="title-col">Rush Hour 2</td>
+            <td>Hora de Ponta 2</td>
+            <td class="center"><span class="year-badge">2001</span></td>
+            <td>Brett Ratner</td>
+          </tr>
+          <tr>
+            <td class="title-col">Cast Away</td>
+            <td>O Náufrago</td>
+            <td class="center"><span class="year-badge">2000</span></td>
+            <td>Robert Zemeckis</td>
+          </tr>
+          <tr>
+            <td class="title-col">The Road to El Dorado</td>
+            <td>O Caminho para El Dorado</td>
+            <td class="center"><span class="year-badge">2000</span></td>
+            <td>Bibo Bergeron, Don Paul</td>
+          </tr>
+          <tr>
+            <td class="title-col">O Brother, Where Art Thou?</td>
+            <td>Ó Fratel, Onde Estás Tu?</td>
+            <td class="center"><span class="year-badge">2000</span></td>
+            <td>Joel Coen, Ethan Coen</td>
+          </tr>
+          <tr>
+            <td class="title-col">The Matrix</td>
+            <td>Matrix</td>
+            <td class="center"><span class="year-badge">1999</span></td>
+            <td>Lana Wachowski, Lilly Wachowski</td>
+          </tr>
+          <tr>
+            <td class="title-col">Man on the Moon</td>
+            <td>O Homem na Lua</td>
+            <td class="center"><span class="year-badge">1999</span></td>
+            <td>Miloš Forman</td>
+          </tr>
+          <tr>
+            <td class="title-col">The Truman Show</td>
+            <td>The Truman Show - A Vida em Directo</td>
+            <td class="center"><span class="year-badge">1998</span></td>
+            <td>Peter Weir</td>
+          </tr>
+          <tr>
+            <td class="title-col">Léon <span class="note">(The Professional)</span></td>
+            <td>Lèon, o Profissional</td>
+            <td class="center"><span class="year-badge">1994</span></td>
+            <td>Luc Besson</td>
+          </tr>
+          <tr>
+            <td class="title-col">O Pai Tirano</td>
+            <td>O Pai Tirano</td>
+            <td class="center"><span class="year-badge">1941</span></td>
+            <td>António Lopes Ribeiro <span class="note">(remake 2022: João Gomes)</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>
