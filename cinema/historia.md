@@ -17,4 +17,3 @@ Hoje, inundados pelo vórtice digital, pelos ecrãs de bolso e pelos algoritmos 
 ---
 
 
-#aquele-filme 
