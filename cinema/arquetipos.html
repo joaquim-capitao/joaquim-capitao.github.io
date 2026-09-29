@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arquétipos do Cinema</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #0f172a;
+      color: #e2e8f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    .table-container {
+      width: 100%;
+      max-width: 1100px;
+      background: #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+      border: 1px solid #334155;
+    }
+    .table-header {
+      padding: 24px 32px;
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border-bottom: 1px solid #334155;
+    }
+    .table-header h2 {
+      margin: 0 0 6px 0;
+      color: #f8fafc;
+      font-size: 1.5rem;
+      letter-spacing: -0.025em;
+    }
+    .table-header p {
+      margin: 0;
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    th {
+      background-color: #111827;
+      color: #cbd5e1;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+      padding: 16px 20px;
+      border-bottom: 2px solid #334155;
+    }
+    td {
+      padding: 16px 20px;
+      border-bottom: 1px solid #334155;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      vertical-align: top;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.02);
+    }
+    tr:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      transition: background-color 0.15s ease;
+    }
+    .archetype-name {
+      font-weight: 600;
+      color: #38bdf8;
+      white-space: nowrap;
+    }
+    .archetype-alt {
+      font-size: 0.8rem;
+      color: #64748b;
+      display: block;
+      font-weight: normal;
+    }
+    .examples {
+      color: #cbd5e1;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="table-container">
+    <div class="table-header">
+      <h2>Arquétipos Narrativos no Cinema</h2>
+      <p>Estrutura dramática baseada nos modelos de Carl Jung e Christopher Vogler</p>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 20%;">Arquétipo</th>
+          <th style="width: 35%;">Função Dramática</th>
+          <th style="width: 25%;">Características Principais</th>
+          <th style="width: 20%;">Exemplos no Cinema</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span class="archetype-name">O Herói</span>
+            <span class="archetype-alt">Protagonista</span>
+          </td>
+          <td>Serve de ponto de vista do espectador; cura uma ferida inicial, faz as decisões morais cruciais e passa pela maior evolução pessoal.</td>
+          <td>Geralmente relutante de início; precisa sacrificar interesses egoístas em prol do coletivo.</td>
+          <td class="examples">Luke Skywalker (<em>Star Wars</em>), Neo (<em>The Matrix</em>), Clarice Starling (<em>O Silêncio dos Inocentes</em>)</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="archetype-name">O Mentor</span>
+            <span class="archetype-alt">O Sábio</span>
+          </td>
+          <td>Instrui, motiva e mune o herói com competências e objetos essenciais para ingressar no desconhecido.</td>
+          <td>Fonte de sabedoria; quase sempre deve ausentar-se para que o herói enfrente o desafio por conta própria.</td>
+          <td class="examples">Gandalf (<em>O Senhor dos Anéis</em>), Sr. Miyagi (<em>Karatê Kid</em>), Morpheus (<em>The Matrix</em>)</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="archetype-name">A Sombra</span>
+            <span class="archetype-alt">O Vilão / Antagonista</span>
+          </td>
+          <td>Representa a ameaça principal e espelha os medos, traumas e fraquezas não resolvidas do herói.</td>
+          <td>Obstinado e perigoso; vilões marcantes possuem convicções fortes e acreditam ser os heróis da sua história.</td>
+          <td class="examples">Darth Vader (<em>Star Wars</em>), Coringa (<em>O Cavaleiro das Trevas</em>), Anton Chigurh (<em>Onde os Fracos Não Têm Vez</em>)</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="archetype-name">O Guardião do Limiar</span>
+            <span class="archetype-alt">Threshold Guardian</span>
+          </td>
+          <td>Testa a determinação e prontidão do herói nas passagens críticas entre o mundo comum e o mundo extraordinário.</td>
+          <td>Obstáculo transitório; pode ser enfrentado, ultrapassado com astúcia ou mesmo convertido em aliado.</td>
+          <td class="examples">Cavaleiro Negro (<em>Monty Python</em>), Porteiros/Sentinelas, Capangas de mafiosos</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="archetype-name">O Arauto</span>
+            <span class="archetype-alt">O Mensageiro</span>
+          </td>
+          <td>Apresenta o Chamado à Aventura, quebrando a rotina e avisando que a transformação é inescapável.</td>
+          <td>Pode ser uma figura, uma carta, uma transmissão ou uma reviravolta natural que inicia a história.</td>
+          <td class="examples">R2-D2 (<em>Star Wars</em>), Hagrid (<em>Harry Potter</em>), Chamada celular (<em>The Matrix</em>)</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="archetype-name">O Camaleão</span>
+            <span class="archetype-alt">Shapeshifter</span>
+          </td>
+          <td>Mantém a dúvida e a incerteza moral na trama, gerando tensão sobre lealdades e segundas intenções.</td>
+          <td>Muda de máscara com frequência; personifica o mistério (frequente em <em>femmes fatales</em> ou aliados dúbios).</td>
+          <td class="examples">Severo Snape (<em>Harry Potter</em>), Amy Dunne (<em>Garota Exemplar</em>), Han Solo (no início de <em>Star Wars</em>)</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="archetype-name">O Pícaro</span>
+            <span class="archetype-alt">Trickster / Alívio Cômico</span>
+          </td>
+          <td>Alivia a gravidade do enredo, expõe incongruências e desmascara pretensões através do humor ou do absurdo.</td>
+          <td>Aparência irreverente, caótica ou imprevisível; opera como agente subversivo ou ajudante espirituoso.</td>
+          <td class="examples">Jack Sparrow (<em>Piratas das Caraíbas</em>), Loki (<em>MCU</em>), Burro (<em>Shrek</em>)</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="archetype-name">O Aliado</span>
+            <span class="archetype-alt">Companheiro Fiel</span>
+          </td>
+          <td>Dá suporte técnico e emocional, servindo de contrapeso e bússola moral quando o protagonista hesita.</td>
+          <td>Fiel, complementar em personalidade e essencial para humanizar o protagonista nas suas maiores crises.</td>
+          <td class="examples">Samwise Gamgee (<em>O Senhor dos Anéis</em>), Dr. John Watson (<em>Sherlock Holmes</em>), Ron e Hermione (<em>Harry Potter</em>)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
