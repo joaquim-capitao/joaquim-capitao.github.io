@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="pt" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#090d16">
+  <title>Genealogia dos Géneros Musicais Ocidentais</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #090d16;
+      color: #e2e8f0;
+      touch-action: pan-y;
+      overscroll-behavior-y: none;
+    }
+    .font-serif-title {
+      font-family: 'Cinzel', serif;
+    }
+    /* Esconde barra de scroll padrão mas preserva rolagem suave */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Estilos do Bottom Sheet móvel */
+    .bottom-sheet {
+      transform: translateY(105%);
+      transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+      will-change: transform;
+    }
+    .bottom-sheet.open {
+      transform: translateY(0%);
+    }
+    /* Haptic visual tap feedback */
+    .touch-btn {
+      transition: transform 0.1s ease, filter 0.1s ease;
+    }
+    .touch-btn:active {
+      transform: scale(0.96);
+      filter: brightness(1.15);
+    }
+    /* Linha do conector cronológico vertical móvel */
+    .mobile-timeline-stem::before {
+      content: '';
+      position: absolute;
+      left: 1.15rem;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 2px;
+      background: linear-gradient(180deg, #6366f1 0%, #ec4899 50%, #10b981 100%);
+      opacity: 0.45;
+    }
+  </style>
+</head>
+<body class="min-h-full flex flex-col antialiased selection:bg-indigo-500 selection:text-white pb-24 select-none">
+
+  <header class="sticky top-0 z-30 bg-slate-950/90 backdrop-blur-xl border-b border-slate-800/80 px-4 pt-3 pb-2.5">
+    <div class="flex items-center justify-between gap-3 mb-2.5">
+      <div class="flex items-center space-x-2.5 min-w-0">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 flex-shrink-0 flex items-center justify-center text-white shadow-md shadow-indigo-500/20">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"/>
+          </svg>
+        </div>
+        <div class="truncate">
+          <h1 class="text-sm font-bold tracking-tight text-white font-serif-title truncate leading-tight">Linhagens Musicais</h1>
+          <p class="text-[11px] text-slate-400 truncate">Evolução dos Géneros do Ocidente</p>
+        </div>
+      </div>
+      
+      <!-- Contador de itens ativos -->
+      <span id="genreCountBadge" class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-slate-800 text-indigo-400 border border-slate-700/80 flex-shrink-0">
+        22 géneros
+      </span>
+    </div>
+
+    <!-- Barra de Pesquisa otimizada com botão de limpar -->
+    <div class="relative w-full">
+      <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+        </svg>
+      </div>
+      <input 
+        type="search" 
+        id="searchInput" 
+        inputmode="search"
+        placeholder="Pesquisar género, instrumento, artista..." 
+        class="w-full h-11 bg-slate-900/90 text-sm text-slate-100 placeholder-slate-500 pl-9 pr-9 rounded-xl border border-slate-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all appearance-none"
+      >
+      <button 
+        id="clearSearchBtn" 
+        class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 active:text-white"
+        aria-label="Limpar pesquisa"
+      >
+        <svg class="w-4 h-4 bg-slate-800 rounded-full p-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Filtros de Tradição Horizontais (Pills) com rolagem fluida -->
+    <div class="flex items-center space-x-2 overflow-x-auto no-scrollbar pt-2.5 pb-0.5 -mx-4 px-4 scroll-smooth">
+      <button class="filter-pill active touch-btn h-8 px-3 rounded-full text-xs font-semibold whitespace-nowrap bg-indigo-600 text-white border border-indigo-400/40 shadow-sm shadow-indigo-500/20" data-family="all">
+        Todos
+      </button>
+      <button class="filter-pill touch-btn h-8 px-3 rounded-full text-xs font-medium whitespace-nowrap bg-slate-900 text-slate-300 border border-slate-800 hover:text-white" data-family="erudita">
+        🏛️ Erudita
+      </button>
+      <button class="filter-pill touch-btn h-8 px-3 rounded-full text-xs font-medium whitespace-nowrap bg-slate-900 text-slate-300 border border-slate-800 hover:text-white" data-family="afro-raiz">
+        🎷 Afro-Raiz & Blues
+      </button>
+      <button class="filter-pill touch-btn h-8 px-3 rounded-full text-xs font-medium whitespace-nowrap bg-slate-900 text-slate-300 border border-slate-800 hover:text-white" data-family="rock">
+        🎸 Rock & Família
+      </button>
+      <button class="filter-pill touch-btn h-8 px-3 rounded-full text-xs font-medium whitespace-nowrap bg-slate-900 text-slate-300 border border-slate-800 hover:text-white" data-family="groove">
+        🕺 Soul, Funk & Disco
+      </button>
+      <button class="filter-pill touch-btn h-8 px-3 rounded-full text-xs font-medium whitespace-nowrap bg-slate-900 text-slate-300 border border-slate-800 hover:text-white" data-family="eletronica">
+        🎛️ Eletrónica
+      </button>
+      <button class="filter-pill touch-btn h-8 px-3 rounded-full text-xs font-medium whitespace-nowrap bg-slate-900 text-slate-300 border border-slate-800 hover:text-white" data-family="hiphop">
+        🎤 Hip-Hop
+      </button>
+    </div>
+  </header>
+
+  <main class="flex-1 w-full max-w-lg mx-auto px-3.5 py-4">
+    <!-- Vista em Árvore Estruturada Móvel -->
+    <div id="treeContainer" class="space-y-4">
+      <!-- Seções geradas via JS -->
+    </div>
+
+    <!-- Vista em Cronologia Móvel -->
+    <div id="timelineContainer" class="hidden relative pl-9 mobile-timeline-stem space-y-4 py-1">
+      <!-- Itens gerados via JS -->
+    </div>
+
+    <!-- Mensagem de nenhum resultado -->
+    <div id="noResults" class="hidden text-center py-16 px-4">
+      <div class="w-12 h-12 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center mx-auto mb-3 text-slate-500">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <p class="text-sm font-semibold text-slate-300">Nenhum género encontrado</p>
+      <p class="text-xs text-slate-500 mt-1">Tente pesquisar por outro termo ou remova o filtro aplicado.</p>
+    </div>
+  </main>
+
+  <nav class="fixed bottom-0 inset-x-0 z-40 bg-slate-950/95 backdrop-blur-lg border-t border-slate-800/80 px-4 py-2 flex items-center justify-around pb-[max(0.6rem,env(safe-area-inset-bottom))]">
+    <button id="navTreeBtn" class="flex-1 flex flex-col items-center justify-center py-1.5 touch-btn text-indigo-400 font-semibold" aria-label="Vista de Árvore">
+      <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7"/>
+      </svg>
+      <span class="text-[11px] leading-tight">Árvore Genealógica</span>
+    </button>
+
+    <div class="w-px h-6 bg-slate-800"></div>
+
+    <button id="navTimelineBtn" class="flex-1 flex flex-col items-center justify-center py-1.5 touch-btn text-slate-400 font-medium" aria-label="Vista de Cronologia">
+      <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <span class="text-[11px] leading-tight">Cronologia</span>
+    </button>
+  </nav>
+
+  <div id="sheetBackdrop" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+  <div 
+    id="bottomSheet" 
+    class="bottom-sheet fixed inset-x-0 bottom-0 z-50 bg-slate-900 border-t border-slate-700/80 rounded-t-3xl max-h-[88vh] flex flex-col shadow-2xl overflow-hidden pb-[max(1.5rem,env(safe-area-inset-bottom))]"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="sheetTitle"
+  >
+    <!-- Alça de arrasto tátil (Drag Handle) -->
+    <div id="sheetDragHandle" class="w-full py-3 flex flex-col items-center justify-center cursor-grab active:cursor-grabbing flex-shrink-0">
+      <div class="w-12 h-1.5 bg-slate-700 rounded-full"></div>
+    </div>
+
+    <!-- Conteúdo com scroll interno no Bottom Sheet -->
+    <div class="flex-1 overflow-y-auto px-5 pt-1 pb-6 space-y-4 text-slate-200">
+      <div class="flex items-center justify-between gap-2">
+        <span id="sheetFamilyBadge" class="text-[11px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider"></span>
+        <span id="sheetPeriod" class="text-xs font-semibold text-slate-400"></span>
+      </div>
+
+      <div class="flex items-start justify-between gap-3">
+        <h2 id="sheetTitle" class="text-xl font-extrabold text-white leading-tight"></h2>
+        <button id="closeSheetBtn" class="touch-btn p-2 -mr-2 text-slate-400 hover:text-white rounded-full bg-slate-800/80 active:bg-slate-700 flex-shrink-0" aria-label="Fechar detalhes">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <p id="sheetDescription" class="text-sm text-slate-300 leading-relaxed"></p>
+
+      <div class="space-y-3">
+        <div class="bg-slate-950/70 p-3 rounded-2xl border border-slate-800/90">
+          <span class="text-[11px] font-bold text-amber-400 uppercase tracking-wide flex items-center gap-1.5 mb-1">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/></svg>
+            Instrumentos & Identidade Sonora
+          </span>
+          <p id="sheetInstruments" class="text-xs text-slate-300 leading-normal"></p>
+        </div>
+
+        <div class="bg-slate-950/70 p-3 rounded-2xl border border-slate-800/90">
+          <span class="text-[11px] font-bold text-emerald-400 uppercase tracking-wide flex items-center gap-1.5 mb-1">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            Figuras & Artistas Essenciais
+          </span>
+          <p id="sheetArtists" class="text-xs text-slate-300 leading-normal"></p>
+        </div>
+      </div>
+
+      <!-- Conexões de Ascendência e Descendência -->
+      <div class="pt-2 space-y-3 border-t border-slate-800">
+        <div>
+          <span class="text-[11px] text-slate-400 font-bold uppercase tracking-wider block mb-2">
+            Origem / Ascendência:
+          </span>
+          <div id="sheetParents" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <div>
+          <span class="text-[11px] text-slate-400 font-bold uppercase tracking-wider block mb-2">
+            Deu Origem a / Descendência:
+          </span>
+          <div id="sheetChildren" class="flex flex-wrap gap-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const musicData = [
+      {
+        id: "medieval",
+        name: "Música Medieval",
+        family: "erudita",
+        period: "Séc. IX – XIV",
+        yearApprox: 900,
+        description: "Predomínio do Canto Gregoriano e nascimento da notação em abadias. Transição da monofonia sacra para a polifonia primitiva (Ars Antiqua e Ars Nova).",
+        instruments: "Voz humana desacompanhada, Flautas de bisel, Saltério, Alaúde medieval, Órgão primitivo.",
+        artists: "Hildegarda de Bingen, Léonin, Pérotin, Guillaume de Machaut.",
+        parents: [],
+        children: ["renascimento"]
+      },
+      {
+        id: "renascimento",
+        name: "Música Renascentista",
+        family: "erudita",
+        period: "1400 – 1600",
+        yearApprox: 1500,
+        description: "Contraponto vocal imitativo de grande clareza e equilíbrio humanista. Florescimento de madrigais poéticos e música sacra polifónica.",
+        instruments: "Alaúde, Viola da Gamba, Cravo inicial, Sacabuxa (trombone antigo), Coros a 4-8 vozes.",
+        artists: "Palestrina, Josquin des Prez, Thomas Tallis, William Byrd.",
+        parents: ["medieval"],
+        children: ["barroco"]
+      },
+      {
+        id: "barroco",
+        name: "Música Barroca",
+        family: "erudita",
+        period: "1600 – 1750",
+        yearApprox: 1680,
+        description: "Consolidação da harmonia tonal e do baixo contínuo. Invenção da Ópera, do Concerto Grosso e o apogeu da Fuga polifónica.",
+        instruments: "Cravo, Órgão de tubos, Violino barroco, Violoncelo, Oboé, Trompete natural.",
+        artists: "J. S. Bach, Antonio Vivaldi, G. F. Handel, Claudio Monteverdi.",
+        parents: ["renascimento"],
+        children: ["classico"]
+      },
+      {
+        id: "classico",
+        name: "Classicismo",
+        family: "erudita",
+        period: "1750 – 1820",
+        yearApprox: 1780,
+        description: "Busca de simetria melódica, moderação e proporção. Padronização da Orquestra Sinfónica, da Forma-Sonata e do Quarteto de Cordas.",
+        instruments: "Pianoforte, Orquestra de cordas clássica, Clarinetes, Trompas de harmonia.",
+        artists: "Wolfgang Amadeus Mozart, Joseph Haydn, Beethoven (primeira fase).",
+        parents: ["barroco"],
+        children: ["romantico"]
+      },
+      {
+        id: "romantico",
+        name: "Romantismo",
+        family: "erudita",
+        period: "1820 – 1900",
+        yearApprox: 1850,
+        description: "Dramatismo, expansão orquestral épica e valorização do virtuosismo individual e das lendas nacionais.",
+        instruments: "Piano moderno de concerto, Grande orquestra expandida, Tubas, Harpas.",
+        artists: "Ludwig van Beethoven (fase tardia), Frédéric Chopin, Tchaikovsky, Richard Wagner, Franz Liszt.",
+        parents: ["classico"],
+        children: ["blues"]
+      },
+      {
+        id: "afro-raizes",
+        name: "Cantos de Trabalho & Espirituais",
+        family: "afro-raiz",
+        period: "Séc. XVIII – XIX",
+        yearApprox: 1840,
+        description: "Tradição oral dos escravizados africanos no sul dos EUA: síncopes rítmicas, apelos e respostas vocais ('call-and-response') e hinos de libertação.",
+        instruments: "Palmas, Batimentos corporais, Banjo rústico, Voz a capela.",
+        artists: "Fisk Jubilee Singers, comunidades do Delta do Mississippi.",
+        parents: [],
+        children: ["blues"]
+      },
+      {
+        id: "blues",
+        name: "Blues",
+        family: "afro-raiz",
+        period: "1890s – Presente",
+        yearApprox: 1910,
+        description: "Pilar fundamental da música popular do séc. XX. Estrutura harmónica de 12 compassos e 'blue notes' expressivas que transmitem melancolia e resistência.",
+        instruments: "Guitarra com slide acústica/elétrica, Harmónica, Voz rústica, Piano Boogie-Woogie.",
+        artists: "Robert Johnson, Muddy Waters, B.B. King, Bessie Smith.",
+        parents: ["afro-raizes"],
+        children: ["jazz", "rnb", "rocknroll"]
+      },
+      {
+        id: "jazz",
+        name: "Jazz",
+        family: "afro-raiz",
+        period: "1910s – Presente",
+        yearApprox: 1925,
+        description: "Nascido em Nova Orleães fundindo Ragtime, Blues e marchas orquestrais. Caracterizado por improvisação virtuosística, síncope e harmonia sofisticada.",
+        instruments: "Saxofone, Trompete, Contrabaixo acústico, Bateria com swing, Piano.",
+        artists: "Louis Armstrong, Duke Ellington, Charlie Parker, Miles Davis, John Coltrane.",
+        parents: ["blues"],
+        children: ["rnb", "soul", "funk"]
+      },
+      {
+        id: "country",
+        name: "Country & Folk",
+        family: "rock",
+        period: "1920s – Presente",
+        yearApprox: 1930,
+        description: "Folclore rural dos Apalaches com raízes escocesas, irlandesas e baladas narrativas de cordas dedilhadas.",
+        instruments: "Violão acústico, Fiddle (violino folclórico), Banjo, Pedal Steel Guitar.",
+        artists: "Jimmie Rodgers, Hank Williams, Johnny Cash, The Carter Family.",
+        parents: [],
+        children: ["rocknroll"]
+      },
+      {
+        id: "rnb",
+        name: "Rhythm & Blues (R&B Clássico)",
+        family: "groove",
+        period: "1940s – Presente",
+        yearApprox: 1945,
+        description: "Eletrificação do Blues com compasso quaternário acelerado concebido para as pistas de dança urbanas.",
+        instruments: "Guitarra elétrica, Saxofone rítmico, Baixo, Piano boogie, Bateria dançante.",
+        artists: "Louis Jordan, Ruth Brown, Ray Charles, Big Joe Turner.",
+        parents: ["blues", "jazz"],
+        children: ["rocknroll", "soul"]
+      },
+      {
+        id: "rocknroll",
+        name: "Rock 'n' Roll",
+        family: "rock",
+        period: "1950s",
+        yearApprox: 1952,
+        description: "Fusão explosiva entre o Rhythm & Blues afro-americano e o Country branco ('Rockabilly'), simbolizando a nova cultura jovem.",
+        instruments: "Guitarra elétrica solo, Baixo elétrico, Bateria com ênfase nos tempos 2 e 4.",
+        artists: "Chuck Berry, Little Richard, Elvis Presley, Buddy Holly.",
+        parents: ["blues", "country", "rnb"],
+        children: ["rock-classico", "hard-rock", "punk"]
+      },
+      {
+        id: "soul",
+        name: "Soul Music",
+        family: "groove",
+        period: "1960s – 1970s",
+        yearApprox: 1962,
+        description: "Fusão da paixão devocional do Gospel com o ritmo secular do R&B, marcada por vozes poderosas e secções de sopro marcantes.",
+        instruments: "Vocal solista expressivo, Metais (Trompetes/Saxofones), Órgão Hammond, Baixo melódico.",
+        artists: "Aretha Franklin, Otis Redding, Sam Cooke, Marvin Gaye.",
+        parents: ["rnb", "blues"],
+        children: ["funk", "disco", "pop-contemporaneo"]
+      },
+      {
+        id: "rock-classico",
+        name: "Rock (Anos 60 & 70)",
+        family: "rock",
+        period: "1960s – 1970s",
+        yearApprox: 1967,
+        description: "A Invasão Britânica, psicadélico e rock progressivo. O LP de vinil torna-se tela para álbuns conceituais.",
+        instruments: "Guitarras elétricas com distorção e modulação, Baixo elétrico, Bateria rica, Sintetizadores.",
+        artists: "The Beatles, The Rolling Stones, Jimi Hendrix, Pink Floyd, Led Zeppelin.",
+        parents: ["rocknroll"],
+        children: ["hard-rock", "punk"]
+      },
+      {
+        id: "funk",
+        name: "Funk",
+        family: "groove",
+        period: "1965 – 1980s",
+        yearApprox: 1969,
+        description: "Prioridade absoluta para o primeiro tempo do compasso ('The One'). Baixos percussivos sincopados e guitarras rítmicas estridentes.",
+        instruments: "Baixo com técnica de slap, Guitarra com scratch rítmico, Metais staccato, Percussão.",
+        artists: "James Brown, Sly and the Family Stone, Parliament-Funkadelic, Earth Wind & Fire.",
+        parents: ["soul", "jazz"],
+        children: ["disco", "hiphop"]
+      },
+      {
+        id: "hard-rock",
+        name: "Hard Rock & Heavy Metal",
+        family: "rock",
+        period: "Finais dos anos 60 – Presente",
+        yearApprox: 1970,
+        description: "Amplificadores saturados, riffs em 'power chords' e temáticas sombrias ou energéticas com solos velozes.",
+        instruments: "Guitarras com distorção de alto ganho, Bateria com bombo duplo, Baixo pesado.",
+        artists: "Black Sabbath, Deep Purple, Iron Maiden, AC/DC, Metallica.",
+        parents: ["rock-classico", "blues"],
+        children: ["grunge-alt"]
+      },
+      {
+        id: "punk",
+        name: "Punk Rock",
+        family: "rock",
+        period: "Meados dos anos 70",
+        yearApprox: 1976,
+        description: "Reação crua e enérgica contra o excesso de polimento comercial. Filosofia DIY ('Faz Tu Mesmo'), andamentos rápidos e versos de contestação social.",
+        instruments: "Guitarras diretas sem pedais complexos, Baixo reto, Bateria veloz e sem floreados.",
+        artists: "The Ramones, Sex Pistols, The Clash, Dead Kennedys.",
+        parents: ["rocknroll", "rock-classico"],
+        children: ["grunge-alt"]
+      },
+      {
+        id: "disco",
+        name: "Disco Sound",
+        family: "groove",
+        period: "1974 – 1980",
+        yearApprox: 1977,
+        description: "Pulsação 'four-on-the-floor' com bumbo constante, arranjos orquestrais sumptuosos e vocais eufóricos para pistas de dança.",
+        instruments: "Bumbo contínuo 4/4, Baixo sincopado ativo, Cordas orquestrais e Sintetizadores analógicos.",
+        artists: "Donna Summer, Bee Gees, Chic, Giorgio Moroder.",
+        parents: ["funk", "soul"],
+        children: ["house", "pop-contemporaneo"]
+      },
+      {
+        id: "hiphop",
+        name: "Hip-Hop",
+        family: "hiphop",
+        period: "1973 – Presente",
+        yearApprox: 1978,
+        description: "Nascido no South Bronx com DJs a prolongar 'breaks' de bateria de vinis. Rimas métricas conscientes e batidas sampleadas.",
+        instruments: "Gira-discos (turntablism), Caixas de ritmos (Roland TR-808), Samplers digitais (MPC).",
+        artists: "Grandmaster Flash, Run-DMC, Tupac, The Notorious B.I.G., Kendrick Lamar.",
+        parents: ["funk", "soul"],
+        children: ["pop-contemporaneo"]
+      },
+      {
+        id: "house",
+        name: "House Music",
+        family: "eletronica",
+        period: "Início dos anos 80 – Presente",
+        yearApprox: 1984,
+        description: "Evolução eletrónica da música Disco nos clubes de Chicago. Batidas 4/4 geradas por caixas de ritmos e acordes de piano com alma gospel.",
+        instruments: "Roland TR-909 / TR-707, Linhas de baixo sintetizadas TB-303, Samplers de voz.",
+        artists: "Frankie Knuckles, Marshall Jefferson, Daft Punk, Larry Heard.",
+        parents: ["disco", "soul"],
+        children: ["techno"]
+      },
+      {
+        id: "techno",
+        name: "Techno",
+        family: "eletronica",
+        period: "Meados dos anos 80 – Presente",
+        yearApprox: 1988,
+        description: "Criado em Detroit com raízes no futurismo industrial e na eletrónica europeia. Texturas frias, repetição mecânica hipnótica e timbres metálicos.",
+        instruments: "Sintetizadores modulares, Sequenciadores analógicos, Roland TR-808/909.",
+        artists: "Juan Atkins, Derrick May, Kevin Saunderson, Jeff Mills.",
+        parents: ["house", "disco"],
+        children: ["pop-contemporaneo"]
+      },
+      {
+        id: "grunge-alt",
+        name: "Grunge & Rock Alternativo",
+        family: "rock",
+        period: "Finais dos anos 80 – 1990s",
+        yearApprox: 1991,
+        description: "Casamento da crueza e desencanto do Punk com o peso rítmico do Heavy Metal, com dinâmicas contrastantes calmo/explosivo.",
+        instruments: "Guitarras com pedais Boss DS-1 / Electro-Harmonix Small Clone, Baixo áspero, Bateria contundente.",
+        artists: "Nirvana, Pearl Jam, Soundgarden, Radiohead.",
+        parents: ["punk", "hard-rock"],
+        children: ["pop-contemporaneo"]
+      },
+      {
+        id: "pop-contemporaneo",
+        name: "Pop Contemporâneo & Fusões Globais",
+        family: "groove",
+        period: "Anos 2000 – Presente",
+        yearApprox: 2010,
+        description: "A grande convergência do séc. XXI produzida em estações de trabalho digitais (DAWs), mesclando Synthpop, Trap, R&B, ritmos latinos e Afrobeats.",
+        instruments: "DAWs (Ableton, Logic), Sintetizadores virtuais VST, Efeitos vocais (Auto-Tune), Amostras rítmicas.",
+        artists: "Michael Jackson (ponte inaugural), Madonna, Beyoncé, The Weeknd, Taylor Swift, Dua Lipa.",
+        parents: ["disco", "soul", "hiphop", "house"],
+        children: []
+      }
+    ];
+
+    const familyConfig = {
+      "erudita": { label: "Erudita", color: "from-amber-500 to-amber-700", border: "border-amber-500/40", text: "text-amber-400", bg: "bg-amber-500/15" },
+      "afro-raiz": { label: "Afro-Raiz & Blues", color: "from-blue-500 to-indigo-700", border: "border-blue-500/40", text: "text-blue-400", bg: "bg-blue-500/15" },
+      "rock": { label: "Rock", color: "from-rose-500 to-red-700", border: "border-rose-500/40", text: "text-rose-400", bg: "bg-rose-500/15" },
+      "groove": { label: "Soul & Disco", color: "from-purple-500 to-violet-700", border: "border-purple-500/40", text: "text-purple-400", bg: "bg-purple-500/15" },
+      "eletronica": { label: "Eletrónica", color: "from-cyan-500 to-teal-700", border: "border-cyan-500/40", text: "text-cyan-400", bg: "bg-cyan-500/15" },
+      "hiphop": { label: "Hip-Hop", color: "from-emerald-500 to-green-700", border: "border-emerald-500/40", text: "text-emerald-400", bg: "bg-emerald-500/15" }
+    };
+  </script>
+
+  <script>
+    let activeFamily = 'all';
+    let searchQuery = '';
+    let currentView = 'tree';
+
+    const treeContainer = document.getElementById('treeContainer');
+    const timelineContainer = document.getElementById('timelineContainer');
+    const noResults = document.getElementById('noResults');
+    const searchInput = document.getElementById('searchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const genreCountBadge = document.getElementById('genreCountBadge');
+
+    function matchesFilter(genre) {
+      const q = searchQuery.trim().toLowerCase();
+      const matchesSearch = q === '' || 
+        genre.name.toLowerCase().includes(q) ||
+        genre.description.toLowerCase().includes(q) ||
+        genre.instruments.toLowerCase().includes(q) ||
+        genre.artists.toLowerCase().includes(q);
+
+      const matchesFam = activeFamily === 'all' || genre.family === activeFamily;
+      return matchesSearch && matchesFam;
+    }
+
+    function renderTree() {
+      treeContainer.innerHTML = '';
+
+      const eras = [
+        {
+          title: "1. Tradição Acústica e Erudita",
+          badge: "Séc. IX – XIX",
+          desc: "Fundação da notação, harmonia e orquestra.",
+          ids: ["medieval", "renascimento", "barroco", "classico", "romantico"]
+        },
+        {
+          title: "2. Matriz Afro-Americana & Raízes",
+          badge: "1880 – 1950",
+          desc: "A síncope e o lamento transformam o compasso moderno.",
+          ids: ["afro-raizes", "blues", "jazz", "country", "rnb"]
+        },
+        {
+          title: "3. Revolução do Rock & Groove",
+          badge: "1950 – 1970s",
+          desc: "Eletrificação de guitarras e ritmos sincopados.",
+          ids: ["rocknroll", "soul", "rock-classico", "funk", "hard-rock", "punk"]
+        },
+        {
+          title: "4. Beats Digitais, Eletrónica & Pop",
+          badge: "1970s – Atualidade",
+          desc: "Sintetizadores, samplers e fusões globais.",
+          ids: ["disco", "hiphop", "house", "techno", "grunge-alt", "pop-contemporaneo"]
+        }
+      ];
+
+      let totalVisible = 0;
+
+      eras.forEach(era => {
+        const genresInEra = musicData.filter(g => era.ids.includes(g.id) && matchesFilter(g));
+        if (genresInEra.length === 0) return;
+
+        totalVisible += genresInEra.length;
+
+        const section = document.createElement('div');
+        section.className = "bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3.5 backdrop-blur-sm";
+
+        section.innerHTML = `
+          <div class="mb-3">
+            <div class="flex items-center justify-between gap-2">
+              <h3 class="text-xs font-bold text-slate-100 flex items-center gap-1.5 truncate">
+                <span class="w-2 h-2 rounded-full bg-indigo-500 flex-shrink-0"></span>
+                <span class="truncate">${era.title}</span>
+              </h3>
+              <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700/60 flex-shrink-0">
+                ${era.badge}
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-400 mt-0.5 leading-tight">${era.desc}</p>
+          </div>
+          <div class="space-y-2.5">
+            ${genresInEra.map(g => renderMobileTreeCard(g)).join('')}
+          </div>
+        `;
+        treeContainer.appendChild(section);
+      });
+
+      return totalVisible;
+    }
+
+    function renderMobileTreeCard(genre) {
+      const conf = familyConfig[genre.family] || familyConfig['erudita'];
+      
+      const parentBadges = genre.parents.map(pid => {
+        const pObj = musicData.find(m => m.id === pid);
+        return pObj ? `<span class="inline-block text-[10px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded">de: ${pObj.name}</span>` : '';
+      }).join(' ');
+
+      return `
+        <div 
+          class="genre-card touch-btn min-h-[48px] bg-slate-950/80 active:bg-slate-900 border border-slate-800 hover:border-slate-700/90 rounded-xl p-3 flex flex-col justify-between cursor-pointer"
+          data-id="${genre.id}"
+          role="button"
+          tabindex="0"
+        >
+          <div>
+            <div class="flex items-center justify-between gap-1.5 mb-1.5">
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${conf.bg} ${conf.text} border ${conf.border}">
+                ${conf.label}
+              </span>
+              <span class="text-[11px] text-slate-400 font-medium">${genre.period}</span>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <h4 class="text-sm font-bold text-white tracking-tight leading-snug">${genre.name}</h4>
+              <span class="text-slate-500 text-xs pl-1">›</span>
+            </div>
+
+            <p class="text-[12px] text-slate-400 line-clamp-2 mt-1 leading-relaxed">
+              ${genre.description}
+            </p>
+          </div>
+
+          <div class="mt-2.5 pt-2 border-t border-slate-900 flex items-center justify-between text-[11px] text-slate-400">
+            <div class="flex flex-wrap gap-1">
+              ${parentBadges || '<span class="text-[10px] text-slate-400 italic">Matriz originária</span>'}
+            </div>
+            <span class="text-[10px] text-indigo-400 font-semibold pl-2">Ver detalhes</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderTimeline() {
+      timelineContainer.innerHTML = '';
+      
+      const sorted = [...musicData]
+        .filter(matchesFilter)
+        .sort((a, b) => a.yearApprox - b.yearApprox);
+
+      sorted.forEach(g => {
+        const conf = familyConfig[g.family] || familyConfig['erudita'];
+        const item = document.createElement('div');
+        item.className = "relative group cursor-pointer touch-btn";
+        item.setAttribute('role', 'button');
+        item.setAttribute('tabindex', '0');
+        item.onclick = () => openDetails(g.id);
+
+        item.innerHTML = `
+          <div class="absolute -left-9 top-3 w-5 h-5 rounded-full bg-slate-950 border-2 ${conf.border} flex items-center justify-center">
+            <div class="w-1.5 h-1.5 rounded-full bg-indigo-400"></div>
+          </div>
+          <div class="bg-slate-900/80 active:bg-slate-800 border border-slate-800 p-3 rounded-xl">
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <span class="text-[11px] font-bold ${conf.text}">${g.period}</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-md ${conf.bg} ${conf.text} border ${conf.border}">${conf.label}</span>
+            </div>
+            <h4 class="text-sm font-bold text-white">${g.name}</h4>
+            <p class="text-xs text-slate-400 mt-1 line-clamp-2 leading-relaxed">${g.description}</p>
+            <div class="mt-2 pt-1.5 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400">
+              <span class="truncate max-w-[200px]"><strong class="text-slate-300">Artistas:</strong> ${g.artists.split(',').slice(0, 2).join(', ')}</span>
+              <span class="text-indigo-400 font-semibold ml-2">Abrir ›</span>
+            </div>
+          </div>
+        `;
+        timelineContainer.appendChild(item);
+      });
+
+      return sorted.length;
+    }
+
+    function updateView() {
+      const countTree = renderTree();
+      const countTimeline = renderTimeline();
+      const total = currentView === 'tree' ? countTree : countTimeline;
+
+      genreCountBadge.textContent = `${total} géneros`;
+
+      if (total === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+
+      attachCardListeners();
+    }
+
+    function attachCardListeners() {
+      document.querySelectorAll('.genre-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const id = card.getAttribute('data-id');
+          openDetails(id);
+        });
+      });
+    }
+  </script>
+
+  <script>
+    const sheetBackdrop = document.getElementById('sheetBackdrop');
+    const bottomSheet = document.getElementById('bottomSheet');
+    const sheetTitle = document.getElementById('sheetTitle');
+    const sheetDescription = document.getElementById('sheetDescription');
+    const sheetFamilyBadge = document.getElementById('sheetFamilyBadge');
+    const sheetPeriod = document.getElementById('sheetPeriod');
+    const sheetInstruments = document.getElementById('sheetInstruments');
+    const sheetArtists = document.getElementById('sheetArtists');
+    const sheetParents = document.getElementById('sheetParents');
+    const sheetChildren = document.getElementById('sheetChildren');
+    const closeSheetBtn = document.getElementById('closeSheetBtn');
+    const sheetDragHandle = document.getElementById('sheetDragHandle');
+
+    let touchStartY = 0;
+    let touchCurrentY = 0;
+    let isDragging = false;
+
+    function openDetails(genreId) {
+      const genre = musicData.find(g => g.id === genreId);
+      if (!genre) return;
+
+      const conf = familyConfig[genre.family] || familyConfig['erudita'];
+
+      sheetFamilyBadge.textContent = conf.label;
+      sheetFamilyBadge.className = `text-[11px] px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider ${conf.bg} ${conf.text} border ${conf.border}`;
+      sheetPeriod.textContent = genre.period;
+
+      sheetTitle.textContent = genre.name;
+      sheetDescription.textContent = genre.description;
+      sheetInstruments.textContent = genre.instruments;
+      sheetArtists.textContent = genre.artists;
+
+      // Ascendência
+      sheetParents.innerHTML = '';
+      if (genre.parents.length === 0) {
+        sheetParents.innerHTML = `<span class="text-xs text-slate-400 italic">Tradição originária primária da música ocidental</span>`;
+      } else {
+        genre.parents.forEach(pid => {
+          const p = musicData.find(m => m.id === pid);
+          if (p) {
+            const btn = document.createElement('button');
+            btn.className = "touch-btn min-h-[38px] text-xs px-3 py-1.5 bg-slate-800 active:bg-slate-700 text-indigo-300 rounded-xl border border-slate-700 transition flex items-center gap-1.5 font-medium";
+            btn.innerHTML = `<span class="text-indigo-400">↑</span> <span>${p.name}</span>`;
+            btn.onclick = () => openDetails(p.id);
+            sheetParents.appendChild(btn);
+          }
+        });
+      }
+
+      // Descendência
+      sheetChildren.innerHTML = '';
+      if (genre.children.length === 0) {
+        sheetChildren.innerHTML = `<span class="text-xs text-slate-400 italic">Género contemporâneo em contínua evolução e hibridação</span>`;
+      } else {
+        genre.children.forEach(cid => {
+          const c = musicData.find(m => m.id === cid);
+          if (c) {
+            const btn = document.createElement('button');
+            btn.className = "touch-btn min-h-[38px] text-xs px-3 py-1.5 bg-slate-800 active:bg-slate-700 text-pink-300 rounded-xl border border-slate-700 transition flex items-center gap-1.5 font-medium";
+            btn.innerHTML = `<span class="text-pink-400">↓</span> <span>${c.name}</span>`;
+            btn.onclick = () => openDetails(c.id);
+            sheetChildren.appendChild(btn);
+          }
+        });
+      }
+
+      // Abre com animação
+      sheetBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+      bottomSheet.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSheet() {
+      bottomSheet.classList.remove('open');
+      bottomSheet.style.transform = '';
+      sheetBackdrop.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    }
+
+    closeSheetBtn.addEventListener('click', closeSheet);
+    sheetBackdrop.addEventListener('click', closeSheet);
+
+    // Gestos de arrastar para baixo para fechar no telemóvel (Swipe to dismiss)
+    sheetDragHandle.addEventListener('touchstart', (e) => {
+      touchStartY = e.touches[0].clientY;
+      isDragging = true;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      touchCurrentY = e.touches[0].clientY;
+      const deltaY = touchCurrentY - touchStartY;
+      if (deltaY > 0) {
+        bottomSheet.style.transform = `translateY(${deltaY}px)`;
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      const deltaY = touchCurrentY - touchStartY;
+      if (deltaY > 110) {
+        closeSheet();
+      } else {
+        bottomSheet.style.transform = '';
+      }
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeSheet();
+    });
+  </script>
+
+  <script>
+    const navTreeBtn = document.getElementById('navTreeBtn');
+    const navTimelineBtn = document.getElementById('navTimelineBtn');
+
+    navTreeBtn.addEventListener('click', () => {
+      currentView = 'tree';
+      navTreeBtn.className = "flex-1 flex flex-col items-center justify-center py-1.5 touch-btn text-indigo-400 font-semibold";
+      navTimelineBtn.className = "flex-1 flex flex-col items-center justify-center py-1.5 touch-btn text-slate-400 font-medium";
+      treeContainer.classList.remove('hidden');
+      timelineContainer.classList.add('hidden');
+      updateView();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    navTimelineBtn.addEventListener('click', () => {
+      currentView = 'timeline';
+      navTimelineBtn.className = "flex-1 flex flex-col items-center justify-center py-1.5 touch-btn text-indigo-400 font-semibold";
+      navTreeBtn.className = "flex-1 flex flex-col items-center justify-center py-1.5 touch-btn text-slate-400 font-medium";
+      timelineContainer.classList.remove('hidden');
+      treeContainer.classList.add('hidden');
+      updateView();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Filtros de família (Pills com scroll suave)
+    document.querySelectorAll('.filter-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-pill').forEach(b => {
+          b.className = "filter-pill touch-btn h-8 px-3 rounded-full text-xs font-medium whitespace-nowrap bg-slate-900 text-slate-300 border border-slate-800";
+        });
+        btn.className = "filter-pill active touch-btn h-8 px-3 rounded-full text-xs font-semibold whitespace-nowrap bg-indigo-600 text-white border border-indigo-400/40 shadow-sm shadow-indigo-500/20";
+        activeFamily = btn.getAttribute('data-family');
+        btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        updateView();
+      });
+    });
+
+    // Pesquisa com limpar instantâneo
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      if (searchQuery.length > 0) {
+        clearSearchBtn.classList.remove('hidden');
+      } else {
+        clearSearchBtn.classList.add('hidden');
+      }
+      updateView();
+    });
+
+    clearSearchBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchQuery = '';
+      clearSearchBtn.classList.add('hidden');
+      searchInput.focus();
+      updateView();
+    });
+
+    // Início da aplicação
+    updateView();
+  </script>
+</body>
+</html>
