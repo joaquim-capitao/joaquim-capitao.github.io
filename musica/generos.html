@@ -96,7 +96,7 @@
         transform: translate(-50%, -46%) scale(0.96);
         max-height: 88vh;
         width: 100%;
-        max-width: 52rem; /* widened for larger font */
+        max-width: 52rem;
         border-radius: 1.5rem;
         opacity: 0;
         pointer-events: none;
@@ -289,7 +289,7 @@
             </div>
           </div>
           <p>
-            Neste esquema, explore os cartões para inspecionar cada género musical, analisar instrumentos emblemáticos e navegar pelas ramificações diretas de ascendência e descendência.
+            Neste esquema interativo com tipografia <strong>Ubuntu</strong> ampliada para máxima legibilidade, explore os cartões para inspecionar cada género musical, analisar instrumentos emblemáticos e navegar pelas ramificações diretas de ascendência e descendência.
           </p>
         </div>
       </div>
@@ -306,6 +306,24 @@
         Limpar Filtros e Pesquisa
       </button>
     </div>
+
+    <!-- Rodapé de Navegação com Link de Retorno -->
+    <footer class="mt-14 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <a 
+        href="https://joaquim-capitao.github.io" 
+        class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800 hover:border-indigo-500/50 text-slate-300 hover:text-white transition-all shadow-sm group"
+      >
+        <svg class="w-4 h-4 text-indigo-400 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+        </svg>
+        <span class="text-sm font-semibold">Voltar à página anterior</span>
+        <span class="text-xs font-mono text-slate-400">joaquim-capitao.github.io</span>
+      </a>
+
+      <p class="text-xs text-slate-400 font-mono">
+        Linhagens Sonoras &bull; Genealogia dos Géneros Musicais
+      </p>
+    </footer>
 
   </main>
 
@@ -793,7 +811,6 @@
       return matchesText && matchesFam;
     }
 
-    // Render Tree View with larger headings and generous spacing
     function renderTreeView() {
       treeViewContainer.innerHTML = '';
 
@@ -853,7 +870,6 @@
             </span>
           </div>
 
-          <!-- Responsive Grid: 1 col on mobile, 2 on tablet, 3 on desktop -->
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             ${genresInEra.map(g => createGenreCardHTML(g)).join('')}
           </div>
@@ -917,7 +933,6 @@
       `;
     }
 
-    // Render Timeline View with enlarged typography
     function renderTimelineView() {
       timelineContentWrapper.innerHTML = '';
 
@@ -934,12 +949,10 @@
         timelineNode.onclick = () => openModal(g.id);
 
         timelineNode.innerHTML = `
-          <!-- Central Desktop Node / Left Mobile Node -->
           <div class="absolute -left-12 md:left-1/2 top-5 md:-translate-x-1/2 w-7 h-7 rounded-full bg-slate-950 border-2 ${vis.border} flex items-center justify-center z-10 shadow-lg group-hover:scale-125 transition-transform">
             <div class="w-2.5 h-2.5 rounded-full bg-indigo-400"></div>
           </div>
 
-          <!-- Card positioned left/right on desktop, single column on mobile -->
           <div class="md:w-1/2 ${isEven ? 'md:pr-12 md:mr-auto' : 'md:pl-12 md:ml-auto'}">
             <div class="glass-card p-5 sm:p-6 rounded-2xl border border-slate-800 group-hover:border-indigo-500/60 transition-all">
               <div class="flex items-center justify-between gap-2 mb-2">
@@ -1140,11 +1153,9 @@
     function switchView(viewName) {
       currentView = viewName;
 
-      // Update Desktop Buttons UI
       [deskNavTreeBtn, deskNavTimelineBtn, deskNavInfoBtn].forEach(b => {
         b.className = "px-5 py-2.5 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/80 flex items-center space-x-2 transition-all";
       });
-      // Update Mobile Buttons UI
       [mobileNavTreeBtn, mobileNavTimelineBtn, mobileNavInfoBtn].forEach(b => {
         b.className = "flex-1 flex flex-col items-center justify-center py-1.5 text-slate-400 font-semibold transition-all";
       });
