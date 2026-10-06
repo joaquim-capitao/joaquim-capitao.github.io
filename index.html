@@ -96,6 +96,23 @@
       }
     }
 
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 2.5rem 0 1.25rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background-color: var(--border);
+    }
+
     nav ul {
       list-style: none;
       display: flex;
@@ -210,7 +227,8 @@
       </p>
     </header>
 
-    <nav aria-label="Secções do site">
+    <!-- Secção Geral / Principal -->
+    <nav aria-label="Secções principais">
       <ul>
         <li>
           <a class="card" href="https://joaquim-capitao.github.io/autobiografia">
@@ -248,44 +266,62 @@
             <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
           </a>
         </li>
-        <li>
-          <a class="card" href="https://joaquim-capitao.github.io/cinema">
-            <span class="icon-box" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="2.18" ry="2.18"/><line x1="7" x2="7" y1="2" y2="22"/><line x1="17" x2="17" y1="2" y2="22"/><line x1="2" x2="22" y1="12" y2="12"/><line x1="2" x2="7" y1="7" y2="7"/><line x1="2" x2="7" y1="17" y2="17"/><line x1="17" x2="22" y1="17" y2="17"/><line x1="17" x2="22" y1="7" y2="7"/></svg>
-            </span>
-            <span class="card-content">
-              <span class="card-title">Cinema</span>
-              <span class="card-desc">Os segredos da sétima arte.</span>
-            </span>
-            <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-          </a>
-        </li>
-        <li>
-          <a class="card" href="https://joaquim-capitao.github.io/musica">
-            <span class="icon-box" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-            </span>
-            <span class="card-content">
-              <span class="card-title">Música</span>
-              <span class="card-desc">Uma travessia pelas origens dos sons e pela reinvenção das melodias.</span>
-            </span>
-            <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-          </a>
-        </li>
-        <li>
-          <a class="card" href="https://joaquim-capitao.github.io/termos">
-            <span class="icon-box" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12h-5"/><path d="M15 8h-5"/><path d="M15 16h-5"/><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v3"/><path d="M2 15h5"/><path d="M2 11h5"/><path d="M2 7h5"/><path d="M2 19h5"/></svg>
-            </span>
-            <span class="card-content">
-              <span class="card-title">Termos de Utilização</span>
-              <span class="card-desc">A letra pequenina, em tamanho legível.</span>
-            </span>
-            <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
-          </a>
-        </li>
       </ul>
     </nav>
+
+    <!-- Secção Áreas de Interesse -->
+    <section aria-labelledby="areas-interesse">
+      <h2 id="areas-interesse" class="section-title">Áreas de Interesse</h2>
+      <nav aria-label="Áreas de interesse">
+        <ul>
+          <li>
+            <a class="card" href="https://joaquim-capitao.github.io/cinema">
+              <span class="icon-box" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="2.18" ry="2.18"/><line x1="7" x2="7" y1="2" y2="22"/><line x1="17" x2="17" y1="2" y2="22"/><line x1="2" x2="22" y1="12" y2="12"/><line x1="2" x2="7" y1="7" y2="7"/><line x1="2" x2="7" y1="17" y2="17"/><line x1="17" x2="22" y1="17" y2="17"/><line x1="17" x2="22" y1="7" y2="7"/></svg>
+              </span>
+              <span class="card-content">
+                <span class="card-title">Cinema</span>
+                <span class="card-desc">Os segredos da sétima arte.</span>
+              </span>
+              <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="card" href="https://joaquim-capitao.github.io/musica">
+              <span class="icon-box" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+              </span>
+              <span class="card-content">
+                <span class="card-title">Música</span>
+                <span class="card-desc">Uma travessia pelas origens dos sons e pela reinvenção das melodias.</span>
+              </span>
+              <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+
+    <!-- Secção Legal / Termos -->
+    <section aria-labelledby="informacoes-legais">
+      <h2 id="informacoes-legais" class="section-title">Informações Legais</h2>
+      <nav aria-label="Informações legais">
+        <ul>
+          <li>
+            <a class="card" href="https://joaquim-capitao.github.io/termos">
+              <span class="icon-box" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12h-5"/><path d="M15 8h-5"/><path d="M15 16h-5"/><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v3"/><path d="M2 15h5"/><path d="M2 11h5"/><path d="M2 7h5"/><path d="M2 19h5"/></svg>
+              </span>
+              <span class="card-content">
+                <span class="card-title">Termos de Utilização</span>
+                <span class="card-desc">A letra pequenina, em tamanho legível.</span>
+              </span>
+              <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </section>
 
     <footer>
       "Obrigado pela visita"
