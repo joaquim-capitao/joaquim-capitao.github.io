@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Guia Rápido de Markdown</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --code-bg: #090d16;
+      --border: #334155;
+      --highlight: #f59e0b;
+      --success: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 16px 12px 60px 12px;
+      font-size: 15px;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px 8px 24px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    h1 {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card p.desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .syntax-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 10px;
+      background: rgba(15, 23, 42, 0.4);
+      padding: 8px 10px;
+      border-radius: 8px;
+      border-left: 3px solid var(--accent);
+    }
+
+    .syntax-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .syntax-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    pre, code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.85rem;
+    }
+
+    pre {
+      background: var(--code-bg);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 6px;
+      padding: 10px;
+      overflow-x: auto;
+      white-space: pre;
+      color: #38bdf8;
+      line-height: 1.4;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    code.inline {
+      background: var(--code-bg);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #f43f5e;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .preview-box {
+      background: #243248;
+      padding: 8px 10px;
+      border-radius: 6px;
+      margin-top: 4px;
+      font-size: 0.85rem;
+    }
+
+    .preview-title {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin-top: 6px;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 6px 10px;
+      text-align: left;
+    }
+
+    th {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+    }
+
+    blockquote {
+      border-left: 3px solid var(--accent);
+      padding-left: 10px;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="badge">Referência Mobile</div>
+    <h1>Comandos Markdown</h1>
+    <p class="subtitle">Guia prático de sintaxe e formatação rápida</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Títulos -->
+    <section class="card">
+      <h2>📌 1. Títulos (Headings)</h2>
+      <p class="desc">Usa-se de 1 a 6 cardinais <code>#</code> seguidos de espaço no início da linha:</p>
+      <pre># Título H1
+## Título H2
+### Título H3
+#### Título H4
+##### Título H5
+###### Título H6</pre>
+    </section>
+
+    <!-- Estilização de Texto -->
+    <section class="card">
+      <h2>✨ 2. Formatação de Texto</h2>
+      
+      <div class="syntax-row">
+        <span class="syntax-label">Negrito</span>
+        <code>**negrito**</code> ou <code>__negrito__</code>
+        <div class="preview-box"><strong>Exemplo em negrito</strong></div>
+      </div>
+
+      <div class="syntax-row">
+        <span class="syntax-label">Itálico</span>
+        <code>*itálico*</code> ou <code>_itálico_</code>
+        <div class="preview-box"><em>Exemplo em itálico</em></div>
+      </div>
+
+      <div class="syntax-row">
+        <span class="syntax-label">Negrito + Itálico</span>
+        <code>***negrito e itálico***</code>
+        <div class="preview-box"><strong><em>Exemplo combinado</em></strong></div>
+      </div>
+
+      <div class="syntax-row">
+        <span class="syntax-label">Riscado / Tachado</span>
+        <code>~~texto riscado~~</code>
+        <div class="preview-box"><del>Texto riscado</del></div>
+      </div>
+    </section>
+
+    <!-- Listas -->
+    <section class="card">
+      <h2>📋 3. Listas & Checklists</h2>
+      <p class="desc">Bulleted, numeradas ou tarefas:</p>
+      
+      <div class="syntax-row">
+        <span class="syntax-label">Não ordenadas (*, - ou +)</span>
+        <pre>* Fruta
+  * Maçã (2 espaços)
+* Legume</pre>
+      </div>
+
+      <div class="syntax-row">
+        <span class="syntax-label">Ordenadas</span>
+        <pre>1. Passo um
+2. Passo dois
+   1. Subpasso</pre>
+      </div>
+
+      <div class="syntax-row">
+        <span class="syntax-label">Tarefas (Checklist)</span>
+        <pre>- [ ] Por fazer
+- [x] Concluído</pre>
+        <div class="preview-box">
+          <div class="checklist-item"><input type="checkbox" disabled> Por fazer</div>
+          <div class="checklist-item"><input type="checkbox" checked disabled> Concluído</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Links e Imagens -->
+    <section class="card">
+      <h2>🔗 4. Links & Imagens</h2>
+      <div class="syntax-row">
+        <span class="syntax-label">Link com texto</span>
+        <code>[Nome do Link](https://exemplo.com)</code>
+      </div>
+      <div class="syntax-row">
+        <span class="syntax-label">Link com tooltip</span>
+        <code>[Nome](https://exemplo.com "Título ao passar o rato")</code>
+      </div>
+      <div class="syntax-row">
+        <span class="syntax-label">Imagem</span>
+        <code>![Texto alternativo](url-da-imagem.jpg)</code>
+      </div>
+      <div class="syntax-row">
+        <span class="syntax-label">Link automático</span>
+        <code>&lt;https://exemplo.com&gt;</code>
+      </div>
+    </section>
+
+    <!-- Código -->
+    <section class="card">
+      <h2>💻 5. Código</h2>
+      <div class="syntax-row">
+        <span class="syntax-label">Em linha (Inline)</span>
+        <p>Usa <code>`print('olá')`</code> no meio do texto.</p>
+      </div>
+
+      <div class="syntax-row">
+        <span class="syntax-label">Bloco de Código (Code block)</span>
+        <pre>```python
+def ola_mundo():
+    print("Olá, Telemóvel!")
+```</pre>
+      </div>
+    </section>
+
+    <!-- Citações -->
+    <section class="card">
+      <h2>💬 6. Citações (Blockquotes)</h2>
+      <p class="desc">Começa a linha com <code>&gt;</code>:</p>
+      <pre>&gt; Esta é uma citação em destaque.
+&gt;&gt; Citação aninhada.</pre>
+      <div class="preview-box">
+        <blockquote>Esta é uma citação em destaque.</blockquote>
+      </div>
+    </section>
+
+    <!-- Tabelas -->
+    <section class="card">
+      <h2>📊 7. Tabelas</h2>
+      <p class="desc">Usa barras verticais <code>|</code> e traços <code>-</code>:</p>
+      <pre>| Item | Qtd | Preço |
+| :--- | :---: | ---: |
+| Maçã | 10 | 1,50€ |
+| Pera | 4 | 2,00€ |</pre>
+      <div class="preview-title" style="margin-top: 8px;">Pré-visualização:</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th style="text-align: center;">Qtd</th>
+            <th style="text-align: right;">Preço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Maçã</td>
+            <td style="text-align: center;">10</td>
+            <td style="text-align: right;">1,50€</td>
+          </tr>
+          <tr>
+            <td>Pera</td>
+            <td style="text-align: center;">4</td>
+            <td style="text-align: right;">2,00€</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Divisórias e Quebras -->
+    <section class="card">
+      <h2>📏 8. Divisores e Quebras</h2>
+      <div class="syntax-row">
+        <span class="syntax-label">Linha Horizontal</span>
+        <code>---</code> ou <code>***</code>
+      </div>
+      <div class="syntax-row">
+        <span class="syntax-label">Quebra de linha simples</span>
+        <p>Adiciona <strong>2 espaços</strong> no final da linha antes de Enter, ou usa <code>&lt;br&gt;</code>.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    Ficheiro HTML autocontido • Otimizado para ecrãs táteis
+  </footer>
+
+</body>
+</html>
