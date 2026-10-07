@@ -78,3 +78,8 @@ A estrutura comunitária é profundamente relacional, hierárquica e centrada na
  * Ausência de casta sacerdotal separada: não possui um clero profissional ou papado nos moldes ocidentais.
  * O Filho do Céu (Tianzi): o Imperador era a autoridade ritual suprema, encarregado de executar anualmente os grandes ritos públicos no Altar do Céu para manter a harmonia cósmica e humana.
  * Letrados-funcionários (Mandolins / Shi): a liderança espiritual e moral quotidiana residia na classe letrada dos burocratas-eruditos confucionistas, selecionados por meio de exigentes exames imperiais baseados no domínio rigoroso dos textos canónicos confucionistas. Na base social, os patriarcas das linhagens familiares eram os responsáveis pela condução dos ritos domésticos e pela manutenção da disciplina moral.
+
+---
+
+[<-- Voltar atrás](https://joaquim-capitao.github.io/religiao/)
+
