@@ -1,6 +1,6 @@
 # Cristianismo 
 
-1. Fundador
+1. Fundador  
 Jesus de Nazaré (o Cristo ou Messias), reconhecido teologicamente pelos crentes como o Filho encarnado de Deus, cuja vida, ensinamentos, crucificação e ressurreição constituem o cerne da fé. O apóstolo Paulo de Tarso e os doze apóstolos desempenharam um papel estruturante na primeira expansão e formulação eclesial e teológica.
 
 2. Data
