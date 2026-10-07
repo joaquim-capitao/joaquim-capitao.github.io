@@ -1,5 +1,6 @@
 # Informática
 
-[HTML](HTML)
-[Markdown](markdown)
-[Linux](linux)
+[HTML](HTML)  
+[Markdown](markdown)  
+[Linux](linux)   
+
