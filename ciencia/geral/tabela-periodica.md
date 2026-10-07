@@ -1,0 +1,1 @@
+![](https://s2.static.brasilescola.uol.com.br/be/2025/05/tabela-periodica.jpg)
