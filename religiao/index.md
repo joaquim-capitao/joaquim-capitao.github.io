@@ -11,9 +11,9 @@ Religião é um sistema organizado de crenças, práticas, valores morais e vis�
 [Budismo (~500 a 530 milhões)](budismo)     
 [Siquismo (~30 milhões)](siquismo)     
 [Judaísmo (~15 milhões)](judaismo)  
-[Taoismo](taoismo)   
-[Confucionismo](confucionismo)  
-[Xintoísmo](xintoismo)  
+[Taoismo (~12 milhões](taoismo)   
+[Confucionismo (~6 milhões)](confucionismo)  
+[Xintoísmo (~4 milhões)](xintoismo)  
 
 ## Distribuição geográfica
 
