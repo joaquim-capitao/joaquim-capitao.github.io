@@ -8,6 +8,11 @@ Conceitos-chave: Dharma (dever/ordem cósmica), Karma (causa e efeito) e Samsara
 Presença: Predominantemente na Índia e no Nepal.   
 
 
+---
+[<-- Voltar atrás](https://joaquim-capitao.github.io/religiao/)
+
+
+
 
 
 
