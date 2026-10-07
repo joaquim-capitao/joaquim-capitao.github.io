@@ -18,7 +18,7 @@ Não existe um cânone único para todas as escolas, mas três grandes coleçõe
 5. Principais Ramificações  
  * Theravada ("Doutrina dos Anciãos"): predominante no Sri Lanka e no Sudeste Asiático (Birmânia, Tailândia, Camboja, Laos); enfatiza a disciplina monástica, a preservação estrita do Cânone Páli e o ideal do Arhat (libertação pessoal).
  * Mahayana ("Grande Veículo"): dominante na China, Coreia, Japão e Vietname (inclui tradições como Zen/Chan, Terra Pura e Nichiren); enfatiza a compaixão universal e o ideal do Bodhisattva (aquele que adia a entrada no Nirvana final para salvar todos os seres).
- * Vajrayana ("Veículo do Diamante" ou Budismo Tântrico): predominante no Tibete, Mongólia, Butão e em partes do Japão (escola Shingon); utiliza métodos rituais, mantras, mandalas e ioga meditativa para atingir o despertar de forma acelerada.  
+ * Vajrayana ("Veículo do Diamante" ou Budismo Tântrico): predominante no Tibete, Mongólia, Butão e em partes do Japão (escola Shingon); utiliza métodos rituais, mantras, mandalas e ioga meditativa para atingir o despertar de forma acelerada.   
 
 6. Conceito sobre Deus ou Deuses  
 Trata-se de uma tradição não-teísta. O Budismo não reconhece um Deus criador soberano, omnipotente ou juiz do cosmos. Existem deuses (devas), mas estes são concebidos como seres sencientes transitórios presos ao ciclo de renascimentos (samsara); acumularam bom carma no passado, mas continuam sujeitos à morte, à decadência e ao renascimento, não tendo poder para conferir a iluminação.
