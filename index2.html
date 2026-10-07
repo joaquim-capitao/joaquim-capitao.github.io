@@ -51,7 +51,7 @@
       margin-bottom: 2.5rem;
     }
 
-    .badge {
+    .badge-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -64,6 +64,19 @@
       text-transform: uppercase;
       letter-spacing: 0.18em;
       color: var(--primary);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .badge-btn:hover {
+      background-color: rgba(255, 123, 0, 0.2);
+      border-color: rgba(255, 123, 0, 0.7);
+    }
+
+    .badge-btn:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
     }
 
     h1 {
@@ -83,23 +96,10 @@
       }
     }
 
-    p.lead {
-      margin-top: 1rem;
-      font-size: 1rem;
-      line-height: 1.625;
-      color: rgba(245, 245, 220, 0.85);
-    }
-
-    @media (min-width: 640px) {
-      p.lead {
-        font-size: 1.125rem;
-      }
-    }
-
     .section-title {
       font-size: 1.25rem;
       font-weight: 700;
-      color: var(--primary);
+      color: var(--foreground) !important;
       margin: 2.5rem 0 1.25rem 0;
       display: flex;
       align-items: center;
@@ -111,6 +111,16 @@
       flex: 1;
       height: 1px;
       background-color: var(--border);
+    }
+
+    #areas-interesse,
+    #informacoes-legais {
+      color: var(--foreground) !important;
+    }
+
+    #areas-interesse ~ nav .card-title,
+    #informacoes-legais ~ nav .card-title {
+      color: var(--foreground) !important;
     }
 
     nav ul {
@@ -215,16 +225,66 @@
       font-size: 0.875rem;
       color: var(--muted-foreground);
     }
+
+    /* Estilos do Pop-up / Modal */
+    dialog.popup-modal {
+      position: fixed;
+      inset: 0;
+      margin: auto;
+      max-width: 32rem;
+      width: calc(100% - 2.5rem);
+      padding: 1.75rem;
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      background-color: #111a33;
+      color: var(--foreground);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      outline: none;
+    }
+
+    dialog.popup-modal::backdrop {
+      background: rgba(11, 19, 43, 0.75);
+      backdrop-filter: blur(4px);
+    }
+
+    .popup-content p {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: rgba(245, 245, 220, 0.9);
+      margin-bottom: 1.5rem;
+    }
+
+    .popup-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .popup-close-btn {
+      background-color: rgba(255, 123, 0, 0.15);
+      border: 1px solid rgba(255, 123, 0, 0.4);
+      color: var(--primary);
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .popup-close-btn:hover {
+      background-color: var(--primary);
+      color: #0b132b;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <span class="badge">Site pessoal</span>
+      <button type="button" class="badge-btn" id="open-modal" aria-haspopup="dialog">
+        Site pessoal
+      </button>
       <h1>Joaquim Capitão</h1>
-      <p class="lead">
-      Este site é uma expressão da minha liberdade individual; um lugar onde reúno matérias do meu interesse, longe das imposições das redes sociais.
-      </p>
     </header>
 
     <!-- Secção Geral / Principal -->
@@ -248,7 +308,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1 3 2.5 3.5 3.5 4.5 1.5 1.5 2 4 1 6.5-1 2.5-3 3.5-5 4.5"/><path d="M12 2c-1 3-2.5 3.5-3.5 4.5-1.5 1.5-2 4-1 6.5 1 2.5 3 3.5 5 4.5"/><path d="M12 2c-1 3-2.5 3.5-3.5 4.5-1.5 1.5-2 4-1 6.5 1 2.5 3 3.5 5 4.5"/><path d="M12 2v17"/></svg>
             </span>
             <span class="card-content">
-              <span class="card-title">Queime Depois de Ler</span>
+              <span class="card-title">Blogue: «Queime Depois de Ler»</span>
               <span class="card-desc">Blogue onde as minhas reflexões e memórias ganham vida.</span>
             </span>
             <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
@@ -271,7 +331,7 @@
 
     <!-- Secção Áreas de Interesse -->
     <section aria-labelledby="areas-interesse">
-      <h2 id="areas-interesse" class="section-title">Áreas de Interesse</h2>
+      <h2 id="areas-interesse" class="section-title" style="color: #f5f5dc !important;">Áreas de Interesse</h2>
       <nav aria-label="Áreas de interesse">
         <ul>
           <li>
@@ -304,7 +364,7 @@
 
     <!-- Secção Legal / Termos -->
     <section aria-labelledby="informacoes-legais">
-      <h2 id="informacoes-legais" class="section-title">Informações Legais</h2>
+      <h2 id="informacoes-legais" class="section-title" style="color: #f5f5dc !important;">Informações Legais</h2>
       <nav aria-label="Informações legais">
         <ul>
           <li>
@@ -327,5 +387,43 @@
       "Obrigado pela visita"
     </footer>
   </div>
+
+  <!-- Janela Modal / Pop-up -->
+  <dialog class="popup-modal" id="intro-modal">
+    <div class="popup-content">
+      <p>
+        Este site é uma expressão da minha liberdade individual; um lugar onde reúno matérias do meu interesse, longe das imposições das redes sociais.
+      </p>
+      <div class="popup-actions">
+        <button type="button" class="popup-close-btn" id="close-modal">Fechar</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    const modal = document.getElementById('intro-modal');
+    const openBtn = document.getElementById('open-modal');
+    const closeBtn = document.getElementById('close-modal');
+
+    openBtn.addEventListener('click', () => {
+      modal.showModal();
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.close();
+    });
+
+    modal.addEventListener('click', (e) => {
+      const dialogDimensions = modal.getBoundingClientRect();
+      if (
+        e.clientX < dialogDimensions.left ||
+        e.clientX > dialogDimensions.right ||
+        e.clientY < dialogDimensions.top ||
+        e.clientY > dialogDimensions.bottom
+      ) {
+        modal.close();
+      }
+    });
+  </script>
 </body>
 </html>
