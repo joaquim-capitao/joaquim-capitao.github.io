@@ -11,7 +11,6 @@ Planície Indo-Gangética (norte da antiga Índia e regiões fronteiriças do at
 
 4. Livro Sagrado  
 Não existe um cânone único para todas as escolas, mas três grandes coleções de textos:
-
  * Cânone Páli (Tipitaka ou Três Cestos): fundamental para a tradição Theravada (composto por Vinaya Pitaka [regras monásticas], Sutta Pitaka [discursos do Buda] e Abhidhamma Pitaka [análise filosófica e psicológica]).
  * Cânone Budista Chinês: utilizado no Budismo do Leste Asiático (Mahayana), contendo os Sutras Mahayana (como o Sutra do Lótus, Sutra do Coração, Sutra do Diamante).
  * Cânone Budista Tibetano (Kangyur e Tengyur): engloba ensinamentos dos sutras e os tratados tântricos esotéricos (Vajrayana).
