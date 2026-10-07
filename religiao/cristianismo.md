@@ -70,3 +70,10 @@ A estrutura de governação eclesiástica varia conforme a confissão:
    * Episcopal (Bispos, como no Anglicanismo e em certas igrejas luteranas e metodistas);
    * Presbiteriano (governo de presbíteros/anciãos eleitos organizados em conselhos e sínodos);
    * Congregacional (autonomia quase total de cada igreja local, administrada por pastores e pela congregação de membros).
+  
+
+---
+
+[<-- Voltar atrás](https://joaquim-capitao.github.io/religiao/)
+
+
