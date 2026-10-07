@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joaquim Capitão — Site pessoal</title>
+  <meta name="description" content="Site pessoal de Joaquim Capitão: biografia, textos, música, apps e jogos.">
+  <meta name="author" content="Joaquim Capitão">
+  <meta property="og:title" content="Joaquim Capitão — Site pessoal">
+  <meta property="og:description" content="Biografia, reflexões, música, apps e jogos de Joaquim Capitão.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <style>
+    :root {
+      --background: #0b132b;
+      --foreground: #f5f5dc;
+      --primary: #ff7b00;
+      --card: #111a33;
+      --muted-foreground: #cfcfb8;
+      --border: rgba(245, 245, 220, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Ubuntu", ui-sans-serif, system-ui, sans-serif;
+      background-color: var(--background);
+      color: var(--foreground);
+      min-height: 100vh;
+      background-image:
+        radial-gradient(60rem 40rem at 15% -10%, rgba(255, 123, 0, 0.14), transparent 70%),
+        radial-gradient(50rem 35rem at 100% 110%, rgba(255, 123, 0, 0.09), transparent 70%);
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 3.5rem 1.25rem;
+    }
+
+    header {
+      margin-bottom: 2.5rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid rgba(255, 123, 0, 0.4);
+      background-color: rgba(255, 123, 0, 0.1);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--primary);
+    }
+
+    h1 {
+      margin-top: 1.25rem;
+      font-size: 1.875rem;
+      line-height: 1.25;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    @media (min-width: 640px) {
+      h1 {
+        font-size: 2.25rem;
+      }
+      .container {
+        padding: 5rem 1.25rem;
+      }
+    }
+
+    p.lead {
+      margin-top: 1rem;
+      font-size: 1rem;
+      line-height: 1.625;
+      color: rgba(245, 245, 220, 0.85);
+    }
+
+    @media (min-width: 640px) {
+      p.lead {
+        font-size: 1.125rem;
+      }
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 2.5rem 0 1.25rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background-color: var(--border);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+    }
+
+    .card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      overflow: hidden;
+      border-radius: 1rem;
+      border: 1px solid var(--border);
+      background-color: rgba(17, 26, 51, 0.6);
+      padding: 1.25rem;
+      box-shadow: 0 1px 0 0 rgba(245, 245, 220, 0.06);
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover,
+    .card:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(255, 123, 0, 0.6);
+      background-color: rgba(255, 123, 0, 0.05);
+      box-shadow: 0 18px 40px -22px rgba(255, 123, 0, 0.7);
+      outline: none;
+    }
+
+    .card:focus-visible {
+      box-shadow: 0 0 0 2px var(--primary);
+    }
+
+    .icon-box {
+      margin-top: 0.125rem;
+      display: flex;
+      width: 2.5rem;
+      height: 2.5rem;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(255, 123, 0, 0.25);
+      background-color: rgba(255, 123, 0, 0.1);
+      color: var(--primary);
+      transition: background-color 0.2s ease;
+    }
+
+    .card:hover .icon-box {
+      background-color: rgba(255, 123, 0, 0.2);
+    }
+
+    .icon-box svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    .card-content {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .card-title {
+      display: block;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .card-desc {
+      display: block;
+      margin-top: 0.25rem;
+      font-size: 0.875rem;
+      line-height: 1.625;
+      color: var(--muted-foreground);
+    }
+
+    .arrow {
+      width: 1.25rem;
+      height: 1.25rem;
+      flex-shrink: 0;
+      color: var(--muted-foreground);
+      opacity: 0;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover .arrow,
+    .card:focus-visible .arrow {
+      transform: translate(2px, -2px);
+      color: var(--primary);
+      opacity: 1;
+    }
+
+    footer {
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      font-size: 0.875rem;
+      color: var(--muted-foreground);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <span class="badge">Site pessoal</span>
+      <h1>Joaquim Capitão</h1>
+      <p class="lead">
+      Este site é uma expressão da minha liberdade individual; um lugar onde reúno matérias do meu interesse, longe das imposições das redes sociais.
+      </p>
+    </header>
+
+    <!-- Secção Geral / Principal -->
+    <nav aria-label="Secções principais">
+      <ul>
+        <li>
+          <a class="card" href="https://joaquim-capitao.github.io/autobiografia">
+            <span class="icon-box" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M4 21v-7a2 2 0 0 1 2-2h12"/><path d="M9 7h2"/><path d="M9 11h2"/></svg>
+            </span>
+            <span class="card-content">
+              <span class="card-title">Autobiografia</span>
+              <span class="card-desc">Breve descrição da minha chegada ao mundo.</span>
+            </span>
+            <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="card" href="https://joaquim-capitao.github.io/queime-depois-de-ler">
+            <span class="icon-box" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c1 3 2.5 3.5 3.5 4.5 1.5 1.5 2 4 1 6.5-1 2.5-3 3.5-5 4.5"/><path d="M12 2c-1 3-2.5 3.5-3.5 4.5-1.5 1.5-2 4-1 6.5 1 2.5 3 3.5 5 4.5"/><path d="M12 2c-1 3-2.5 3.5-3.5 4.5-1.5 1.5-2 4-1 6.5 1 2.5 3 3.5 5 4.5"/><path d="M12 2v17"/></svg>
+            </span>
+            <span class="card-content">
+              <span class="card-title">Queime Depois de Ler</span>
+              <span class="card-desc">Blogue onde as minhas reflexões e memórias ganham vida.</span>
+            </span>
+            <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="card" href="https://joaquim-capitao.github.io/app">
+            <span class="icon-box" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.456 2.014L2.23 8.5a1.93 1.93 0 0 0 0 1.998l1.001 1.752A4 4 0 0 0 6.679 14.5h10.642a4 4 0 0 0 3.448-2.25l1.001-1.752a1.93 1.93 0 0 0 0-1.998L20.777 7.01A4 4 0 0 0 17.32 5z"/></svg>
+            </span>
+            <span class="card-content">
+              <span class="card-title">Apps e Jogos</span>
+              <span class="card-desc">Coisas que construí para entreter (sobretudo a mim próprio).</span>
+            </span>
+            <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Secção Áreas de Interesse -->
+    <section aria-labelledby="areas-interesse">
+      <h2 id="areas-interesse" class="section-title">Áreas de Interesse</h2>
+      <nav aria-label="Áreas de interesse">
+        <ul>
+          <li>
+            <a class="card" href="https://joaquim-capitao.github.io/cinema">
+              <span class="icon-box" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="2.18" ry="2.18"/><line x1="7" x2="7" y1="2" y2="22"/><line x1="17" x2="17" y1="2" y2="22"/><line x1="2" x2="22" y1="12" y2="12"/><line x1="2" x2="7" y1="7" y2="7"/><line x1="2" x2="7" y1="17" y2="17"/><line x1="17" x2="22" y1="17" y2="17"/><line x1="17" x2="22" y1="7" y2="7"/></svg>
+              </span>
+              <span class="card-content">
+                <span class="card-title">Cinema</span>
+                <span class="card-desc">Os segredos da sétima arte.</span>
+              </span>
+              <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+          </li>
+          <li>
+            <a class="card" href="https://joaquim-capitao.github.io/musica">
+              <span class="icon-box" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+              </span>
+              <span class="card-content">
+                <span class="card-title">Música</span>
+                <span class="card-desc">Uma travessia pelas origens dos sons e pela reinvenção das melodias.</span>
+              </span>
+              <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+
+    <!-- Secção Legal / Termos -->
+    <section aria-labelledby="informacoes-legais">
+      <h2 id="informacoes-legais" class="section-title">Informações Legais</h2>
+      <nav aria-label="Informações legais">
+        <ul>
+          <li>
+            <a class="card" href="https://joaquim-capitao.github.io/termos">
+              <span class="icon-box" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 12h-5"/><path d="M15 8h-5"/><path d="M15 16h-5"/><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v3"/><path d="M2 15h5"/><path d="M2 11h5"/><path d="M2 7h5"/><path d="M2 19h5"/></svg>
+              </span>
+              <span class="card-content">
+                <span class="card-title">Termos de Utilização</span>
+                <span class="card-desc">A letra pequenina, em tamanho legível.</span>
+              </span>
+              <svg class="arrow" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+
+    <footer>
+      "Obrigado pela visita"
+    </footer>
+  </div>
+</body>
+</html>
