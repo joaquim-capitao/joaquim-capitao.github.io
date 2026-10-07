@@ -7,3 +7,8 @@ Origem: Região do Punjab (século XV), fundado pelo Guru Nanak.
 Texto sagrado: Guru Granth Sahib.    
 
 Presença: Índia (Punjab) e diáspora relevante no Reino Unido, Canadá e EUA.    
+
+---
+
+[<-- Voltar atrás](https://joaquim-capitao.github.io/religiao/)
+
