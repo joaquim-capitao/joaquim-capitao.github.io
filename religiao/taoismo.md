@@ -1,3 +1,5 @@
+# Taoísmo
+
 Origem: China antiga, por volta dos séculos VI a IV a.C., associado às reflexões e ensinamentos atribuídos ao filósofo Laozi (Lao-Tsé) sobre o Tao (o caminho natural e fluxo primordial do universo).
 
 Texto sagrado: O Tao Te Ching (O Livro do Caminho e da Virtude), complementado pelo Zhuangzi.
