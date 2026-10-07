@@ -61,3 +61,5 @@ Não há uma autoridade centralizada global (não existe o equivalente a um papa
  * Theravada: estruturas nacionais colegiais, frequentemente presididas por conselhos monásticos e um patriarca supremo monástico (Sangharaja), apoiados em graus de antiguidade na ordenação.
  * Mahayana: descentralizado, focado na linhagem mestre-discípulo (transmissão de darma nas escolas Zen/Chan) e em abades de mosteiros independentes.
  * Vajrayana: assenta no sistema de linhagens tântricas e mestres (lamas), incluindo o fenómeno dos mestres reencarnados reconhecidos (tulkus), dos quais o Dalai Lama (linhagem Gelug) é a figura internacionalmente mais visível, embora a sua autoridade canónica estivesse historicamente restrita à sua própria escola e região.
+
+[<-- Voltar atrás](https://joaquim-capitao.github.io/religiao/)
