@@ -38,4 +38,7 @@ Supercomputadores: Os 500 supercomputadores mais potentes do mundo operam exclus
 Dispositivos Embebidos e IoT: Routers de rede, televisores inteligentes, sistemas multimédia automóveis e eletrodomésticos inteligentes recorrem ao Linux devido à sua adaptabilidade e leveza.
 
 
+[Lista das Principais Distribuições Linux](distros)
+
+
 
