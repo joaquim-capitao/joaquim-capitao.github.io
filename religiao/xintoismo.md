@@ -5,3 +5,8 @@ Origem: Japão pré-histórico, nascido de tradições animistas indígenas foca
 Texto sagrado: Não possui uma escritura doutrinária estrita; as referências históricas e mitológicas centrais são o Kojiki (Crónica de Factos Antigos) e o Nihon Shoki (Crónicas do Japão).
 
 Presença: Quase exclusivamente no Japão (e entre pequenas comunidades da diáspora japonesa), sendo amplamente praticado pela população em festivais (matsuri) e ritos de passagem em sincretismo com o Budismo.
+
+---
+
+[<-- Voltar atrás](https://joaquim-capitao.github.io/religiao/)
+
