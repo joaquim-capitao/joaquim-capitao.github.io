@@ -6,6 +6,8 @@ O humor manifesta-se numa grande diversidade de linguagens e suportes. Além do 
 
  * Stand-up comedy: Um humorista a solo, em palco, dirigindo-se diretamente ao público através de monólogos estruturados em premissas, observações quotidianas e punchlines (remates cómicos).
 
+ * Sketch: É uma cena cómica de curta duração (habitualmente entre 1 e 10 minutos), com poucos atores e um desfecho rápido ou surpreendente.
+
  * Improviso (Improv): Cenas criadas no momento sem guião prévio, frequentemente a partir de sugestões dadas pela assistência ou através de jogos de representação rápida.
 
  * Teatro cómico e Farsa: Peças teatrais focadas no riso, que vão desde a comédia de costumes (crítica aos hábitos de uma época) até à farsa, caracterizada por enganos rápidos, portas a bater e situações absurdas.
@@ -39,6 +41,8 @@ Audiovisual (Cinema e Televisão)
  * Caricatura: Retrato gráfico centrado no exagero deliberado dos traços físicos ou maneirismos de uma figura pública para acentuar a sua personalidade.
 
  * Tira de banda desenhada (Comic strip): Sequência curta de vinhetas (habitualmente três ou quatro) com ritmo narrativo conciso que culmina numa piada final.
+
+ *  Cartoon: desenho humorístico ou satírico, geralmente composto por um único quadro, que faz uma piada ou crítica sobre comportamentos humanos, costumes ou acontecimentos do quotidiano e da sociedade.
 
 
 ## Meios Digitais
