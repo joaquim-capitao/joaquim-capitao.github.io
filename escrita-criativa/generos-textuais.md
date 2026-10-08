@@ -6,12 +6,14 @@ Os géneros textuais são infinitos e dinâmicos, pois nascem das necessidades d
 ## 1. Géneros Narrativos
 
 ​Têm como base contar uma sucessão de ações no tempo, reais ou fictícias, envolvendo personagens, narrador, espaço e enredo.
+
 ​Romance: Narrativa longa de enredo denso e múltiplos núcleos dramáticos.
 ​Conto: Narrativa curta concentrada num único conflito principal.
 
 ​Novela: Extensão intermédia entre o conto e o romance, com ritmo mais acelerado.
 
 ​Crónica: Registo breve focado em reflexões quotidianas ou factos da atualidade.
+
 ​Fábula / Parábola: Histórias de teor alegórico ou moral (muitas vezes com animais personificados).
 
 ​Biografia / Autobiografia: Relato da trajetória de vida de uma pessoa.
@@ -46,6 +48,7 @@ Os géneros textuais são infinitos e dinâmicos, pois nascem das necessidades d
 ​Procuram transmitir conhecimentos, dados e factos de forma neutra, clara e objetiva, sem juízos de valor nem intenção de persuadir.
 
 ​Notícia e Reportagem: Relato factual de acontecimentos recentes ou aprofundados.
+
 ​Artigo científico / Comunicação académica: Divulgação de investigações e resultados empíricos.
 
 ​Verbete de enciclopédia / Dicionário: Definição e contextualização de termos ou conceitos.
