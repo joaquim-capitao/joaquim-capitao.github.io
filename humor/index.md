@@ -24,7 +24,7 @@ Audiovisual (Cinema e Televisão)
  * Roast: Formato de homenagem em tom de duelo cómico, onde convidados e um painel insultam publicamente o homenageado através de piadas cortantes e consentidas.
 
 
-Literatura e Imprensa
+## Literatura e Imprensa
 
  * Crónica humorística: Texto breve de cariz pessoal publicado habitualmente em jornais, revistas ou blogues, onde o autor observa a atualidade, o comportamento humano ou episódios banais do quotidiano com recurso à ironia, ao absurdo ou à autodepreciação.
 
