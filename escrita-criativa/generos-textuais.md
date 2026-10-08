@@ -3,8 +3,7 @@
 
 Os géneros textuais são infinitos e dinâmicos, pois nascem das necessidades de comunicação do dia a dia. Para os compreender e organizar, a linguística agrupa-os segundo a sua tipologia textual predominante (o propósito do texto):
 
-
-##​ 1. Géneros Narrativos
+## 1. Géneros Narrativos
 
 ​Têm como base contar uma sucessão de ações no tempo, reais ou fictícias, envolvendo personagens, narrador, espaço e enredo.
 ​Romance: Narrativa longa de enredo denso e múltiplos núcleos dramáticos.
