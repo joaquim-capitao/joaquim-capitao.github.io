@@ -1,7 +1,7 @@
 # Informática
 
-[Software para PC](software-para-pc)
-[Aplicações para Android](apps-android)
+[Software para PC](software-para-pc)    
+[Aplicações para Android](apps-android)  
 
 [HTML](HTML)  
 [Markdown](markdown)  
