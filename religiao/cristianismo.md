@@ -2,6 +2,8 @@
 
 Nesta página, uso a palavra "Cristianismo", não para me referir à doutrina ensinada por Jesus Cristo, mas às estruturas religiosas que se formaram ao longo dos séculos, e que alegam seguir os Evangelhos.
 
+Saiba o que mudou em cada concílio ecuménico por clicar [aqui](concilios-ecumenicos).
+
 
 ### Fundador  
 
