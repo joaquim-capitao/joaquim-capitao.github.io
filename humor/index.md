@@ -1,8 +1,8 @@
 # Humor
 
-O humor manifesta-se numa grande diversidade de linguagens e suportes. Além do sketch e do cartoon, os principais formatos dividem-se entre palco, audiovisual, literatura, artes visuais e meios digitais:
+O humor manifesta-se numa grande diversidade de linguagens e suportes. Os principais formatos dividem-se entre palco, audiovisual, literatura, artes visuais e meios digitais:
 
-## Palco e Espetáculo Vivo  
+## Palco e Audiovisual  
 
  * Stand-up comedy: Um humorista a solo, em palco, dirigindo-se diretamente ao público através de monólogos estruturados em premissas, observações quotidianas e punchlines (remates cómicos).
 
