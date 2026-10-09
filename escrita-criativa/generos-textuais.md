@@ -8,6 +8,7 @@ Os géneros textuais são infinitos e dinâmicos, pois nascem das necessidades d
 ​Têm como base contar uma sucessão de ações no tempo, reais ou fictícias, envolvendo personagens, narrador, espaço e enredo.
 
 ​Romance: Narrativa longa de enredo denso e múltiplos núcleos dramáticos.
+
 ​Conto: Narrativa curta concentrada num único conflito principal.
 
 ​Novela: Extensão intermédia entre o conto e o romance, com ritmo mais acelerado.
@@ -25,6 +26,7 @@ Os géneros textuais são infinitos e dinâmicos, pois nascem das necessidades d
 ​Retrato / Auto-retrato verbal: Caracterização física e psicológica de alguém.
 
 ​Roteiro de viagem: Descrição pormenorizada de percursos e locais de interesse.
+
 ​Ficha técnica / Catálogo: Apresentação de especificações e propriedades de um produto.
 
 ​Laudo / Relatório pericial: Registo minucioso do estado de algo observado.
