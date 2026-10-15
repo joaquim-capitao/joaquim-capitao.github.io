@@ -33,7 +33,9 @@ Existem 18 grupos. Elementos da mesma coluna partilham o mesmo número de eletr�
 
 ### Evidência de ordem no universo
 
-A organização da tabela periódica mostra que os blocos fundamentais da matéria não se distribuem de forma caótica ou aleatória, mas segundo uma harmonia matemática rigorosa, simétrica e previsível. O facto de as propriedades químicas e físicas dos elementos se repetirem em ciclos precisos, determinados estritamente pelo número atómico e pela configuração quântica dos eletrões, sugere uma estrutura conceptual subjacente, um código inteligível que permitiu antecipar com exatidão a existência e as características de elementos ainda não descobertos.
+A organização da tabela periódica mostra que os blocos fundamentais da matéria não se distribuem de forma caótica ou aleatória, mas segundo uma harmonia matemática rigorosa, simétrica e previsível. 
+
+O facto de as propriedades químicas e físicas dos elementos se repetirem em ciclos precisos, determinados estritamente pelo número atómico e pela configuração quântica dos eletrões, sugere uma estrutura conceptual subjacente, um código inteligível que permitiu aos cientistas antecipar com exatidão a existência e as características de elementos que ainda não tinham sido descobertos.
 
 Para quem acredita num Criador, a existência de uma linguagem lógica e coerente escrita no tecido elementar do universo, com leis que operam em perfeita sintonia para viabilizar a complexidade da química e da vida, aponta mais naturalmente para a intenção de um arquiteto deliberado do que para um mero produto do acaso cego.
 
