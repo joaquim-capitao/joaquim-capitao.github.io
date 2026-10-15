@@ -5,15 +5,22 @@ Religião é um sistema organizado de crenças, práticas, valores morais e vis�
 
 ## Religiões principais a nível mundial
 
-[Cristianismo (~2,4 a 2,6 mil milhões)](cristianismo)  
-[Islamismo (~1,9 a 2,0 mil milhões)](islamismo)  
-[Hinduísmo (~1,2 mil milhões)](hinduismo)     
-[Budismo (~500 a 530 milhões)](budismo)     
-[Siquismo (~30 milhões)](siquismo)     
-[Judaísmo (~15 milhões)](judaismo)  
-[Taoismo (~12 milhões](taoismo)   
-[Confucionismo (~6 milhões)](confucionismo)  
-[Xintoísmo (~4 milhões)](xintoismo)  
+[Adventismo](adventismo)
+[Budismo](budismo)     
+[Confucionismo](confucionismo)  
+[Igreja Católica Apostólica Romana](igreja-catolica)
+[Igrejas Ortodoxas](igrejas-ortodoxas)
+[Islão](islamismo)  
+[Protestantismo Tradicional](igrejas-protestantes)
+[Hinduísmo](hinduismo)     
+[Siquismo](siquismo)     
+[Judaísmo](judaismo)  
+[Mórmons](mormons)
+[Pentecostais e Neo-pentecostais](evangelicos)
+[Taoismo](taoismo)   
+[Testemunhas de Jeová](testemunhas-de-jeova)
+[Xintoísmo](xintoismo)  
+
 
 ## Distribuição geográfica
 
