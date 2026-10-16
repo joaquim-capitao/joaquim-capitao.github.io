@@ -21,8 +21,6 @@ Ainda assim, paira sobre o Hinduísmo uma serenidade inabalável. Ao olhar para 
 
 ---
 
-Joaquim Capitão
-
 [<-- Voltar atrás](https://joaquim-capitao.github.io/religiao/)
 
 
