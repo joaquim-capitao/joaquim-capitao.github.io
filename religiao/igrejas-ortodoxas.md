@@ -22,4 +22,6 @@ Hoje, os cristãos ortodoxos somam cerca de 220 a 260 milhões de fiéis no mund
 
 A Ortodoxia sobreviveu a séculos de domínio muçulmano e às perseguições sangrentas do comunismo soviético sem ceder um milímetro. Não tem interesse nenhum em ser moderna, eficiente ou adaptada aos tempos modernos. Acha que o mundo contemporâneo é que anda muito doente e que a única coisa sã a fazer é ficar quieto a olhar para os olhos enormes de _Cristo Pantocrator_, esperando que a loucura dos séculos finalmente passe.
 
+---
 
+[<-- Voltar atrás](https://joaquim-capitao.github.io/religiao/)
