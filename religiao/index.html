@@ -58,6 +58,36 @@
       border-left: 4px solid var(--accent-color);
     }
 
+    /* Links em destaque */
+    .featured-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-link {
+      display: block;
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.85rem 1rem;
+      border-radius: 6px;
+      border-left: 3px solid var(--accent-color);
+      border-top: 1px solid transparent;
+      border-right: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-link:active,
+    .btn-link:hover {
+      border-color: var(--accent-color);
+      transform: translateX(4px);
+      color: var(--accent-hover);
+    }
+
     /* Linha do tempo mobile-first */
     .timeline {
       position: relative;
@@ -138,6 +168,11 @@
   </header>
 
   <main>
+    <nav class="featured-links">
+      <a class="btn-link" href="https://joaquim-capitao.github.io/religiao/o-fenomeno-religioso/">O Fenómeno Religioso</a>
+      <a class="btn-link" href="https://joaquim-capitao.github.io/religiao/tj/">As Testemunhas de Jeová</a>
+    </nav>
+
     <h2>Linha do Tempo Histórica</h2>
 
     <section class="timeline">
