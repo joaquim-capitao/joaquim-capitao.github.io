@@ -3,362 +3,435 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Mudança para Évora</title>
+    <title>Mudança para Évora — 1 de Janeiro de 2027</title>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Ubuntu -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'monospace']
-                    },
-                    colors: {
-                        primary: '#6366f1',
-                        accent: '#a855f7',
-                        gold: '#fbbf24'
-                    },
-                    animation: {
-                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'glow': 'glow 4s ease-in-out infinite alternate',
-                        'float': 'float 6s ease-in-out infinite'
-                    },
-                    keyframes: {
-                        glow: {
-                            '0%': { filter: 'drop-shadow(0 0 15px rgba(99, 102, 241, 0.3))' },
-                            '100%': { filter: 'drop-shadow(0 0 30px rgba(168, 85, 247, 0.6))' }
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-8px)' }
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Efeito de vidro aero / Glassmorphism */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.09);
-            box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        :root {
+            --bg-main: #1a1926;
+            --bg-card: rgba(30, 30, 43, 0.75);
+            --bg-card-border: rgba(252, 126, 23, 0.22);
+            --text-cream: #e6d9a1;
+            --text-muted: #9f9cb0;
+            --accent-orange: #fc7e17;
+            --accent-coral: #f9572a;
+            --white: #ffffff;
         }
 
-        .glass-badge {
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-        }
-
-        /* Gradiente animado subtil no fundo */
-        .gradient-bg {
-            background: radial-gradient(circle at 50% 10%, #1e1b4b 0%, #0a0a14 55%, #05050a 100%);
-        }
-
-        /* Ocultar barra de scroll em dispositivos móveis */
-        body::-webkit-scrollbar {
-            display: none;
-        }
-        body {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
             -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Ubuntu', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 1rem;
+            position: relative;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 15%, rgba(252, 126, 23, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 85% 85%, rgba(249, 87, 42, 0.08) 0%, transparent 50%),
+                linear-gradient(180deg, #1e1e2b 0%, #161520 100%);
+        }
+
+        /* Container principal */
+        .wrapper {
+            width: 100%;
+            max-width: 480px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+        }
+
+        /* Badge superior */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: rgba(252, 126, 23, 0.12);
+            border: 1px solid rgba(252, 126, 23, 0.3);
+            margin-bottom: 1.25rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-cream);
+        }
+
+        .badge-pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-orange);
+            box-shadow: 0 0 10px var(--accent-orange);
+            animation: pulse-dot 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% { transform: scale(0.9); opacity: 0.7; }
+            50% { transform: scale(1.3); opacity: 1; }
+        }
+
+        /* Títulos */
+        header {
+            text-align: center;
+            margin-bottom: 2.2rem;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: clamp(1.85rem, 6.5vw, 2.5rem);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.6rem;
+            background: linear-gradient(135deg, #ffffff 40%, var(--text-cream) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: clamp(0.85rem, 3.2vw, 0.98rem);
+            color: var(--text-muted);
+            line-height: 1.4;
+            font-weight: 400;
+        }
+
+        .subtitle strong {
+            color: var(--text-cream);
+            font-weight: 500;
+        }
+
+        /* Grelha dos 3 Cartões (Dias, Horas, Minutos) */
+        .cards-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 1.8rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--bg-card-border);
+            border-radius: 18px;
+            padding: 1.25rem 0.5rem 1rem 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.45);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 20%;
+            right: 20%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-orange), transparent);
+            border-radius: 999px;
+            opacity: 0.7;
+        }
+
+        .card:active {
+            transform: scale(0.98);
+        }
+
+        .card-number {
+            font-size: clamp(2rem, 8vw, 3.1rem);
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            color: var(--white);
+            margin-bottom: 0.45rem;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .card-label {
+            font-size: 0.72rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-orange);
+        }
+
+        /* Caixa de Informação Suplementar */
+        .info-box {
+            width: 100%;
+            background: rgba(30, 30, 43, 0.45);
+            border: 1px dashed rgba(230, 217, 161, 0.2);
+            border-radius: 14px;
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 1.8rem;
+        }
+
+        .info-box p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        .info-box span {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-cream);
+        }
+
+        /* Botão de Partilha Otimizado para Toque */
+        .action-button {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-coral) 100%);
+            border: none;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 0.95rem 1.4rem;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px -4px rgba(252, 126, 23, 0.4);
+            transition: all 0.2s ease;
+        }
+
+        .action-button:active {
+            transform: translateY(2px) scale(0.98);
+            box-shadow: 0 4px 12px -2px rgba(252, 126, 23, 0.4);
+        }
+
+        .action-button svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Toast flutuante para feedback */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: #252438;
+            border: 1px solid var(--accent-orange);
+            color: var(--text-cream);
+            padding: 10px 18px;
+            border-radius: 999px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            z-index: 100;
+            white-space: nowrap;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.72rem;
+            color: rgba(157, 163, 180, 0.6);
+            letter-spacing: 0.02em;
+            margin-top: 1.5rem;
+        }
+
+        /* Ecrãs muito pequenos (ex: iPhone SE) */
+        @media (max-width: 360px) {
+            .cards-grid {
+                gap: 6px;
+            }
+            .card {
+                padding: 1rem 0.25rem 0.8rem 0.25rem;
+            }
+            .card-number {
+                font-size: 1.85rem;
+            }
+            .card-label {
+                font-size: 0.65rem;
+            }
         }
     </style>
 </head>
-<body class="gradient-bg text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white font-sans antialiased relative overflow-x-hidden">
+<body>
 
-    <!-- Canvas de partículas subtis de fundo -->
-    <canvas id="ambient-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+    <!-- Toast de Confirmação -->
+    <div id="toast" class="toast">Link copiado com sucesso!</div>
 
-    <!-- Notificação Flutuante / Toast (Sem alerts) -->
-    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 glass-card px-5 py-3 rounded-2xl flex items-center gap-3 border border-indigo-500/40 opacity-0 pointer-events-none transition-all duration-300 shadow-xl">
-        <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-        </svg>
-        <span id="toast-text" class="text-xs sm:text-sm font-medium tracking-wide">Link copiado com sucesso!</span>
-    </div>
-
-    <!-- Conteúdo Principal -->
-    <main class="relative z-10 w-full max-w-xl mx-auto px-5 py-6 sm:py-10 flex-1 flex flex-col justify-center items-center">
+    <main class="wrapper">
         
-        <!-- Top Pill / Badge -->
-        <header class="text-center mb-8 sm:mb-10 w-full">
-            <div class="inline-flex items-center gap-2 glass-badge px-4 py-1.5 rounded-full mb-4 shadow-sm">
-                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
-                <span class="text-[11px] sm:text-xs font-semibold tracking-wider uppercase text-indigo-200">Em Direto • Mudança para Évora</span>
-            </div>
+        <!-- Distintivo Superior -->
+        <div class="badge">
+            <span class="badge-pulse"></span>
+            <span>Contagem Regressiva</span>
+        </div>
 
-            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-2 animate-glow">
-                Rumo a <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-300 to-yellow-200">Évora</span>
-            </h1>
-            <p class="text-xs sm:text-sm text-slate-400 max-w-sm mx-auto font-normal">
-                1 de janeiro de 2027
-            </p>
+        <!-- Cabeçalho -->
+        <header>
+            <h1>Mudança para Évora</h1>
+            <p class="subtitle">Destino: <strong>1 de janeiro de 2027</strong> às <strong>00:00:00</strong></p>
         </header>
 
-        <!-- Grade de Cartões da Contagem (2x2 no mobile + barra de segundos horizontal) -->
-        <section class="w-full grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6" aria-label="Contagem decrescente">
+        <!-- 3 Cartões: Dias, Horas, Minutos -->
+        <section class="cards-grid" aria-label="Tempo restante">
             
-            <!-- Semanas -->
-            <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-center relative overflow-hidden group hover:border-indigo-400/40 transition-all duration-300">
-                <div class="absolute -right-6 -bottom-6 w-20 h-20 bg-indigo-500/10 rounded-full blur-xl pointer-events-none"></div>
-                <span id="weeks" class="font-mono text-3xl sm:text-5xl font-extrabold text-white tracking-tight">--</span>
-                <span class="mt-2 text-[10px] sm:text-xs uppercase font-bold tracking-widest text-indigo-300/80">Semanas</span>
-            </div>
-
-            <!-- Dias -->
-            <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-center relative overflow-hidden group hover:border-indigo-400/40 transition-all duration-300">
-                <div class="absolute -right-6 -bottom-6 w-20 h-20 bg-purple-500/10 rounded-full blur-xl pointer-events-none"></div>
-                <span id="days" class="font-mono text-3xl sm:text-5xl font-extrabold text-white tracking-tight">--</span>
-                <span class="mt-2 text-[10px] sm:text-xs uppercase font-bold tracking-widest text-indigo-300/80">Dias Rest.</span>
+            <!-- Dias (Total inteiro de dias restantes) -->
+            <div class="card">
+                <span id="days" class="card-number">--</span>
+                <span class="card-label">Dias</span>
             </div>
 
             <!-- Horas -->
-            <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-center relative overflow-hidden group hover:border-indigo-400/40 transition-all duration-300">
-                <div class="absolute -right-6 -bottom-6 w-20 h-20 bg-pink-500/10 rounded-full blur-xl pointer-events-none"></div>
-                <span id="hours" class="font-mono text-3xl sm:text-5xl font-extrabold text-white tracking-tight">--</span>
-                <span class="mt-2 text-[10px] sm:text-xs uppercase font-bold tracking-widest text-indigo-300/80">Horas</span>
+            <div class="card">
+                <span id="hours" class="card-number">--</span>
+                <span class="card-label">Horas</span>
             </div>
 
             <!-- Minutos -->
-            <div class="glass-card rounded-2xl sm:rounded-3xl p-4 sm:p-5 flex flex-col items-center justify-center relative overflow-hidden group hover:border-indigo-400/40 transition-all duration-300">
-                <div class="absolute -right-6 -bottom-6 w-20 h-20 bg-amber-500/10 rounded-full blur-xl pointer-events-none"></div>
-                <span id="minutes" class="font-mono text-3xl sm:text-5xl font-extrabold text-white tracking-tight">--</span>
-                <span class="mt-2 text-[10px] sm:text-xs uppercase font-bold tracking-widest text-indigo-300/80">Minutos</span>
+            <div class="card">
+                <span id="minutes" class="card-number">--</span>
+                <span class="card-label">Minutos</span>
             </div>
 
         </section>
 
-        <!-- Barra de Segundos Fluida com Indicador em Tempo Real -->
-        <section class="w-full glass-card rounded-2xl p-4 flex items-center justify-between mb-6 shadow-md border border-white/10">
-            <div class="flex items-center gap-3">
-                <div class="w-3 h-3 rounded-full bg-amber-400 animate-ping"></div>
-                <div>
-                    <p class="text-[11px] uppercase font-bold tracking-wider text-slate-400">Segundos em Tempo Real</p>
-                    <p class="text-xs text-slate-500">Pulsação a cada segundo</p>
-                </div>
-            </div>
-            <div class="flex items-baseline gap-1 bg-white/5 px-4 py-1.5 rounded-xl border border-white/5">
-                <span id="seconds" class="font-mono text-2xl font-bold text-amber-300">--</span>
-                <span class="text-[10px] font-mono text-amber-400/70">s</span>
-            </div>
+        <!-- Informação Contextual -->
+        <section class="info-box">
+            <p>Novo capítulo no coração do Alentejo</p>
+            <span id="detailed-summary">A calcular tempo restante...</span>
         </section>
 
-        <!-- Cartão Informativo de Resumo Total -->
-        <div class="w-full glass-card rounded-2xl p-4 mb-6 text-center border-dashed border-white/15">
-            <p class="text-xs text-slate-400 mb-1">Total absoluto de dias restantes:</p>
-            <p class="text-lg font-bold text-indigo-200">
-                <span id="total-days" class="text-white font-mono text-xl">---</span> dias de jornada
-            </p>
-        </div>
-
-        <!-- Botões de Ação Mobile Friendly -->
-        <div class="w-full flex items-center justify-center gap-3">
-            <button id="share-btn" class="flex-1 py-3 px-4 glass-card hover:bg-white/10 active:scale-95 transition-all rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 text-slate-200" aria-label="Partilhar contagem">
-                <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
-                </svg>
-                Partilhar
-            </button>
-
-            <button id="fullscreen-btn" class="py-3 px-4 glass-card hover:bg-white/10 active:scale-95 transition-all rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 text-slate-300" aria-label="Ecrã inteiro">
-                <svg id="fs-icon" class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path>
-                </svg>
-                <span class="hidden sm:inline">Ecrã Inteiro</span>
-            </button>
-        </div>
+        <!-- Botão de Ação -->
+        <button id="share-btn" class="action-button" type="button">
+            <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+            </svg>
+            Partilhar Contagem
+        </button>
 
     </main>
 
     <!-- Rodapé -->
-    <footer class="relative z-10 w-full text-center py-4 text-[11px] text-slate-500">
-        <p>Contagem decrescente sincronizada • Hora local do dispositivo</p>
+    <footer>
+        Sincronizado em tempo real com o fuso horário local
     </footer>
 
-    <!-- Lógica JavaScript -->
     <script>
-        // Data Alvo: 1 de Janeiro de 2027 00:00:00 (Hora local do utilizador)
+        // Data Alvo: 1 de Janeiro de 2027 às 00:00:00 (hora local do utilizador)
         const targetDate = new Date(2027, 0, 1, 0, 0, 0, 0).getTime();
 
-        // Elementos DOM
-        const elWeeks = document.getElementById('weeks');
         const elDays = document.getElementById('days');
         const elHours = document.getElementById('hours');
         const elMinutes = document.getElementById('minutes');
-        const elSeconds = document.getElementById('seconds');
-        const elTotalDays = document.getElementById('total-days');
+        const elSummary = document.getElementById('detailed-summary');
         const shareBtn = document.getElementById('share-btn');
-        const fullscreenBtn = document.getElementById('fullscreen-btn');
         const toast = document.getElementById('toast');
-        const toastText = document.getElementById('toast-text');
 
-        // Formatação com 2 dígitos para consistência visual
-        function padZero(num) {
+        function pad(num) {
             return num < 10 ? '0' + num : num;
         }
 
-        // Função de cálculo da contagem decrescente
         function updateCountdown() {
             const now = new Date().getTime();
             const difference = targetDate - now;
 
             if (difference <= 0) {
-                // Chegou a data da mudança
-                elWeeks.innerText = '00';
-                elDays.innerText = '00';
-                elHours.innerText = '00';
-                elMinutes.innerText = '00';
-                elSeconds.innerText = '00';
-                elTotalDays.innerText = '0';
-                document.querySelector('h1').innerHTML = "🏛️ Bem-vindo a Évora! 🏡";
+                elDays.textContent = '00';
+                elHours.textContent = '00';
+                elMinutes.textContent = '00';
+                elSummary.textContent = 'Chegou o dia! Bem-vindo a Évora!';
                 return;
             }
 
-            // Constantes de conversão de tempo
-            const msPerSecond = 1000;
-            const msPerMinute = msPerSecond * 60;
+            const msPerMinute = 1000 * 60;
             const msPerHour = msPerMinute * 60;
             const msPerDay = msPerHour * 24;
-            const msPerWeek = msPerDay * 7;
 
-            // Cálculos solicitados: Semanas, Dias restantes, Horas, Minutos e Segundos
+            // Dias totais inteiros restantes
             const totalDays = Math.floor(difference / msPerDay);
-            const weeks = Math.floor(difference / msPerWeek);
-            const remainingDays = Math.floor((difference % msPerWeek) / msPerDay);
+            // Horas restantes após descontar os dias completos
             const hours = Math.floor((difference % msPerDay) / msPerHour);
+            // Minutos restantes após descontar as horas
             const minutes = Math.floor((difference % msPerHour) / msPerMinute);
-            const seconds = Math.floor((difference % msPerMinute) / msPerSecond);
 
-            // Atualização do DOM
-            elWeeks.innerText = weeks.toLocaleString('pt-PT');
-            elDays.innerText = padZero(remainingDays);
-            elHours.innerText = padZero(hours);
-            elMinutes.innerText = padZero(minutes);
-            elSeconds.innerText = padZero(seconds);
-            elTotalDays.innerText = totalDays.toLocaleString('pt-PT');
+            // Atualização no ecrã com formatação adequada
+            elDays.textContent = totalDays.toLocaleString('pt-PT');
+            elHours.textContent = pad(hours);
+            elMinutes.textContent = pad(minutes);
+
+            elSummary.textContent = `Faltam exatamente ${totalDays.toLocaleString('pt-PT')} dias, ${hours}h e ${minutes}m`;
         }
 
-        // Executar imediatamente e iniciar o intervalo
+        // Executa imediatamente e atualiza a cada segundo
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // Feedback via Toast
-        function showToast(message) {
-            toastText.textContent = message;
-            toast.classList.remove('opacity-0', 'pointer-events-none');
-            toast.classList.add('opacity-100');
+        // Feedback toast
+        function showToast(msg) {
+            toast.textContent = msg;
+            toast.classList.add('show');
             setTimeout(() => {
-                toast.classList.remove('opacity-100');
-                toast.classList.add('opacity-0', 'pointer-events-none');
+                toast.classList.remove('show');
             }, 2500);
         }
 
-        // Funcionalidade de Partilha (Web Share API com fallback para copiar link)
+        // Partilha compatível com Mobile (Web Share API ou Clipboard)
         shareBtn.addEventListener('click', async () => {
             const shareData = {
-                title: 'Mudança para Évora 2027',
-                text: 'Vê quanto tempo falta para a grande Mudança para Évora!',
+                title: 'Mudança para Évora',
+                text: `Contagem decrescente para a Mudança para Évora (1 de janeiro de 2027)!`,
                 url: window.location.href
             };
 
             if (navigator.share) {
                 try {
                     await navigator.share(shareData);
-                } catch (err) {
-                    // Partilha cancelada pelo utilizador
+                } catch (e) {
+                    // Cancelado pelo utilizador
                 }
             } else {
-                // Fallback seguro de cópia para clipboard
-                const tempInput = document.createElement('input');
-                tempInput.value = window.location.href;
-                document.body.appendChild(tempInput);
-                tempInput.select();
+                const temp = document.createElement('input');
+                temp.value = window.location.href;
+                document.body.appendChild(temp);
+                temp.select();
                 try {
                     document.execCommand('copy');
                     showToast('Link copiado para a área de transferência!');
-                } catch (e) {
+                } catch (err) {
                     showToast('Não foi possível copiar o link.');
                 }
-                document.body.removeChild(tempInput);
+                document.body.removeChild(temp);
             }
         });
-
-        // Alternância de Ecrã Inteiro
-        fullscreenBtn.addEventListener('click', () => {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(() => {});
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen().catch(() => {});
-                }
-            }
-        });
-
-        // Fundo com Estrelas/Partículas Flutuantes Sutis
-        const canvas = document.getElementById('ambient-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        let width = 0;
-        let height = 0;
-
-        function resizeCanvas() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            initParticles();
-        }
-
-        function initParticles() {
-            particles = [];
-            const count = Math.floor((width * height) / 12000);
-            for (let i = 0; i < count; i++) {
-                particles.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    radius: Math.random() * 1.5 + 0.5,
-                    alpha: Math.random() * 0.7 + 0.2,
-                    speed: Math.random() * 0.3 + 0.1
-                });
-            }
-        }
-
-        function drawParticles() {
-            ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = '#ffffff';
-
-            for (let i = 0; i < particles.length; i++) {
-                const p = particles[i];
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${p.alpha})`;
-                ctx.fill();
-
-                p.y -= p.speed;
-                if (p.y < 0) {
-                    p.y = height;
-                    p.x = Math.random() * width;
-                }
-            }
-            requestAnimationFrame(drawParticles);
-        }
-
-        window.addEventListener('resize', resizeCanvas);
-        window.onload = function() {
-            resizeCanvas();
-            drawParticles();
-        };
     </script>
 </body>
 </html>
