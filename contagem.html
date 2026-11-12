@@ -1,437 +1,198 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-PT">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Mudança para Évora — 1 de Janeiro de 2027</title>
-    
-    <!-- Google Fonts: Ubuntu -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Contagens Decrescentes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #1a1926;
+      --card-bg: #242336;
+      --accent: #f26d1f;
+      --text-main: #e6d9a1;
+      --text-muted: #9e977d;
+    }
 
-    <style>
-        :root {
-            --bg-main: #1a1926;
-            --bg-card: rgba(30, 30, 43, 0.75);
-            --bg-card-border: rgba(252, 126, 23, 0.22);
-            --text-cream: #e6d9a1;
-            --text-muted: #9f9cb0;
-            --accent-orange: #fc7e17;
-            --accent-coral: #f9572a;
-            --white: #ffffff;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
+    body {
+      font-family: 'Ubuntu', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 16px;
+      gap: 16px;
+    }
 
-        body {
-            font-family: 'Ubuntu', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg-main);
-            color: var(--white);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 1rem;
-            position: relative;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 50% 15%, rgba(252, 126, 23, 0.12) 0%, transparent 60%),
-                radial-gradient(circle at 85% 85%, rgba(249, 87, 42, 0.08) 0%, transparent 50%),
-                linear-gradient(180deg, #1e1e2b 0%, #161520 100%);
-        }
+    .card {
+      background-color: var(--card-bg);
+      border-left: 4px solid var(--accent);
+      border-radius: 12px;
+      padding: 18px 16px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-        /* Container principal */
-        .wrapper {
-            width: 100%;
-            max-width: 480px;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 2;
-        }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
 
-        /* Badge superior */
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            border-radius: 999px;
-            background: rgba(252, 126, 23, 0.12);
-            border: 1px solid rgba(252, 126, 23, 0.3);
-            margin-bottom: 1.25rem;
-            font-size: 0.75rem;
-            font-weight: 500;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: var(--text-cream);
-        }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.3px;
+    }
 
-        .badge-pulse {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--accent-orange);
-            box-shadow: 0 0 10px var(--accent-orange);
-            animation: pulse-dot 2s infinite ease-in-out;
-        }
+    .card-date {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
 
-        @keyframes pulse-dot {
-            0%, 100% { transform: scale(0.9); opacity: 0.7; }
-            50% { transform: scale(1.3); opacity: 1; }
-        }
+    .timer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      text-align: center;
+    }
 
-        /* Títulos */
-        header {
-            text-align: center;
-            margin-bottom: 2.2rem;
-            width: 100%;
-        }
+    .time-box {
+      background-color: var(--bg-color);
+      border-radius: 8px;
+      padding: 12px 6px;
+    }
 
-        h1 {
-            font-size: clamp(1.85rem, 6.5vw, 2.5rem);
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.6rem;
-            background: linear-gradient(135deg, #ffffff 40%, var(--text-cream) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .time-value {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+    }
 
-        .subtitle {
-            font-size: clamp(0.85rem, 3.2vw, 0.98rem);
-            color: var(--text-muted);
-            line-height: 1.4;
-            font-weight: 400;
-        }
+    .time-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
 
-        .subtitle strong {
-            color: var(--text-cream);
-            font-weight: 500;
-        }
-
-        /* Grelha dos 3 Cartões (Dias, Horas, Minutos) */
-        .cards-grid {
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 1.8rem;
-        }
-
-        .card {
-            background: var(--bg-card);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--bg-card-border);
-            border-radius: 18px;
-            padding: 1.25rem 0.5rem 1rem 0.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.45);
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 20%;
-            right: 20%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent-orange), transparent);
-            border-radius: 999px;
-            opacity: 0.7;
-        }
-
-        .card:active {
-            transform: scale(0.98);
-        }
-
-        .card-number {
-            font-size: clamp(2rem, 8vw, 3.1rem);
-            font-weight: 700;
-            line-height: 1;
-            letter-spacing: -0.03em;
-            color: var(--white);
-            margin-bottom: 0.45rem;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .card-label {
-            font-size: 0.72rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--accent-orange);
-        }
-
-        /* Caixa de Informação Suplementar */
-        .info-box {
-            width: 100%;
-            background: rgba(30, 30, 43, 0.45);
-            border: 1px dashed rgba(230, 217, 161, 0.2);
-            border-radius: 14px;
-            padding: 1rem;
-            text-align: center;
-            margin-bottom: 1.8rem;
-        }
-
-        .info-box p {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            margin-bottom: 0.25rem;
-        }
-
-        .info-box span {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-cream);
-        }
-
-        /* Botão de Partilha Otimizado para Toque */
-        .action-button {
-            width: 100%;
-            background: linear-gradient(135deg, var(--accent-orange) 0%, var(--accent-coral) 100%);
-            border: none;
-            color: #ffffff;
-            font-family: inherit;
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding: 0.95rem 1.4rem;
-            border-radius: 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            cursor: pointer;
-            box-shadow: 0 8px 20px -4px rgba(252, 126, 23, 0.4);
-            transition: all 0.2s ease;
-        }
-
-        .action-button:active {
-            transform: translateY(2px) scale(0.98);
-            box-shadow: 0 4px 12px -2px rgba(252, 126, 23, 0.4);
-        }
-
-        .action-button svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        /* Toast flutuante para feedback */
-        .toast {
-            position: fixed;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            background: #252438;
-            border: 1px solid var(--accent-orange);
-            color: var(--text-cream);
-            padding: 10px 18px;
-            border-radius: 999px;
-            font-size: 0.82rem;
-            font-weight: 500;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            z-index: 100;
-            white-space: nowrap;
-        }
-
-        .toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        footer {
-            text-align: center;
-            font-size: 0.72rem;
-            color: rgba(157, 163, 180, 0.6);
-            letter-spacing: 0.02em;
-            margin-top: 1.5rem;
-        }
-
-        /* Ecrãs muito pequenos (ex: iPhone SE) */
-        @media (max-width: 360px) {
-            .cards-grid {
-                gap: 6px;
-            }
-            .card {
-                padding: 1rem 0.25rem 0.8rem 0.25rem;
-            }
-            .card-number {
-                font-size: 1.85rem;
-            }
-            .card-label {
-                font-size: 0.65rem;
-            }
-        }
-    </style>
+    .status-done {
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-main);
+      padding: 10px 0;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Toast de Confirmação -->
-    <div id="toast" class="toast">Link copiado com sucesso!</div>
+  <div id="container"></div>
 
-    <main class="wrapper">
-        
-        <!-- Distintivo Superior -->
-        <div class="badge">
-            <span class="badge-pulse"></span>
-            <span>Contagem Regressiva</span>
-        </div>
+  <script>
+    // Edita aqui as datas e horas exatas (Formato: AAAA-MM-DDTHH:MM:SS)
+    const eventos = [
+      {
+        titulo: "Envio de Bens",
+        data: "2026-12-01T00:00:00"
+      },
+      {
+        titulo: "Nossa Viagem",
+        data: "2026-12-15T00:00:00"
+      },
+      {
+        titulo: "Início da Designação",
+        data: "2027-01-01T00:00:00"
+      }
+    ];
 
-        <!-- Cabeçalho -->
-        <header>
-            <h1>Mudança para Évora</h1>
-            <p class="subtitle">Destino: <strong>1 de janeiro de 2027</strong> às <strong>00:00:00</strong></p>
-        </header>
+    const container = document.getElementById("container");
 
-        <!-- 3 Cartões: Dias, Horas, Minutos -->
-        <section class="cards-grid" aria-label="Tempo restante">
-            
-            <!-- Dias (Total inteiro de dias restantes) -->
-            <div class="card">
-                <span id="days" class="card-number">--</span>
-                <span class="card-label">Dias</span>
-            </div>
+    function formatarDataLegivel(isoString) {
+      const d = new Date(isoString);
+      return d.toLocaleDateString("pt-PT", {
+        day: "numeric",
+        month: "short",
+        year: "numeric"
+      });
+    }
 
-            <!-- Horas -->
-            <div class="card">
-                <span id="hours" class="card-number">--</span>
-                <span class="card-label">Horas</span>
-            </div>
+    function criarEstrutura() {
+      container.style.display = "flex";
+      container.style.flexDirection = "column";
+      container.style.gap = "16px";
 
-            <!-- Minutos -->
-            <div class="card">
-                <span id="minutes" class="card-number">--</span>
-                <span class="card-label">Minutos</span>
-            </div>
+      eventos.forEach((ev, index) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <div class="card-header">
+            <span class="card-title">${ev.titulo}</span>
+            <span class="card-date">${formatarDataLegivel(ev.data)}</span>
+          </div>
+          <div id="timer-${index}"></div>
+        `;
+        container.appendChild(card);
+      });
+    }
 
-        </section>
+    function atualizarContagens() {
+      const agora = new Date().getTime();
 
-        <!-- Informação Contextual -->
-        <section class="info-box">
-            <p>Novo capítulo no coração do Alentejo</p>
-            <span id="detailed-summary">A calcular tempo restante...</span>
-        </section>
+      eventos.forEach((ev, index) => {
+        const alvo = new Date(ev.data).getTime();
+        const diferenca = alvo - agora;
+        const el = document.getElementById(`timer-${index}`);
 
-        <!-- Botão de Ação -->
-        <button id="share-btn" class="action-button" type="button">
-            <svg fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
-            </svg>
-            Partilhar Contagem
-        </button>
-
-    </main>
-
-    <!-- Rodapé -->
-    <footer>
-        Sincronizado em tempo real com o fuso horário local
-    </footer>
-
-    <script>
-        // Data Alvo: 1 de Janeiro de 2027 às 00:00:00 (hora local do utilizador)
-        const targetDate = new Date(2027, 0, 1, 0, 0, 0, 0).getTime();
-
-        const elDays = document.getElementById('days');
-        const elHours = document.getElementById('hours');
-        const elMinutes = document.getElementById('minutes');
-        const elSummary = document.getElementById('detailed-summary');
-        const shareBtn = document.getElementById('share-btn');
-        const toast = document.getElementById('toast');
-
-        function pad(num) {
-            return num < 10 ? '0' + num : num;
+        if (diferenca <= 0) {
+          el.innerHTML = `<div class="status-done">Data atingida</div>`;
+          return;
         }
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const difference = targetDate - now;
+        const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
 
-            if (difference <= 0) {
-                elDays.textContent = '00';
-                elHours.textContent = '00';
-                elMinutes.textContent = '00';
-                elSummary.textContent = 'Chegou o dia! Bem-vindo a Évora!';
-                return;
-            }
+        el.innerHTML = `
+          <div class="timer-grid">
+            <div class="time-box">
+              <div class="time-value">${dias}</div>
+              <div class="time-label">${dias === 1 ? "Dia" : "Dias"}</div>
+            </div>
+            <div class="time-box">
+              <div class="time-value">${String(horas).padStart(2, "0")}</div>
+              <div class="time-label">${horas === 1 ? "Hora" : "Horas"}</div>
+            </div>
+            <div class="time-box">
+              <div class="time-value">${String(minutos).padStart(2, "0")}</div>
+              <div class="time-label">${minutos === 1 ? "Minuto" : "Minutos"}</div>
+            </div>
+          </div>
+        `;
+      });
+    }
 
-            const msPerMinute = 1000 * 60;
-            const msPerHour = msPerMinute * 60;
-            const msPerDay = msPerHour * 24;
-
-            // Dias totais inteiros restantes
-            const totalDays = Math.floor(difference / msPerDay);
-            // Horas restantes após descontar os dias completos
-            const hours = Math.floor((difference % msPerDay) / msPerHour);
-            // Minutos restantes após descontar as horas
-            const minutes = Math.floor((difference % msPerHour) / msPerMinute);
-
-            // Atualização no ecrã com formatação adequada
-            elDays.textContent = totalDays.toLocaleString('pt-PT');
-            elHours.textContent = pad(hours);
-            elMinutes.textContent = pad(minutes);
-
-            elSummary.textContent = `Faltam exatamente ${totalDays.toLocaleString('pt-PT')} dias, ${hours}h e ${minutes}m`;
-        }
-
-        // Executa imediatamente e atualiza a cada segundo
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
-        // Feedback toast
-        function showToast(msg) {
-            toast.textContent = msg;
-            toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 2500);
-        }
-
-        // Partilha compatível com Mobile (Web Share API ou Clipboard)
-        shareBtn.addEventListener('click', async () => {
-            const shareData = {
-                title: 'Mudança para Évora',
-                text: `Contagem decrescente para a Mudança para Évora (1 de janeiro de 2027)!`,
-                url: window.location.href
-            };
-
-            if (navigator.share) {
-                try {
-                    await navigator.share(shareData);
-                } catch (e) {
-                    // Cancelado pelo utilizador
-                }
-            } else {
-                const temp = document.createElement('input');
-                temp.value = window.location.href;
-                document.body.appendChild(temp);
-                temp.select();
-                try {
-                    document.execCommand('copy');
-                    showToast('Link copiado para a área de transferência!');
-                } catch (err) {
-                    showToast('Não foi possível copiar o link.');
-                }
-                document.body.removeChild(temp);
-            }
-        });
-    </script>
+    criarEstrutura();
+    atualizarContagens();
+    setInterval(atualizarContagens, 10000);
+  </script>
 </body>
 </html>
