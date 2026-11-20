@@ -16,7 +16,7 @@ As suas doutrinas básicas são de uma coerência cirúrgica:
 
 * **O Dom Profético:** a convicção de que os escritos de Ellen G. White são uma luz menor que guia os crentes de volta à Bíblia.
 
-Hoje, os Adventistas do Sétimo Dia Já não são um fenómeno rural norte-americano; têm multidões de fiéis no Brasil, na África subsariana e no arquipélago das Filipinas. Montaram uma rede espantosa de hospitais, escolas e fábricas de alimentos saudáveis, e já contam com 23 milhões de membros baptizados espalhados pelo mundo. 
+Hoje, os Adventistas do Sétimo Dia já não são um fenómeno rural norte-americano. Têm multidões de fiéis no Brasil, na África subsariana e no arquipélago das Filipinas. Montaram uma rede espantosa de hospitais, escolas e fábricas de alimentos saudáveis, e contam com 23 milhões de membros espalhados pelo mundo. 
 
 ---
 
