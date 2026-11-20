@@ -8,15 +8,15 @@ Pouco tempo depois, reunidos a sete chaves com medo da polícia judaica, deu-se 
 
 A doutrina básica desses primeiros tempos era maravilhosa, antes de os homens tentarem estragá-la com notas de rodapé:
 
-O Messias: a proclamação direta e espantosa de que Jesus era o Messias prometido, que morreu pelos pecados do mundo, ressuscitou ao terceiro dia e voltaria a qualquer momento sobre as nuvens.
+**O Messias:** a proclamação direta e espantosa de que Jesus era o Messias prometido, que morreu pelos pecados do mundo, ressuscitou ao terceiro dia e voltaria a qualquer momento sobre as nuvens.
 
-A Refeição Noturna do Senhor: não havia altares de mármore. Anualmente, em 14 de nisã, partilhavam uma refeição comum composta por pão e o vinho em memória de Jesus Cristo.
+**A Refeição Noturna do Senhor:** não havia altares de mármore. Anualmente, em 14 de nisã do calendário judaico, partilhavam uma refeição comum composta por pão e vinho em memória de Jesus Cristo.
 
-O Batismo: a imersão pública nas águas de um rio ou poço, assinalando a morte do homem velho e o nascimento para uma vida nova e limpa.
+**O Batismo:** a imersão pública nas águas de um rio ou poço, assinalando a morte do homem velho e o nascimento para uma vida nova e limpa.
 
-O Amor em Ação: não havia necessitados entre eles, porque quem tinha campos ou casas vendia-os e depositava o dinheiro aos pés dos apóstolos para acudir às viúvas e aos órfãos.
+**O Amor em Ação:** não havia necessitados entre eles, porque quem tinha campos ou casas vendia-os e depositava o dinheiro aos pés dos apóstolos para acudir às viúvas e aos órfãos.
 
-A Abertura aos Gentios: a decisão revolucionária dos apóstolos e anciãos em Jerusalém de que não era preciso ser circuncidado nem obedecer às centenas de regras alimentares judaicas para ser salvo.
+**A Abertura aos Gentios:** a decisão revolucionária dos apóstolos e anciãos em Jerusalém de que não era preciso ser circuncidado nem obedecer às centenas de regras alimentares judaicas para ser salvo.
 
 Um dos elementos mais marcantes foi Saulo de Tarso. Fariseu zeloso, com cidadania romana, que passava o tempo a caçar e a mandar apedrejar cristãos. A caminho de Damasco ouviu a voz que lhe virou a vida do avesso. Tornou-se Paulo, o Apóstolo dos Gentios. Meteu-se em barcos precários, sobreviveu a três naufrágios, levou chicotadas em praça pública e abriu congregações em Éfeso, Corinto, Filipos e Atenas.
 
