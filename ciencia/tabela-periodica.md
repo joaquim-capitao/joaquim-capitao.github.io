@@ -39,4 +39,8 @@ O facto de as propriedades químicas e físicas dos elementos se repetirem em ci
 
 Para quem acredita num Criador, a existência de uma linguagem lógica e coerente escrita no tecido elementar do universo, com leis que operam em perfeita sintonia para viabilizar a complexidade da química e da vida, aponta mais naturalmente para a intenção de um arquiteto deliberado do que para um mero produto do acaso cego.
 
+---
+
+[<-- Voltar atrás](https://joaquim-capitao.github.io/ciencia/)
+
 
