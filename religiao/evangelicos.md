@@ -18,3 +18,7 @@ Hoje, somando pentecostais clássicos e neopentecostais independentes, este movi
 
 Os intelectuais olham para isto com o nariz franzido, cheios de nojo pelo barulho, pelo dinheiro que circula à vista desarmada e pela estética garrida dos palcos. Mas o pentecostalismo não dá aos aflitos um sermão sobre perseverança. Dá-lhes a promessa de uma vida melhor agora mesmo. E para quem não tem rigorosamente nada, isso é tudo o que se quer ouvir. 
 
+---
+
+[<-- Voltar atrás](https://joaquim-capitao.github.io/religiao/)
+
