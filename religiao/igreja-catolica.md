@@ -22,4 +22,4 @@ No fim de contas, despojada das suas falhas institucionais e das misérias dos h
 
 ---
 
-Joaquim Capitão
+[<-- Voltar atrás](https://joaquim-capitao.github.io/religiao/)
