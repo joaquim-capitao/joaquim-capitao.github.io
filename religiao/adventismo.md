@@ -20,3 +20,5 @@ Hoje, os Adventistas do Sétimo Dia Já não são um fenómeno rural norte-ameri
 
 ---
 
+[<-- Voltar atrás](https://joaquim-capitao.github.io/religiao/)
+
