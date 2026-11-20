@@ -12,6 +12,6 @@ Chamem-lhe cosmos, razão universal ou simples necessidade poética de sentido. 
 
 ---
 
-Joaquim Capitão
+[<-- Voltar atrás](https://joaquim-capitao.github.io/religiao/)
 
 
