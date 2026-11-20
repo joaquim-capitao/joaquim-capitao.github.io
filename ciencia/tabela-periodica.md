@@ -21,6 +21,7 @@ Existem 18 grupos. Elementos da mesma coluna partilham o mesmo número de eletr�
 
 ​Classificar propriedades periódicas: Permite deduzir tendências gerais através de padrões espaciais, tais como:  
 ​
+
 **Raio atómico:** Aumenta de cima para baixo e da direita para a esquerda.
 
 **​Eletronegatividade e Energia de ionização:** Aumentam de baixo para cima e da esquerda para a direita.
