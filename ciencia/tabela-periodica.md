@@ -19,7 +19,7 @@ Existem 18 grupos. Elementos da mesma coluna partilham o mesmo número de eletr�
 
 ​Prever comportamentos e reatividades químicas: A posição de um elemento revela de imediato a sua facilidade em perder ou ganhar eletrões, o tipo de ligações que estabelece e as moléculas que pode formar.
 
-​Classificar propriedades periódicas: Permite deduzir tendências gerais através de padrões espaciais, tais como:
+​Classificar propriedades periódicas: Permite deduzir tendências gerais através de padrões espaciais, tais como:  
 ​
 **Raio atómico:** Aumenta de cima para baixo e da direita para a esquerda.
 
