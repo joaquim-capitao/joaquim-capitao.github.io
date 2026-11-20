@@ -18,9 +18,11 @@ As suas doutrinas são as seguintes:
 
 - A Palavra de Sabedoria: um código rigoroso de saúde que proíbe estritamente álcool, tabaco, drogas, café e chá preto.
 
-Hoje, os mórmones somam cerca de 17 milhões de fiéis no mundo inteiro. Mais de metade já reside fora dos Estados Unidos, com enorme presença no Brasil, no México, nas Filipinas e em vários países africanos. E quando vemos dois rapazes de dezanove anos, vestidos com camisa branca, crachá preto na lapela e gravata impecável, sabemos imediatamente quem são eles. São os mórmons.
+Hoje, os mórmones somam cerca de 17 milhões de fiéis no mundo inteiro. Mais de metade já reside fora dos Estados Unidos, com enorme presença no Brasil, no México, nas Filipinas e em vários países africanos. E quando vemos dois rapazes de dezanove anos, vestidos com camisa branca, crachá preto na lapela e gravata impecável, sabemos imediatamente quem são eles. São os mórmones.
 
 ---
+
+
 
 
 
