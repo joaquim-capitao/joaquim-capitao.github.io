@@ -12,7 +12,5 @@ Depois, e só depois de olhar para os factos de frente, tire as suas conclusões
 
 ---
 
-Joaquim Capitão
-
-Joaquim Capitão
+[<-- Voltar atrás](https://joaquim-capitao.github.io/religiao/)
 
