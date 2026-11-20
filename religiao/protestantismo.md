@@ -22,6 +22,8 @@ Hoje, se contarmos apenas estas denominações tradicionais, os protestantes his
 
 ---
 
+[<-- Voltar atrás](https://joaquim-capitao.github.io/religiao/)
+
 
 
 
